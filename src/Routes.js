@@ -1,16 +1,16 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import Login from "./Pages/Login/Login";
-import Signup from "./Pages/Signup/Signup";
-import Main from "./Pages/Main/Main";
-import ProductList from "./Pages/ProductList/ProductList";
-import ProductDetail from "./Pages/ProductDetail/ProductDetail";
-import Cart from "./Pages/Cart/Cart";
-import Payment from "./Pages/Payment/Payment";
-import MyPage from "./Pages/MyPage/MyPage";
-import Nav from "./Components/Nav/Nav";
-import Footer from "./Components/Footer/Footer";
+import Login from './Pages/Login/Login';
+import Signup from './Pages/Signup/Signup';
+import Main from './Pages/Main/Main';
+import ProductList from './Pages/ProductList/ProductList';
+import ProductDetail from './Pages/ProductDetail/ProductDetail';
+import Cart from './Pages/Cart/Cart';
+import Payment from './Pages/Payment/Payment';
+import MyPage from './Pages/MyPage/MyPage';
+import Nav from './Components/Nav/Nav';
+import Footer from './Components/Footer/Footer';
 
 class Routes extends React.Component {
   render() {

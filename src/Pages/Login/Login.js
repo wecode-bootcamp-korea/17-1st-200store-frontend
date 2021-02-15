@@ -1,9 +1,8 @@
-import React, { Component } from "react";
-import "../Login/Login.scss";
+import React, { Component } from 'react';
 
 class Login extends Component {
   render() {
-    return <div className="Login"></div>;
+    return <div></div>;
   }
 }
 
