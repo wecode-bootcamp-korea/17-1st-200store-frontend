@@ -1,0 +1,12 @@
+@import "../../Styles/common.scss";
+
+.Footer {
+  ul {
+    @extend %flexCenter;
+
+    li {
+      color: var(--color-green);
+      font-family: "NanumGothic";
+    }
+  }
+}
