@@ -1,13 +1,114 @@
-@import "../../Styles/common.scss";
+@import '../../Styles/common.scss';
 
 .Nav {
-  ul {
-    @extend %flexCenter;
+  position: sticky;
+  background-color: var(--color-white);
+  top: 0;
+  min-width: 100%;
+  margin: 0 auto;
+  align-items: center;
 
-    li {
-      font-family: NanumGothic;
-      font-size: 20px;
-      color: var(--color-green);
+  font-family: 'Noto Sans KR', sans-serif;
+  color: var(--color-black);
+  z-index: 1000;
+
+  .mainNav {
+    header {
+      @extend %flexCenter;
+      justify-content: flex-end;
+      height: 50px;
+      border-bottom: 1px solid rgba(233, 233, 233, 0.995);
+
+      ul {
+        margin-right: 50px;
+
+        a {
+          text-decoration: none;
+          padding: 0 5px;
+          font-size: 12px;
+          color: grey;
+        }
+      }
+    }
+
+    .logoContainer {
+      @extend %flexCenter;
+      height: 100px;
+      overflow: hidden;
+      img {
+        width: 150px;
+        height: auto;
+      }
+
+      .searchContainer {
+        position: fixed;
+        right: 50px;
+        top: 100px;
+
+        i {
+          color: grey;
+        }
+
+        input {
+          box-sizing: border-box;
+          width: 250px;
+          line-height: 20px;
+          border: none;
+          border-bottom: 1px solid rgba(233, 233, 233, 0.995);
+          outline-width: 0;
+
+          &:focus {
+            border-bottom: 1px solid black;
+          }
+        }
+      }
+    }
+  }
+
+  .subNav {
+    height: 50px;
+    border-bottom: 1px solid rgba(233, 233, 233, 0.995);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 100px;
+    }
+
+    ul {
+      position: fixed;
+      top: 10;
+      right: 0;
+      margin-right: 50px;
+
+      a {
+        text-decoration: none;
+        padding: 0 5px;
+        font-size: 12px;
+        color: grey;
+      }
+    }
+  }
+
+  .menuContainer {
+    display: flex;
+    justify-content: center;
+    min-width: 900px;
+    background-color: var(--color-white);
+    height: 50px;
+    border-bottom: 1.5px solid rgba(233, 233, 233, 0.995);
+
+    a {
+      text-decoration: none;
+      text-align: center;
+      padding: 10px;
+      margin: 5px;
+      font-size: 16px;
+      color: var(--color-black);
+    }
+    a:hover {
+      border-bottom: 2px solid var(--color-green);
     }
   }
 }
