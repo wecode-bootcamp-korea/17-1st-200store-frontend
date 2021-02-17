@@ -4,7 +4,7 @@ import './Footer.scss';
 class Footer extends Component {
   render() {
     return (
-      <div className="Footer">
+      <footer>
         <img
           alt="footerlogo"
           src={process.env.PUBLIC_URL + '/images/logo/footerlogo.png'}
@@ -38,7 +38,7 @@ class Footer extends Component {
             <p>© Woowa Brothers Corp. All right Reserved</p>
           </div>
         </div>
-      </div>
+      </footer>
     );
   }
 }

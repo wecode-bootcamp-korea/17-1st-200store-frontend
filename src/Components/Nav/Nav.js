@@ -37,7 +37,7 @@ class Nav extends Component {
 
   render() {
     return (
-      <div className="Nav">
+      <nav>
         {!this.state.navScrolled && (
           <main className="mainNav">
             <header>
@@ -91,7 +91,7 @@ class Nav extends Component {
             return <a href="#0">{menu.title}</a>;
           })}
         </ul>
-      </div>
+      </nav>
     );
   }
 }
