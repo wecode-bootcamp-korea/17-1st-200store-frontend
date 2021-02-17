@@ -40,6 +40,7 @@ class Main extends Component {
       });
   }
   render() {
+    const { bestList, newList, saleList } = this.state;
     return (
       <div className="Main">
         <Slider />
@@ -47,7 +48,7 @@ class Main extends Component {
           <article>
             <h2>잘나가요</h2>
             <div className="bestContainer">
-              {this.state.bestList.map(item => {
+              {bestList.map(item => {
                 return (
                   <Best
                     key={item.id}
@@ -55,6 +56,7 @@ class Main extends Component {
                     imgSrc={item.imgSrc}
                     price={item.price}
                     isBest={item.isBest}
+                    isNew={item.isNew}
                     isSale={item.isSale}
                     howMuchSale={item.howMuchSale}
                   />
@@ -65,13 +67,14 @@ class Main extends Component {
           <article>
             <h2>새로 나왔어요</h2>
             <div className="newContainer">
-              {this.state.newList.map(item => {
+              {newList.map(item => {
                 return (
                   <New
                     key={item.id}
                     name={item.name}
                     imgSrc={item.imgSrc}
                     price={item.price}
+                    isBest={item.isBest}
                     isNew={item.isNew}
                     isSale={item.isSale}
                     howMuchSale={item.howMuchSale}
@@ -108,13 +111,14 @@ class Main extends Component {
           <article>
             <h2>지금은 할인중</h2>
             <div className="saleContainer">
-              {this.state.saleList.map(item => {
+              {saleList.map(item => {
                 return (
                   <Sale
                     key={item.id}
                     name={item.name}
                     imgSrc={item.imgSrc}
                     price={item.price}
+                    isBest={item.isBest}
                     isNew={item.isNew}
                     isSale={item.isSale}
                     howMuchSale={item.howMuchSale}

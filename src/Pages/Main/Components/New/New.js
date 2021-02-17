@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './New.scss';
+import '../mainComp.scss';
 
 class New extends Component {
   finalPrice = (
@@ -8,20 +8,27 @@ class New extends Component {
     ) * 1000
   ).toLocaleString();
   render() {
+    const {
+      name,
+      imgSrc,
+      isBest,
+      isNew,
+      isSale,
+      howMuchSale,
+      price,
+    } = this.props;
     return (
       <div className="New">
         <div
           className="newImage"
           style={{
-            backgroundImage: `url(${this.props.imgSrc})`,
-            backgroundSize: `cover`,
-            backgroundPosition: `center`,
+            backgroundImage: `url(${imgSrc})`,
           }}
         >
           <div className="labelContainer">
-            {this.props.isBest && <span className="isBest"> BEST </span>}
-            {this.props.isNew && <span className="isNew"> NEW </span>}
-            {this.props.isSale && <span className="isSale"> SALE </span>}
+            {isBest && <span className="isBest"> BEST </span>}
+            {isNew && <span className="isNew"> NEW </span>}
+            {isSale && <span className="isSale"> SALE </span>}
           </div>
           <div className="hoverContainer">
             <div className="hoverHeart">
@@ -32,16 +39,16 @@ class New extends Component {
             </div>
           </div>
         </div>
-        {this.props.howMuchSale > 0 && (
-          <span className="howMuchSale"> {this.props.howMuchSale}%</span>
+        {howMuchSale > 0 && (
+          <span className="howMuchSale"> {howMuchSale}%</span>
         )}
-        <p>{this.props.name}</p>
-        {this.props.howMuchSale === 0 && (
-          <p className="price">{this.props.price.toLocaleString()}원</p>
+        <p>{name}</p>
+        {howMuchSale === 0 && (
+          <p className="price">{price.toLocaleString()}원</p>
         )}
-        {this.props.howMuchSale > 0 && (
+        {howMuchSale > 0 && (
           <div className="priceContainer">
-            <p className="oldPrice"> {this.props.price.toLocaleString()}원 </p>
+            <p className="oldPrice"> {price.toLocaleString()}원 </p>
             <p className="salePrice">{this.finalPrice}원</p>
           </div>
         )}

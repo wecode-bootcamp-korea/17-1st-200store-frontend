@@ -7,6 +7,17 @@ class Nav extends Component {
     super();
     this.state = {
       navScrolled: false,
+      menuList: [
+        { id: 1, src: '#0', title: '전체' },
+        { id: 2, src: '#0', title: '문구' },
+        { id: 3, src: '#0', title: '리빙' },
+        { id: 4, src: '#0', title: '책' },
+        { id: 5, src: '#0', title: '을지로에디션' },
+        { id: 6, src: '#0', title: 'ㅋㅋ에디션' },
+        { id: 7, src: '#0', title: '배달이친구들' },
+        { id: 8, src: '#0', title: '선물세트' },
+        { id: 9, src: '#0', title: '콜라보레이션' },
+      ],
     };
   }
 
@@ -19,15 +30,9 @@ class Nav extends Component {
   }
 
   handleScroll = () => {
-    if (window.pageYOffset > 200) {
-      if (!this.state.navScrolled) {
-        this.setState({ navScrolled: true });
-      }
-    } else {
-      if (this.state.navScrolled) {
-        this.setState({ navScrolled: false });
-      }
-    }
+    window.pageYOffset > 200
+      ? this.setState({ navScrolled: true })
+      : this.setState({ navScrolled: false });
   };
 
   render() {
@@ -82,15 +87,9 @@ class Nav extends Component {
           </div>
         )}
         <ul className="menuContainer">
-          <a href="#0"> 전체 </a>
-          <a href="#0"> 문구 </a>
-          <a href="#0"> 리빙 </a>
-          <a href="#0"> 책 </a>
-          <a href="#0"> 을지로에디션 </a>
-          <a href="#0"> ㅋㅋ에디션 </a>
-          <a href="#0"> 배달이친구들 </a>
-          <a href="#0"> 선물세트 </a>
-          <a href="#0"> 콜라보레이션 </a>
+          {this.state.menuList.map(menu => {
+            return <a href="#0">{menu.title}</a>;
+          })}
         </ul>
       </div>
     );

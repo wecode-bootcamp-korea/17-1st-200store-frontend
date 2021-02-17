@@ -34,10 +34,9 @@
     .logoContainer {
       @extend %flexCenter;
       height: 100px;
-      overflow: hidden;
+
       img {
         width: 150px;
-        height: auto;
       }
 
       .searchContainer {
@@ -66,11 +65,10 @@
   }
 
   .subNav {
+    @extend %flexCenter;
     height: 50px;
+    background-color: var(--color-white);
     border-bottom: 1px solid rgba(233, 233, 233, 0.995);
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     img {
       width: 100px;
@@ -92,11 +90,10 @@
   }
 
   .menuContainer {
-    display: flex;
-    justify-content: center;
+    @extend %flexCenter;
     min-width: 900px;
-    background-color: var(--color-white);
     height: 50px;
+    background-color: var(--color-white);
     border-bottom: 1.5px solid rgba(233, 233, 233, 0.995);
 
     a {

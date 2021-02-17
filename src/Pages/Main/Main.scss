@@ -4,17 +4,13 @@
 
 .Main {
   .mainContent {
-    display: flex;
+    @extend %flexCenter;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     margin: 0 auto;
     min-width: 1100px;
-    overflow: hidden;
 
     article {
       width: 1200px;
-      overflow: hidden;
 
       h2 {
         width: 100%;
@@ -58,8 +54,8 @@
             font-family: 'Noto Sans KR', sans-serif;
 
             h3 {
-              font-size: 30px;
               margin-bottom: 30px;
+              font-size: 30px;
             }
             h4 {
               font-size: 15px;
