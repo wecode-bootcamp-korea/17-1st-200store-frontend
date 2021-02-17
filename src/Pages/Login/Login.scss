@@ -1,4 +1,5 @@
 @import '../../Styles/common.scss';
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
 
 .loginContainer {
   @extend %flexCenter;
@@ -21,7 +22,7 @@
           --color-black: #333;
           text-align: center;
           margin-bottom: 15px;
-          font-family: 'NanumGothic';
+          font-family: ‘Noto Sans KR’, sans-serif;
         }
         .loginInputSec input {
           width: 100%;
@@ -53,7 +54,7 @@
           font-weight: 550;
           font-size: 18px;
           padding: 0px;
-          font-family: 'NanumGothic';
+          font-family: ‘Noto Sans KR’, sans-serif;
         }
       }
       .snslogin {
@@ -65,20 +66,19 @@
         color: #fff;
         padding-top: 17px;
         border: none;
-        font-family: 'NanumGothic';
+        font-family: ‘Noto Sans KR’, sans-serif;
         font-weight: 550;
         font-size: 18px;
       }
       .btnLoginBox {
         width: 300px;
         height: 25px;
-        margin-top: 15px;
-        margin-left: 10px;
+        margin: 15px 0px 0px 10px;
         text-align: center;
         font-size: 13px;
         display: flex;
         flex-direction: row;
-        font-family: 'NanumGothic';
+        font-family: ‘Noto Sans KR’, sans-serif;
 
         .btnJoin,
         .btnId,
@@ -87,7 +87,7 @@
           margin-right: 10px;
           border: none;
           font-weight: 500;
-          font-family: 'NanumGothic';
+          font-family: ‘Noto Sans KR’, sans-serif;
         }
       }
     }

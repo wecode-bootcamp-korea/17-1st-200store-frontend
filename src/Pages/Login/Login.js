@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Login.scss';
-
+import { LoginApi } from '../../config';
 import { withRouter } from 'react-router-dom';
 
 class Login extends Component {
@@ -14,10 +14,10 @@ class Login extends Component {
   };
 
   handleInput = e => {
+    const { value } = e.target;
     this.setState({
-      [e.target.name]: e.target.value,
+      [e.target.name]: value,
     });
-    console.log(e.target.value);
   };
 
   handleClick = e => {
@@ -29,7 +29,7 @@ class Login extends Component {
   handleKeyPress = e => {
     if (e.key === 'Enter') {
       if (this.state.id.length >= 5 && this.state.pw.length >= 8) {
-        fetch('http://10.58.1.143:8000/user/login', {
+        fetch(LoginApi, {
           method: 'POST',
           body: JSON.stringify({
             user_id: this.state.id,
