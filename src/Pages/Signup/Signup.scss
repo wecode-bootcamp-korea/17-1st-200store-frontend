@@ -1,0 +1,181 @@
+.top_contents {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .member_info {
+    width: 1200px;
+    height: 64px;
+    margin: 125px auto 0;
+    border-bottom: 1px solid #dbdbdb;
+
+    ol {
+      text-align: right;
+    }
+
+    li {
+      display: list-item;
+      display: inline;
+      flex-direction: row;
+      margin: 0;
+      padding: 0;
+      font-size: 14px;
+      font-weight: bold;
+      color: #d1d1d1;
+    }
+
+    .second_li {
+      color: black;
+    }
+  }
+
+  .contents {
+    padding: 40px;
+    font-size: 12px;
+    height: 100%;
+    width: 743px;
+    margin: auto;
+
+    h3 {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .info_container {
+      display: flex;
+      justify-content: space-between;
+      margin: 0 0 40px 0;
+    }
+
+    table {
+      border-top: 1px solid #999999;
+      border-bottom: 1px solid #999999;
+      display: table;
+      border-collapse: separate;
+      box-sizing: border-box;
+      text-indent: initial;
+      margin: auto;
+
+      .important {
+        font-weight: bold;
+      }
+
+      input {
+        border: 1px solid #d6d6d6;
+        height: 27px;
+        padding: 0px 0px 0px 7px;
+      }
+
+      .checkbox {
+        height: auto;
+        margin-top: 10px;
+      }
+
+      form {
+        display: inline;
+        select {
+          height: 29px;
+          border: 1px solid #d6d6d6;
+          margin-left: 5px;
+        }
+      }
+
+      #memId,
+      #memname,
+      #memnum,
+      #memadd2,
+      #memadd3 {
+        width: 360px;
+      }
+
+      #memnum::placeholder {
+        text-indent: 10px;
+        font-size: 12px;
+      }
+
+      #btnPostcode {
+        margin-left: 4px;
+        height: 30px;
+        border-radius: 0px;
+        border: 0.3px solid #989898;
+        background-color: #ffffff;
+        font-size: 12px;
+      }
+
+      #memadd2,
+      #memadd3 {
+        margin-top: 4px;
+      }
+
+      #memadd3 {
+        margin-bottom: 10px;
+      }
+
+      #mempw,
+      #mempw_check,
+      #memphone,
+      #memadd {
+        width: 183px;
+      }
+
+      #mememail {
+        width: 251px;
+      }
+
+      td {
+        padding: 10px 0px 5px 15px;
+        border-bottom: 1px solid #dcdcdc;
+        text-align: left;
+        width: 557px;
+        vertical-align: middle;
+      }
+
+      th {
+        text-align: left;
+        width: 186px;
+        height: 62px;
+        border-bottom: 1px solid #dcdcdc;
+        padding: 5px 15px;
+        box-sizing: border-box;
+        background: #fbfbfb;
+        vertical-align: middle;
+
+        span {
+          justify-content: center;
+        }
+      }
+    }
+    .btn_center_Box {
+      margin: 30px auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    .btn_member_cancel {
+      width: 150px;
+      height: 45px;
+      color: #3e3d3c;
+      font-weight: bold;
+      font-size: 13px;
+      border: 1px solid #cccccc;
+      background: white;
+      cursor: pointer;
+    }
+
+    .btn_comfirm_js_btn_join {
+      margin-left: 6px;
+      width: 150px;
+      height: 45px;
+      color: white;
+      font-weight: bold;
+      font-size: 13px;
+      border: 1px solid black;
+      background: black;
+      cursor: pointer;
+
+      &:disabled {
+        opacity: 0.7;
+      }
+    }
+  }
+}
