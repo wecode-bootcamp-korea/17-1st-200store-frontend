@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Signup.scss';
+import '../../config';
 
 class Signup extends React.Component {
   constructor() {
@@ -13,14 +14,14 @@ class Signup extends React.Component {
       email: '',
       phone: '',
       numb: '',
-      add1: '',
-      add2: '',
-      add3: '',
+      addr1: '',
+      addr2: '',
+      addr3: '',
       isSignup: true,
     };
   }
 
-  handleButton = e => {
+  handleSignUpButton = e => {
     const { value, name } = e.target;
     this.setState(
       {
@@ -53,17 +54,16 @@ class Signup extends React.Component {
       this.state.name.length > 0 &&
       this.state.email.includes('@') &&
       this.state.phone.length > 0 &&
-      this.state.add1.length > 0
-      // this.state.add2.length > 0 &&
-      // this.state.add3.length > 0
+      this.state.addr1.length > 0
+      // this.state.addr2.length > 0 &&
+      // this.state.addr3.length > 0
     ) {
-      console.log('pass');
       this.setState({ isSignup: false });
     }
   };
 
   goToMain = () => {
-    fetch('http://10.58.1.143:8000/user/join_method', {
+    fetch('SIGN_UP_API', {
       method: 'POST',
       body: JSON.stringify({
         user_id: this.state.id,
@@ -106,7 +106,7 @@ class Signup extends React.Component {
                   <h3>기본정보</h3>
                 </div>
                 <div>
-                  <span class="important_item">
+                  <span className="important_item">
                     • 표시는 반드시 입력하셔야 하는 항목입니다.
                   </span>
                 </div>
@@ -122,7 +122,7 @@ class Signup extends React.Component {
                         <div class="member_warning">
                           <input
                             // onChange={this.signupEnable}
-                            onKeyUp={this.handleButton}
+                            onKeyUp={this.handleSignUpButton}
                             type="text"
                             id="memId"
                             name="id"
@@ -135,10 +135,9 @@ class Signup extends React.Component {
                         <span className="important">• 비밀번호</span>
                       </th>
                       <td>
-                        <div class="member_warning">
+                        <div className="member_warning">
                           <input
-                            // onChange={this.signupEnable}
-                            onKeyUp={this.handleButton}
+                            onKeyUp={this.handleSignUpButton}
                             type="password"
                             id="mempw"
                             name="pw"
@@ -153,8 +152,7 @@ class Signup extends React.Component {
                       <td>
                         <div class="member_warning">
                           <input
-                            // onChange={this.signupEnable}
-                            onKeyUp={this.handleButton}
+                            onKeyUp={this.handleSignUpButton}
                             type="password"
                             id="mempw_check"
                             name="pwcheck"
@@ -167,10 +165,9 @@ class Signup extends React.Component {
                         <span className="important">• 이름</span>
                       </th>
                       <td>
-                        <div class="member_warning">
+                        <div className="member_warning">
                           <input
-                            // onChange={this.signupEnable}
-                            onKeyUp={this.handleButton}
+                            onKeyUp={this.handleSignUpButton}
                             type="text"
                             id="memname"
                             name="name"
@@ -183,10 +180,9 @@ class Signup extends React.Component {
                         <span className="important">• 이메일</span>
                       </th>
                       <td>
-                        <div class="member_warning">
+                        <div className="member_warning">
                           <input
-                            // onChange={this.signupEnable}
-                            onKeyUp={this.handleButton}
+                            onKeyUp={this.handleSignUpButton}
                             type="email"
                             id="mememail"
                             name="email"
@@ -210,7 +206,7 @@ class Signup extends React.Component {
                               id="checkid"
                               type="checkbox"
                               className="checkbox"
-                            ></input>
+                            />
                             <label for="checkid">
                               (선택) 마케팅 및 이벤트 정보 메일 수신에
                               동의합니다.
@@ -226,19 +222,17 @@ class Signup extends React.Component {
                       <td>
                         <div class="member_warning">
                           <input
-                            onKeyUp={this.handleButton}
+                            onKeyUp={this.handleSignUpButton}
                             type="text"
                             id="memphone"
                             name="phone"
                           />
                           <div className="form_element">
                             <input
-                              // onChange={this.signupEnable}
-
                               id="checkid2"
                               type="checkbox"
                               className="checkbox"
-                            ></input>
+                            />
                             <label for="checkid2">
                               (선택) 마케팅 및 이벤트 정보 SMS 수신에
                               동의합니다.
@@ -252,7 +246,7 @@ class Signup extends React.Component {
                         <span className="important">&nbsp;&nbsp;전화번호</span>
                       </th>
                       <td>
-                        <div class="member_warning">
+                        <div className="member_warning">
                           <input
                             type="text"
                             id="memnum"
@@ -267,13 +261,12 @@ class Signup extends React.Component {
                         <span className="important">• 주소</span>
                       </th>
                       <td className="last_td">
-                        <div class="member_warning">
+                        <div className="member_warning">
                           <input
-                            // onChange={this.signupEnable}
-                            onKeyUp={this.handleButton}
+                            onKeyUp={this.handleSignUpButton}
                             type="text"
                             id="memadd"
-                            name="add1"
+                            name="addr1"
                           />
                           <button
                             type="button"
@@ -284,19 +277,17 @@ class Signup extends React.Component {
                           </button>
                           <br />
                           <input
-                            // onChange={this.signupEnable}
-                            onKeyUp={this.handleButton}
+                            onKeyUp={this.handleSignUpButton}
                             type="text"
                             id="memadd2"
-                            name="add2"
+                            name="addr2"
                           />
                           <br />
                           <input
-                            // onChange={this.signupEnable}
-                            onKeyUp={this.handleButton}
+                            onKeyUp={this.handleSignUpButton}
                             type="text"
                             id="memadd3"
-                            name="add3"
+                            name="addr3"
                           />
                         </div>
                       </td>
