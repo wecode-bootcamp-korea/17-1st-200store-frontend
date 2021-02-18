@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Slider from './Components/Slider/Slider';
-import Best from './Components/Best/Best';
-import New from './Components/New/New';
-import Sale from './Components/Sale/Sale';
+import ProductBox from './Components/ProductBox/ProductBox';
 import './Main.scss';
 
 class Main extends Component {
@@ -50,7 +48,7 @@ class Main extends Component {
             <div className="bestContainer">
               {bestList.map(item => {
                 return (
-                  <Best
+                  <ProductBox
                     key={item.id}
                     name={item.name}
                     imgSrc={item.imgSrc}
@@ -58,7 +56,7 @@ class Main extends Component {
                     isBest={item.isBest}
                     isNew={item.isNew}
                     isSale={item.isSale}
-                    howMuchSale={item.howMuchSale}
+                    sale={item.sale}
                   />
                 );
               })}
@@ -69,7 +67,7 @@ class Main extends Component {
             <div className="newContainer">
               {newList.map(item => {
                 return (
-                  <New
+                  <ProductBox
                     key={item.id}
                     name={item.name}
                     imgSrc={item.imgSrc}
@@ -77,7 +75,7 @@ class Main extends Component {
                     isBest={item.isBest}
                     isNew={item.isNew}
                     isSale={item.isSale}
-                    howMuchSale={item.howMuchSale}
+                    sale={item.sale}
                   />
                 );
               })}
@@ -113,7 +111,7 @@ class Main extends Component {
             <div className="saleContainer">
               {saleList.map(item => {
                 return (
-                  <Sale
+                  <ProductBox
                     key={item.id}
                     name={item.name}
                     imgSrc={item.imgSrc}
@@ -121,7 +119,7 @@ class Main extends Component {
                     isBest={item.isBest}
                     isNew={item.isNew}
                     isSale={item.isSale}
-                    howMuchSale={item.howMuchSale}
+                    sale={item.sale}
                   />
                 );
               })}

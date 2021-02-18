@@ -20,13 +20,20 @@ nav {
       border-bottom: 1px solid rgba(233, 233, 233, 0.995);
 
       ul {
+        display: flex;
         margin-right: 50px;
 
-        a {
+        li {
           text-decoration: none;
           padding: 0 5px;
           font-size: 12px;
           color: grey;
+
+          &:hover {
+            color: var(--color-green);
+            font-weight: bold;
+            cursor: pointer;
+          }
         }
       }
     }
@@ -75,16 +82,22 @@ nav {
     }
 
     ul {
+      display: flex;
       position: fixed;
       top: 10;
       right: 0;
       margin-right: 50px;
 
-      a {
+      li {
         text-decoration: none;
         padding: 0 5px;
         font-size: 12px;
         color: grey;
+
+        &:hover {
+          color: var(--color-green);
+          cursor: pointer;
+        }
       }
     }
   }
@@ -96,16 +109,19 @@ nav {
     background-color: var(--color-white);
     border-bottom: 1.5px solid rgba(233, 233, 233, 0.995);
 
-    a {
+    li {
       text-decoration: none;
       text-align: center;
       padding: 10px;
       margin: 5px;
       font-size: 16px;
       color: var(--color-black);
-    }
-    a:hover {
-      border-bottom: 2px solid var(--color-green);
+      border-bottom: 2px solid white;
+
+      &:hover {
+        border-bottom: 2px solid var(--color-green);
+        cursor: pointer;
+      }
     }
   }
 }

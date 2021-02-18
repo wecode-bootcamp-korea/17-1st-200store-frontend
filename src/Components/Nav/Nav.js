@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
+import { NAVDATA } from './navData';
 import './Nav.scss';
 
 class Nav extends Component {
@@ -7,22 +8,15 @@ class Nav extends Component {
     super();
     this.state = {
       navScrolled: false,
-      menuList: [
-        { id: 1, src: '#0', title: '전체' },
-        { id: 2, src: '#0', title: '문구' },
-        { id: 3, src: '#0', title: '리빙' },
-        { id: 4, src: '#0', title: '책' },
-        { id: 5, src: '#0', title: '을지로에디션' },
-        { id: 6, src: '#0', title: 'ㅋㅋ에디션' },
-        { id: 7, src: '#0', title: '배달이친구들' },
-        { id: 8, src: '#0', title: '선물세트' },
-        { id: 9, src: '#0', title: '콜라보레이션' },
-      ],
+      menuList: [],
     };
   }
 
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
+    this.setState({
+      menuList: NAVDATA,
+    });
   }
 
   componentWillUnmount() {
@@ -30,22 +24,35 @@ class Nav extends Component {
   }
 
   handleScroll = () => {
-    window.pageYOffset > 200
-      ? this.setState({ navScrolled: true })
-      : this.setState({ navScrolled: false });
+    this.setState({ navScrolled: window.pageYOffset > 200 });
+  };
+
+  goToLogin = () => {
+    this.props.history.push('/login');
+  };
+  goToSignup = () => {
+    this.props.history.push('/signup');
+  };
+  goToMyPage = () => {
+    this.props.history.push('/mypage');
+  };
+
+  goToCart = () => {
+    this.props.history.push('/cart');
   };
 
   render() {
+    const { navScrolled, menuList } = this.state;
     return (
       <nav>
-        {!this.state.navScrolled && (
+        {!navScrolled && (
           <main className="mainNav">
             <header>
               <ul>
-                <a href="/login">로그인</a>
-                <a href="/signup">회원가입</a>
-                <a href="/mypage">마이페이지</a>
-                <a href="/cart">장바구니</a>
+                <li onClick={this.goToLogin}>로그인</li>
+                <li onClick={this.goToSignup}>회원가입</li>
+                <li onClick={this.goToMyPage}>마이페이지</li>
+                <li onClick={this.goToCart}>장바구니</li>
               </ul>
             </header>
             <div className="logoContainer">
@@ -67,7 +74,7 @@ class Nav extends Component {
             </div>
           </main>
         )}
-        {this.state.navScrolled && (
+        {navScrolled && (
           <div className="subNav">
             <div className="logoContainer">
               <Link to="/">
@@ -77,18 +84,17 @@ class Nav extends Component {
                 />
               </Link>
             </div>
-
             <ul>
-              <a href="/login">로그인</a>
-              <a href="/signup">회원가입</a>
-              <a href="/mypage">마이페이지</a>
-              <a href="/cart">장바구니</a>
+              <li onClick={this.goToLogin}>로그인</li>
+              <li onClick={this.goToSignup}>회원가입</li>
+              <li onClick={this.goToMyPage}>마이페이지</li>
+              <li onClick={this.goToCart}>장바구니</li>
             </ul>
           </div>
         )}
         <ul className="menuContainer">
-          {this.state.menuList.map(menu => {
-            return <a href="#0">{menu.title}</a>;
+          {menuList.map(menu => {
+            return <li>{menu.title}</li>;
           })}
         </ul>
       </nav>
@@ -96,4 +102,4 @@ class Nav extends Component {
   }
 }
 
-export default Nav;
+export default withRouter(Nav);

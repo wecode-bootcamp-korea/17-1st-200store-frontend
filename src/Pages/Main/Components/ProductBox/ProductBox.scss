@@ -1,8 +1,6 @@
-@import '../../../Styles/common.scss';
+@import '../../../../Styles/common.scss';
 
-.Best,
-.New,
-.Sale {
+.ProductBox {
   width: 280px;
   height: 500px;
   font-family: 'Noto Sans KR', sans-serif;
@@ -11,9 +9,7 @@
     cursor: pointer;
   }
 
-  .bestImage,
-  .newImage,
-  .saleImage {
+  .productImage {
     position: relative;
     width: 100%;
     height: 350px;
@@ -58,7 +54,6 @@
       display: flex;
       top: 280px;
       left: 110px;
-      opacity: 0.8;
 
       .hoverHeart,
       .hoverCart {
@@ -66,8 +61,10 @@
         height: 25px;
         margin: 2px;
         padding-top: 3px;
+        border-radius: 3px;
         background-color: white;
         text-align: center;
+        opacity: 0.8;
 
         i {
           color: grey;
@@ -84,7 +81,7 @@
 
       .hoverCart:hover {
         i {
-          color: black;
+          color: var(--color-green);
         }
       }
     }
@@ -99,7 +96,7 @@
   p {
     margin: 10px 0;
   }
-  .howMuchSale {
+  .sale {
     padding-top: 10px;
     font-size: 25px;
     font-weight: bold;
@@ -110,6 +107,7 @@
   .oldPrice,
   .salePrice {
     font-weight: bold;
+    margin: 0;
   }
 
   .oldPrice {
