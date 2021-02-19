@@ -9,9 +9,10 @@ class ProductBox extends Component {
 
   saleNumber = this.props.sale * 100;
 
-  goToMyPage = () => {
-    this.props.history.push('/mypage');
+  goToMyPage = url => {
+    this.props.history.push(url);
   };
+  // url = '/mypage'
 
   goToCart = () => {
     this.props.history.push('/cart');
