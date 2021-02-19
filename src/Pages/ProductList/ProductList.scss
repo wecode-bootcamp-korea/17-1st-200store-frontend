@@ -3,51 +3,53 @@
 
 .Container {
   width: 1200px;
-  margin-left: 300px;
+  margin: 0 auto;
   text-align: center;
   .pickListnum {
     width: 1200px;
     height: 35px;
-    // margin: 0px 230px 20px 300px;
-    // margin-left: 400px;
     margin-bottom: 30px;
     display: flex;
     justify-content: space-between;
     padding-top: 5px;
     font-family: 'Noto Sans KR', sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     --color-black: #000000;
-
-    .span {
-      font-size: 100px;
+    align-items: center;
+    cursor: pointer;
+    span {
+      font-weight: bolder;
+      font-size: 18px;
     }
 
     .pickListBox {
       display: flex;
     }
     .pickListBox p {
-      padding-right: 15px;
+      padding-right: 25px;
       font-family: 'Noto Sans KR', sans-serif;
       --color-black: #000000;
+      font-size: 16px;
     }
   }
-  .click {
-    color: red;
+
+  .selected {
+    color: rgb(58, 228, 205);
+  }
+  .unselected {
+    color: rgb(0, 0, 0);
   }
 
-  .product {
-    display: flex;
-    justify-content: center;
-
+  section {
+    width: 1200px;
     .productContainer {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       grid-gap: 10px;
-      // align-content: space-between;
-      // justify-items: center;
       font-family: 'Noto Sans KR', sans-serif;
-      // flex: center;
-      width: 70%;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
     }
   }
 }

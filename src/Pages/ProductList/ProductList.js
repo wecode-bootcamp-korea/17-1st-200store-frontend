@@ -1,4 +1,6 @@
+import { buildQueries, getQueriesForElement } from '@testing-library/react';
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import Product from './Components/Product';
 import './ProductList.scss';
 
@@ -7,16 +9,9 @@ class ProductList extends Component {
     super();
     this.state = {
       productList: [],
+      selectedItem: '',
     };
   }
-
-  // handleClick = e => {
-  //   if (e.target.classList[1] === 'clicked') {
-  //     e.target.classList.remove('click');
-  //   } else {
-  //     for
-  //   }
-  // };
 
   changeColor = () => {};
   componentDidMount() {
@@ -29,22 +24,11 @@ class ProductList extends Component {
       });
   }
 
-  // onclick = () => {
-  //   fetch('')
-  //     .then(res => res.json())
-  //     .then(res => {
-  //       this.setState({
-  //         productList: res.best,
-  //         productList: res.new,
-  //       });
-  //     });
-  // };
+  handleColor = e => {
+    this.setState({ selectedItem: e.target.innerText });
+    console.log(this.state.selectedItem);
+  };
 
-  // handleColor = () => {
-  //   this.setState({
-  //     return,
-  //   });
-  // };
   render() {
     const { productList } = this.state;
     return (
@@ -52,17 +36,41 @@ class ProductList extends Component {
         <div className="Container">
           <div className="pickListnum">
             <p>
-              총 <span>200개</span>
+              총 <span>200</span>개
             </p>
             <div className="pickListBox">
-              <p onClick={this.handleColor}>추천순</p>
-              <p>인기순</p>
-              <p>최신순</p>
-              <p>낮은가격순</p>
-              <p>높은가격순</p>
+              <p
+                className={
+                  this.state.selectedItem === '추천순'
+                    ? 'selected'
+                    : 'unselected'
+                }
+                onClick={e => this.handleColor(e)}
+              >
+                추천순
+              </p>
+              <p
+                className={
+                  this.state.selectedItem === '인기순'
+                    ? 'selected'
+                    : 'unselected'
+                }
+                onClick={e => this.handleColor(e)}
+              >
+                인기순
+              </p>
+              <p color={this.state.color} onClick={this.handleColor}>
+                최신순
+              </p>
+              <p color={this.state.color} onClick={this.handleColor}>
+                낮은가격순
+              </p>
+              <p color={this.state.color} onClick={this.handleColor}>
+                높은가격순
+              </p>
             </div>
           </div>
-          <div className="product">
+          <section>
             <div className="productContainer">
               {productList.map(item => {
                 return (
@@ -78,7 +86,7 @@ class ProductList extends Component {
                 );
               })}
             </div>
-          </div>
+          </section>
         </div>
       </>
     );
