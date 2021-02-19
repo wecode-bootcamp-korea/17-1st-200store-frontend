@@ -8,9 +8,6 @@ class Main extends Component {
     super();
     this.state = {
       allList: [],
-      bestList: [],
-      newList: [],
-      saleList: [],
     };
   }
 
@@ -20,9 +17,9 @@ class Main extends Component {
       .then(res => {
         this.setState({
           allList: res,
-          bestList: res.bestData,
-          newList: res.newData,
-          saleList: res.saleData,
+          // bestList: res.bestData,
+          // newList: res.newData,
+          // saleList: res.saleData,
         });
       });
   }
