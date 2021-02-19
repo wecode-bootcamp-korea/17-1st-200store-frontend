@@ -7,6 +7,7 @@ class Cart extends Component {
     super();
     this.state = {
       allChecked: false,
+      itemChecked: true,
       cartList: [],
       checkList: [],
     };
