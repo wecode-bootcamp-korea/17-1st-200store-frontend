@@ -34,10 +34,10 @@ class ProductBox extends Component {
           </div>
           <div className="hoverContainer">
             <div onClick={this.goToMyPage} className="hoverHeart">
-              <i class="far fa-heart" />
+              <i className="far fa-heart" />
             </div>
             <div onClick={this.goToCart} className="hoverCart">
-              <i class="fas fa-shopping-cart" />
+              <i className="fas fa-shopping-cart" />
             </div>
           </div>
         </div>

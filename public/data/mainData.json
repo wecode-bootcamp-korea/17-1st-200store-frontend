@@ -1,0 +1,168 @@
+{
+  "bestData": [
+    {
+      "id": 1,
+      "imgSrc": "https://images.unsplash.com/photo-1546776310-eef45dd6d63c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=739&q=80",
+      "name": "돈봉투. 골드에디션 효도",
+      "price": 3500,
+      "sale": 0,
+      "isBest": true,
+      "isNew": false,
+      "isSale": false
+    },
+    {
+      "id": 2,
+      "imgSrc": "https://images.unsplash.com/photo-1610300052051-a79c1ab1f8e8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+      "name": "엽서.복",
+      "price": 1000,
+      "sale": 0,
+      "isBest": true,
+      "isNew": false,
+      "isSale": false
+    },
+    {
+      "id": 3,
+      "imgSrc": "https://images.unsplash.com/photo-1591783097488-bda7e4e8653e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=664&q=80",
+      "name": "효자손 혼자서도 잘해요",
+      "price": 12900,
+      "sale": 0,
+      "isBest": true,
+      "isNew": false,
+      "isSale": false
+    },
+    {
+      "id": 4,
+      "imgSrc": "https://images.unsplash.com/photo-1535157412991-2ef801c1748b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "name": "ㅋㅋ골고루 양말 세트",
+      "price": 27500,
+      "sale": 0.05,
+      "isBest": false,
+      "isNew": false,
+      "isSale": true
+    }
+  ],
+  "newData": [
+    {
+      "id": 1,
+      "imgSrc": "https://images.unsplash.com/photo-1598963234709-38e2a1c541b3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
+      "name": "돈봉투. 골드에디션 효도",
+      "price": 30000,
+      "sale": 0.63,
+      "isBest": false,
+      "isNew": true,
+      "isSale": true
+    },
+    {
+      "id": 2,
+      "imgSrc": "https://images.unsplash.com/photo-1593435221502-c5d7bfc26cab?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "name": "엽서.복",
+      "price": 1000,
+      "sale": 0,
+      "isBest": false,
+      "isNew": true,
+      "isSale": false
+    },
+    {
+      "id": 3,
+      "imgSrc": "https://images.unsplash.com/photo-1545494749-a5f7bf606a83?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=564&q=80",
+      "name": "효자손 혼자서도 잘해요",
+      "price": 12900,
+      "sale": 0,
+      "isBest": false,
+      "isNew": true,
+      "isSale": false
+    },
+    {
+      "id": 4,
+      "imgSrc": "https://images.unsplash.com/photo-1607046768831-39ef8e9ad2d2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+      "name": "ㅋㅋ골고루 양말 세트",
+      "price": 27500,
+      "sale": 0,
+      "isBest": false,
+      "isNew": true,
+      "isSale": false
+    },
+    {
+      "id": 5,
+      "imgSrc": "https://images.unsplash.com/photo-1568150279679-d16bc9eb9eb1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80",
+      "name": "돈봉투. 골드에디션 효도",
+      "price": 30000,
+      "sale": 0.5,
+      "isBest": false,
+      "isNew": true,
+      "isSale": true
+    },
+    {
+      "id": 6,
+      "imgSrc": "https://images.unsplash.com/photo-1470509037663-253afd7f0f51?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+      "name": "엽서.복",
+      "price": 1000,
+      "sale": 0,
+      "isBest": false,
+      "isNew": true,
+      "isSale": false
+    },
+    {
+      "id": 7,
+      "imgSrc": "https://images.unsplash.com/photo-1530104058652-53c30dab1fde?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=701&q=80",
+      "name": "효자손 혼자서도 잘해요",
+      "price": 12900,
+      "sale": 0.1,
+      "isBest": false,
+      "isNew": true,
+      "isSale": true
+    },
+    {
+      "id": 8,
+      "imgSrc": "https://images.unsplash.com/photo-1574016775261-f0466706e4da?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+      "name": "ㅋㅋ골고루 양말 세트",
+      "price": 27500,
+      "sale": 0,
+      "isBest": false,
+      "isNew": true,
+      "isSale": false
+    }
+  ],
+  "saleData": [
+    {
+      "id": 1,
+      "imgSrc": "https://images.unsplash.com/photo-1545724149-1d8de3baa55c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+      "name": "돈봉투. 골드에디션 효도",
+      "price": 3500,
+      "sale": 0.1,
+      "isBest": true,
+      "isNew": false,
+      "isSale": true
+    },
+    {
+      "id": 2,
+      "imgSrc": "https://images.unsplash.com/photo-1591931815395-03b364fab7df?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+      "name": "엽서.복",
+      "price": 10000,
+      "sale": 0.3,
+      "isBest": true,
+      "isNew": false,
+      "isSale": true
+    },
+    {
+      "id": 3,
+      "imgSrc": "https://images.unsplash.com/photo-1588615771735-2fc515b6e72e?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=772&q=80",
+      "name": "효자손 혼자서도 잘해요",
+      "price": 13000,
+      "sale": 0.4,
+      "isBest": true,
+      "isNew": false,
+      "isSale": true
+    },
+    {
+      "id": 4,
+      "imgSrc": "https://images.unsplash.com/photo-1459156212016-c812468e2115?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=649&q=80",
+      "name": "ㅋㅋ골고루 양말 세트",
+      "price": 27500,
+      "sale": 0.25,
+      "isBest": false,
+      "isNew": false,
+      "isSale": true
+    }
+  ]
+}

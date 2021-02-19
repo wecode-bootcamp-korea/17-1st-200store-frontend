@@ -69,7 +69,7 @@ class Nav extends Component {
                   type="text"
                   placeholder="검색어를 입력해주세요"
                 />
-                <i class="fas fa-search" />
+                <i className="fas fa-search" />
               </div>
             </div>
           </main>
