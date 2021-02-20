@@ -13,7 +13,7 @@ class Main extends Component {
       giftList: [],
     };
   }
-
+  //백엔드랑 통신할때는 allList: res.data
   componentDidMount() {
     fetch('/data/mainData.json', {
       method: 'GET',
