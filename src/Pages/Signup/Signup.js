@@ -32,18 +32,19 @@ class Signup extends React.Component {
   };
 
   signupEnable = () => {
-    if (
-      this.state.id.length > 0 &&
-      this.state.pw.length > 0 &&
-      this.state.pwcheck.length > 0 &&
-      this.state.pw === this.state.pwcheck &&
-      this.state.name.length > 0 &&
-      this.state.email.includes('@') &&
-      this.state.phone.length > 0 &&
-      this.state.address1.length > 0
-      // this.state.addr2.length > 0 &&
-      // this.state.addr3.length > 0
-    ) {
+    const { id, pw, pwcheck, name, email, phone, address1 } = this.state;
+    const btnCondition =
+      id.length &&
+      pw.length &&
+      pwcheck.length &&
+      name.length &&
+      email.length &&
+      phone.length &&
+      address1.length &&
+      email.includes('@') &&
+      pw === pwcheck;
+
+    if (btnCondition) {
       this.setState({ isSignup: false });
     }
   };
@@ -107,11 +108,10 @@ class Signup extends React.Component {
                       <td>
                         <div className="memberWarning">
                           <input
-                            // onChange={this.signupEnable}
                             onKeyUp={this.handleSignUpButton}
                             type="text"
-                            id="memId"
                             name="id"
+                            className="memberinput"
                           />
                         </div>
                       </td>
@@ -125,8 +125,8 @@ class Signup extends React.Component {
                           <input
                             onKeyUp={this.handleSignUpButton}
                             type="password"
-                            id="mempw"
                             name="pw"
+                            className="memberInputShort"
                           />
                         </div>
                       </td>
@@ -140,8 +140,8 @@ class Signup extends React.Component {
                           <input
                             onKeyUp={this.handleSignUpButton}
                             type="password"
-                            id="mempwcheck"
                             name="pwcheck"
+                            className="memberInputShort"
                           />
                         </div>
                       </td>
@@ -155,8 +155,8 @@ class Signup extends React.Component {
                           <input
                             onKeyUp={this.handleSignUpButton}
                             type="text"
-                            id="memname"
                             name="name"
+                            className="memberinput"
                           />
                         </div>
                       </td>
@@ -170,8 +170,8 @@ class Signup extends React.Component {
                           <input
                             onKeyUp={this.handleSignUpButton}
                             type="email"
-                            id="mememail"
                             name="email"
+                            className="memberEmail"
                           />
                           <form>
                             <select name="selectbox">
@@ -188,12 +188,8 @@ class Signup extends React.Component {
                             </select>
                           </form>
                           <div className="formElement">
-                            <input
-                              id="checkid"
-                              type="checkbox"
-                              className="checkbox"
-                            />
-                            <label for="checkid">
+                            <label>
+                              <input type="checkbox" className="checkbox" />
                               (선택) 마케팅 및 이벤트 정보 메일 수신에
                               동의합니다.
                             </label>
@@ -210,16 +206,12 @@ class Signup extends React.Component {
                           <input
                             onKeyUp={this.handleSignUpButton}
                             type="text"
-                            id="memphone"
                             name="phone"
+                            className="memberInputShort"
                           />
                           <div className="formElement">
-                            <input
-                              id="checkid2"
-                              type="checkbox"
-                              className="checkbox"
-                            />
-                            <label for="checkid2">
+                            <label>
+                              <input type="checkbox" className="checkbox" />
                               (선택) 마케팅 및 이벤트 정보 SMS 수신에
                               동의합니다.
                             </label>
@@ -238,6 +230,7 @@ class Signup extends React.Component {
                             id="memnum"
                             placeholder="- 없이 입력하세요."
                             name="numb"
+                            className="memberinput"
                           />
                         </div>
                       </td>
@@ -251,22 +244,18 @@ class Signup extends React.Component {
                           <input
                             onKeyUp={this.handleSignUpButton}
                             type="text"
-                            id="memadd"
                             name="address1"
+                            className="memberInputShort"
                           />
-                          <button
-                            type="button"
-                            id="btnPostcode"
-                            className="btn_post_search"
-                          >
+                          <button type="button" className="btnPostSearch">
                             우편번호검색
                           </button>
                           <br />
                           <input
                             onKeyUp={this.handleSignUpButton}
                             type="text"
-                            id="memadd2"
                             name="address2"
+                            className="memberinput memberaddlong"
                           />
                           <br />
                           <input
@@ -274,6 +263,7 @@ class Signup extends React.Component {
                             type="text"
                             id="memadd3"
                             name="address3"
+                            className="memberinput memberaddlong"
                           />
                         </div>
                       </td>

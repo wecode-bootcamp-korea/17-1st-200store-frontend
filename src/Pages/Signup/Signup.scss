@@ -1,12 +1,11 @@
 .topContents {
-  width: 100%;
   display: flex;
   flex-direction: column;
 
   .memberInfo {
     width: 1200px;
     height: 64px;
-    margin: 125px auto 0;
+    margin: 80px auto 0;
     border-bottom: 1px solid #dbdbdb;
 
     ol {
@@ -48,12 +47,12 @@
     }
 
     table {
+      display: table;
+      margin: auto;
       border-top: 1px solid #999999;
       border-bottom: 1px solid #999999;
-      display: table;
       border-collapse: separate;
       text-indent: initial;
-      margin: auto;
 
       .important {
         font-weight: bold;
@@ -79,20 +78,11 @@
         }
       }
 
-      #memId,
-      #memname,
-      #memnum,
-      #memadd2,
-      #memadd3 {
+      .memberinput {
         width: 360px;
       }
 
-      #memnum::placeholder {
-        text-indent: 10px;
-        font-size: 12px;
-      }
-
-      #btnPostcode {
+      .btnPostSearch {
         margin-left: 4px;
         height: 30px;
         border-radius: 0px;
@@ -101,23 +91,23 @@
         font-size: 12px;
       }
 
-      #memadd2,
-      #memadd3 {
+      .memberaddlong {
         margin-top: 4px;
+      }
+
+      .memberInputShort {
+        width: 183px;
+      }
+
+      #memnum::placeholder {
+        text-indent: 10px;
+        font-size: 12px;
       }
 
       #memadd3 {
         margin-bottom: 10px;
       }
-
-      #mempw,
-      #mempwcheck,
-      #memphone,
-      #memadd {
-        width: 183px;
-      }
-
-      #mememail {
+      .memberEmail {
         width: 251px;
       }
 
