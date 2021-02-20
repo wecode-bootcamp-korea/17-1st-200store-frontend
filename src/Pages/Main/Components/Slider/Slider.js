@@ -30,9 +30,9 @@ export default class SimpleSlider extends Component {
     return (
       <div className="Slider">
         <Slider {...settings}>
-          {this.state.sliderList.map(data => {
+          {this.state.sliderList.map((data, idx) => {
             return (
-              <div className="sliderItem">
+              <div className="sliderItem" key={idx}>
                 <img alt={data.name} src={data.src} />
               </div>
             );
