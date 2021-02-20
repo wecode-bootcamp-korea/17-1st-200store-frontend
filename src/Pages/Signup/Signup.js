@@ -14,9 +14,9 @@ class Signup extends React.Component {
       email: '',
       phone: '',
       numb: '',
-      addr1: '',
-      addr2: '',
-      addr3: '',
+      address1: '',
+      address2: '',
+      address3: '',
       isSignup: true,
     };
   }
@@ -32,20 +32,6 @@ class Signup extends React.Component {
   };
 
   signupEnable = () => {
-    // console.log(this.state);
-    // const isValid =
-    //   this.state.id.length > 0 &&
-    //   this.state.pw.length > 0 &&
-    //   this.state.pwcheck.length > 0 &&
-    //   this.state.pw === this.state.pwcheck &&
-    //   this.state.name.length > 0 &&
-    //   this.state.email.includes('@') &&
-    //   this.state.add1.length > 0 &&
-    //   this.state.add2.length > 0 &&
-    //   this.state.add3.length > 0;
-
-    // console.log('isValid >>> ', isValid);
-
     if (
       this.state.id.length > 0 &&
       this.state.pw.length > 0 &&
@@ -54,7 +40,7 @@ class Signup extends React.Component {
       this.state.name.length > 0 &&
       this.state.email.includes('@') &&
       this.state.phone.length > 0 &&
-      this.state.addr1.length > 0
+      this.state.address1.length > 0
       // this.state.addr2.length > 0 &&
       // this.state.addr3.length > 0
     ) {
@@ -189,16 +175,16 @@ class Signup extends React.Component {
                           />
                           <form>
                             <select name="selectbox">
-                              <option value="1" selected>
+                              <option value="select" selected>
                                 직접입력
                               </option>
-                              <option value="2">naver.com</option>
-                              <option value="3">hanmail.net</option>
-                              <option value="4">daum.net</option>
-                              <option value="5">nate.com</option>
-                              <option value="6">hotmail.com</option>
-                              <option value="7">gmail.com</option>
-                              <option value="8">Icould.com</option>
+                              <option value="naver">naver.com</option>
+                              <option value="hanmail">hanmail.net</option>
+                              <option value="daum">daum.net</option>
+                              <option value="nate">nate.com</option>
+                              <option value="hotmail">hotmail.com</option>
+                              <option value="gmail">gmail.com</option>
+                              <option value="icloud">Icould.com</option>
                             </select>
                           </form>
                           <div className="formElement">
@@ -266,7 +252,7 @@ class Signup extends React.Component {
                             onKeyUp={this.handleSignUpButton}
                             type="text"
                             id="memadd"
-                            name="addr1"
+                            name="address1"
                           />
                           <button
                             type="button"
@@ -280,14 +266,14 @@ class Signup extends React.Component {
                             onKeyUp={this.handleSignUpButton}
                             type="text"
                             id="memadd2"
-                            name="addr2"
+                            name="address2"
                           />
                           <br />
                           <input
                             onKeyUp={this.handleSignUpButton}
                             type="text"
                             id="memadd3"
-                            name="addr3"
+                            name="address3"
                           />
                         </div>
                       </td>
