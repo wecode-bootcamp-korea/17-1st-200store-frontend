@@ -1,19 +1,6 @@
 import React from 'react';
 
 class Reviews extends React.Component {
-  //   constructor() {
-  //     super()
-  //     this.state = {
-  // display: true
-  //     }
-  //   }
-
-  //   moreReview {
-  //     this.setState({
-  //       display: false
-  //     })
-  //   }
-
   state = {
     reviewDisplay: [],
   };
@@ -21,12 +8,10 @@ class Reviews extends React.Component {
   clickHandler = id => {
     console.log(id, this.state.reviewDisplay);
     if (this.state.reviewDisplay.includes(id)) {
-      console.log('pass');
       const newDisplayIds = this.state.reviewDisplay.filter(el => el !== id);
       this.setState({ reviewDisplay: newDisplayIds });
     } else {
       this.setState({ reviewDisplay: [...this.state.reviewDisplay, id] });
-      console.log(this.state.reviewDisplay);
     }
   };
 
