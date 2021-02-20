@@ -1,61 +1,48 @@
 import React from 'react';
 
 class Reviews extends React.Component {
-  //   constructor() {
-  //     super()
-  //     this.state = {
-  // display: true
-  //     }
-  //   }
-
-  //   moreReview {
-  //     this.setState({
-  //       display: false
-  //     })
-  //   }
-
-  state = {
-    reviewDisplay: [],
-  };
+  constructor() {
+    super();
+    this.state = {
+      reviewDisplay: [],
+    };
+  }
 
   clickHandler = id => {
-    console.log(id, this.state.reviewDisplay);
     if (this.state.reviewDisplay.includes(id)) {
-      console.log('pass');
       const newDisplayIds = this.state.reviewDisplay.filter(el => el !== id);
       this.setState({ reviewDisplay: newDisplayIds });
     } else {
       this.setState({ reviewDisplay: [...this.state.reviewDisplay, id] });
-      console.log(this.state.reviewDisplay);
     }
   };
 
   render() {
     return (
-      <table className="reviews_table">
+      <table className="reviewsTable">
         <tbody className="review_tbody">
           {this.props.reviewList.map(review => {
             return (
               <>
-                <tr className="review_tr" id={review.id}>
-                  <td className="review_box1" id="first_review_box">
+                <tr className="reviewTr" id={review.id}>
+                  <td className="reviewBox1" id="firstReviewBox">
                     <span className="star">{review.star_rate}</span>
                   </td>
-                  <td className="review_box2">
+                  <td className="reviewBox2">
                     <span onClick={() => this.clickHandler(review.id)}>
                       {review.comment}
                     </span>
                   </td>
-                  <td className="review_box1">
+                  <td className="reviewBox1">
                     <span>{review.name}</span>
                   </td>
-                  <td className="review_box1">
+                  <td className="reviewBox1">
                     <span>{review.date}</span>
                   </td>
                 </tr>
                 {/* <--display속성 none으로 주기--> */}
                 <tr
-                  className="review_tr2"
+                  className="reviewTr2"
                   id={review.id}
                   style={
                     this.state.reviewDisplay.includes(review.id)
@@ -63,16 +50,16 @@ class Reviews extends React.Component {
                       : { display: 'none' }
                   }
                 >
-                  <td className="review_box1" id="first_review_box">
+                  <td className="reviewBox1" id="firstReviewBox">
                     <span className="star"></span>
                   </td>
-                  <td className="review_box2">
+                  <td className="reviewBox2">
                     <span> {review.comment} </span>
                   </td>
-                  <td className="review_box1">
+                  <td className="reviewBox1">
                     <span></span>
                   </td>
-                  <td className="review_box1">
+                  <td className="reviewBox1">
                     <span></span>
                   </td>
                 </tr>

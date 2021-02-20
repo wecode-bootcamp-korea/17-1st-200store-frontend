@@ -14,6 +14,7 @@ class ProductDetail extends React.Component {
       price: 19000,
       reviewList: [],
       isModalView: false,
+      productView: [],
     };
   }
 
@@ -23,15 +24,20 @@ class ProductDetail extends React.Component {
   };
 
   componentDidMount() {
-    fetch('http://localhost:3000/data/reviewdata.json', {
-      method: 'GET',
-    })
+    fetch('/data/reviewdata.json')
       .then(res => res.json())
       .then(data => {
         this.setState({
           reviewList: data,
         });
-        console.log(data);
+      });
+
+    fetch('/data/productview.json')
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          productView: data,
+        });
       });
   }
 
@@ -60,75 +66,73 @@ class ProductDetail extends React.Component {
     const { price, count } = this.state;
 
     return (
-      <div className="contents">
-        <div className="sub_content">
-          <div className="item_photo_info_sec">
-            <div className="item_photo_view_box">
-              <div className="item_photo_big">
+      <div className="productDetail">
+        <div className="contents">
+          <div className="itemPhotoInfoSec">
+            <div className="itemPhotoViewBox">
+              <div className="itemPhotoBig">
                 <img
                   src="https://images.unsplash.com/photo-1588947618741-2250fc97321a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=645&q=80"
-                  width="473px"
-                  height="586px"
                   alt="ㅋㅋ안 보이는 양말 세트"
                   className="middle"
-                ></img>
+                />
               </div>
             </div>
-            <div className="item_info_box">
-              <div className="item_detail_cont">
-                <div className="item_detail">
+            <div className="itemInfoBox">
+              <div className="itemDetailCont">
+                <div className="itemDetail">
                   <h3>ㅋㅋ보이는 연필 세트</h3>
                 </div>
-                <div className="item_detail_list">
+                <div className="itemDetailList">
                   <dl>
                     <dt>정가</dt>
                     <dd>
                       <del>
-                        <span className="original_price">20,000원</span>
+                        <span className="originalPrice">20,000원</span>
                       </del>
                     </dd>
                   </dl>
-                  <dl className="item_price">
+                  <dl className="itemPrice">
                     <dt>판매가격</dt>
                     <dd>
                       <strong>19,000원</strong>
                     </dd>
                   </dl>
-                  <dl className="item_delivery">
+                  <dl className="itemDelivery">
                     <dt>배송정보</dt>
                     <dd>
-                      <p className="delivery_fee_free">
+                      <p className="deliveryFeeFree">
                         2,500원 (3만원 이상 구매시 무료)
                       </p>
-                      <p className="limit_time">오후 2시 당일배송마감</p>
+                      <p className="limitTime">오후 2시 당일배송마감</p>
                     </dd>
                   </dl>
                 </div>
-                <div className="option_display_area_wrap"></div>
-                <table className="option_display_Area" border="0">
-                  <tbody id="option_display_item">
-                    <tr className="check_option">
-                      <td className="cart_prdt_name">
-                        <p className="product_name">ㅋㅋ보이는 연필 세트</p>
+                <div className="optionDisplayAreaWrap" />
+                <table className="optionDisplayArea">
+                  <tbody id="optionDisplayItem">
+                    <tr className="checkOption">
+                      <td className="cartPrdtName">
+                        <p className="productName">ㅋㅋ보이는 연필 세트</p>
                       </td>
-                      <td className="prdt_count">
+                      <td className="prdtCount">
                         <div className="count">
                           <input
                             type="text"
                             value={count}
-                            className="count_box"
+                            className="countBox"
                           />
-                          <div className="count_btn">
+                          <div className="countBtn">
                             <button
                               id="up"
-                              className="up_goods_cnt"
+                              className="upGoodsCnt"
                               onClick={this.countUp}
                             >
                               ∧
                             </button>
                             <button
                               id="down"
-                              className="down_goods_cnt"
+                              className="downGoodsCnt"
                               onClick={this.countDown}
                             >
                               ∨
@@ -136,16 +140,16 @@ class ProductDetail extends React.Component {
                           </div>
                         </div>
                       </td>
-                      <td className="item_choice_price">
-                        <strong className="option_price_display">
+                      <td className="itemChoicePrice">
+                        <strong className="optionPriceDisplay">
                           {(count * price).toLocaleString()}
                         </strong>
                         원
                       </td>
-                      <td className="item_delete">
+                      <td className="itemDelete">
                         <button
                           id="del"
-                          className="del_goods_cnt"
+                          className="delGoodsCnt"
                           onClick={this.countZero}
                         >
                           X
@@ -154,25 +158,25 @@ class ProductDetail extends React.Component {
                     </tr>
                   </tbody>
                 </table>
-                <hr className="hairline"></hr>
+                <hr className="hairline" />
 
-                <dl className="total_amount">
+                <dl className="totalAmount">
                   <dt>총 합계금액</dt>
-                  <dd className="total_price_dd">
-                    <strong className="total_price">
+                  <dd className="totalPricedd">
+                    <strong className="totalPrice">
                       {(count * price).toLocaleString()}
                       <b>원</b>
                     </strong>
                   </dd>
                 </dl>
-                <div className="btn_choice_box">
-                  <button id="wishBtn" type="button" class="btn_addwish">
-                    ♡
+                <div className="btnChoiceBox">
+                  <button id="wishBtn" type="button" class="btnAddwish">
+                    <i class="far fa-heart" />
                   </button>
-                  <button id="cartNtn" type="button" class="btn_add_cart">
+                  <button id="cartNtn" type="button" class="btnAddcart">
                     장바구니
                   </button>
-                  <button type="button" class="btn_add_order">
+                  <button type="button" class="btnAddorder">
                     바로 구매
                   </button>
                 </div>
@@ -181,36 +185,18 @@ class ProductDetail extends React.Component {
           </div>
           <div className="detail">
             <Itemgoodstab />
-            {/* <div className="item_goods_tab">
-              <ul>
-                <li>
-                  <a href="#detail_info">상품상세정보</a>
-                </li>
-                <li>
-                  <a href="#delivery">배송안내</a>
-                </li>
-                <li>
-                  <a href="#exchange">교환 및 반품안내</a>
-                </li>
-                <li className="last_child">
-                  <a href="#review">상품후기</a>
-                </li>
-              </ul>
-            </div> */}
-            <div className="detail_cont">
-              <h3 className="must_info" id="detail_info">
-                상품상세정보
-              </h3>
-              <div className="detail_explain_box">
-                <div className="detail_photo_box"></div>
+            <div className="detailCont" id="detailInfo">
+              <h3 className="mustInfo">상품상세정보</h3>
+              <div className="detailExplainBox">
+                <div className="detailPhotoBox" />
                 <img
                   src="https://store.baemin.com/data/editor/goods/200724/002403c7fbbcfdb9dd0728c98239be01_154446.png"
                   alt="사진"
                 />
 
-                <div className="detail_info">
-                  <h3 className="must_info">상품필수정보</h3>
-                  <table className="left_table_type">
+                <div className="detailInfo">
+                  <h3 className="mustInfo">상품필수정보</h3>
+                  <table className="leftTableType">
                     <tbody>
                       <tr>
                         <th>품명</th>
@@ -261,7 +247,7 @@ class ProductDetail extends React.Component {
                 <h3 className="info" id="delivery">
                   배송안내
                 </h3>
-                <div className="admin_msg">
+                <div className="adminMsg">
                   <p>배송사:cj대한통운</p>
                   <p>배송비: 2,500원(3만원 이상 구매 시 무료배송)</p>
                   <p>도서, 산간 일부지역은 배송비가 추가될 수 있습니다.</p>
@@ -276,17 +262,17 @@ class ProductDetail extends React.Component {
                 <Itemgoodstab />
                 <AdminMsg />
                 <Itemgoodstab />
-                <div className="product_review">
-                  <div className="review_box">
+                <div className="productReview">
+                  <div className="reviewBox">
                     <h3 id="review">
                       상품후기&nbsp;
-                      <span class="review_count">
+                      <span class="reviewCount">
                         {this.state.reviewList.length}
                       </span>
                     </h3>
 
                     <button
-                      className="btn_reviews_write"
+                      className="btnReviewsWrite"
                       onClick={this.handleModal}
                     >
                       상품후기 글쓰기

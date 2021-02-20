@@ -4,7 +4,7 @@ class AdminMsg extends React.Component {
   render() {
     return (
       <>
-        <div className="admin_msg">
+        <div className="adminMsg">
           <h3 className="info" id="exchange">
             교환 및 반품안내
           </h3>
@@ -49,14 +49,14 @@ class AdminMsg extends React.Component {
             물류센터
           </p>
         </div>
-        <div className="admin_msg">
+        <div className="adminMsg">
           <h3>환불안내</h3>
           <p>
             주문취소 및 반품 시 환불은 주문 시 이용하신 결제수단으로 2~7 영업일
             이내 환불됩니다.
           </p>
         </div>
-        <div className="admin_msg">
+        <div className="adminMsg">
           <h3>AS안내</h3>
           <p>
             제품에 문제가 있으신 경우, 배민문방구 고객센터로 접수해주시면 안내
