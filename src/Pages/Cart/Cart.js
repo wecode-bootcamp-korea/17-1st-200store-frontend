@@ -6,10 +6,11 @@ class Cart extends Component {
   constructor() {
     super();
     this.state = {
-      allChecked: false,
-      itemChecked: true,
+      selectAll: false,
+      // selectOne: true,
       cartList: [],
       checkList: [],
+      itemDeliveryFee: 0,
     };
   }
   componentDidMount() {
@@ -43,8 +44,8 @@ class Cart extends Component {
     const id = e.target.id;
     this.setState(prevState => {
       return {
-        cartList: prevState.cartList.map(li =>
-          li.id === +id ? { ...li, value: !li.value } : li
+        cartList: prevState.cartList.map(item =>
+          item.id === +id ? { ...item, value: !item.value } : item
         ),
       };
     });
@@ -53,46 +54,45 @@ class Cart extends Component {
   handleDelete = () => {
     this.setState(prevState => {
       return {
-        cartList: prevState.cartList.filter(li => !li.value),
+        cartList: prevState.cartList.filter(item => !item.value),
       };
     });
   };
 
-  //   handleSum = form => {
-  //     let sum = 0;
-  //     let count = form.chkbox.length;
-  //     for (let i = 0; i < count; i++) {
-  //       if (form.cartItem[i].checked === true) {
-  //         sum += parseInt(form.chkbox[i].value);
-  //       }
-  //     }
-  //     form.total = sum;
-  //   };
+  handleAllCheck = () => {
+    this.state.cartList.reduce(
+      (result, item) => (result = result && item.value),
+      true
+    )
+      ? this.state.cartList.map(item => {
+          item.value = false;
+          return this.setState({ selectAll: false });
+        })
+      : this.state.cartList.map(item => {
+          item.value = true;
+          return this.setState({ selectAll: true });
+        });
+  };
 
-  //   handleChange = e => {
-  //     let itemName = e.target.name;
-  //     let checked = e.target.checked;
-  //     this.setState(prevState => {
-  //       let { cartList, allChecked } = prevState;
-  //       if (itemName === 'checkAll') {
-  //         allChecked = checked;
-  //         cartList = cartList.map(item => ({ ...item, isChecked: checked }));
-  //       } else {
-  //         cartList = cartList.map(item =>
-  //           item.name === itemName ? { ...item, isChecked: checked } : item
-  //         );
-  //         allChecked = cartList.every(item => item.isChecked);
-  //       }
-  //       return { cartList, allChecked };
-  //     });
-  //   };
+  //need to do price * qty. this is just adding up price without considering qty per each item
+  handleDeliveryFee = () => {
+    const priceTotal = this.state.cartList.reduce(
+      (accumulator, current) => accumulator + current.price,
+      0
+    );
+    this.setState({
+      itemDeliveryFee: priceTotal < 30000 ? 2500 : 0,
+    });
+  };
 
   render() {
-    console.log('>>>>>>>>렌더<<<<<<<<');
-    console.log('전체선택', this.state.allChecked);
-    // const cartQty = this.state.cartList.length;
-    console.log('카트에 담겼니...', this.state.cartList);
-    console.log('가격 계산해줘..');
+    console.log(this.state.itemDeliveryFee);
+    const selectedItems = this.state.cartList.filter(item => item.value);
+    const sumPrice = Math.floor(
+      selectedItems.reduce((acc, item) => acc + item.price * item.quantity, 0)
+    );
+    const deliveryFee = sumPrice < 30000 ? 2500 : 0;
+    const totalPrice = sumPrice + deliveryFee;
     return (
       <div className="Cart">
         <div className="cartTitleContainer">
@@ -113,14 +113,14 @@ class Cart extends Component {
                   <input
                     type="checkbox"
                     name="checkAll"
-                    checked={this.state.allChecked}
-                    onChange={this.handleChange}
+                    checked={this.state.selectAll}
+                    onClick={this.handleAllCheck}
                   />
                 </th>
                 <th className="productInfo">상품/옵션 정보</th>
                 <th className="productQty">수량</th>
                 <th className="productPrice">상품금액</th>
-                <th className="deliveryFee">배송비</th>
+                {/* <th className="deliveryFee">배송비</th> */}
               </tr>
             </thead>
             <tbody className="cartItemContainer">
@@ -137,6 +137,7 @@ class Cart extends Component {
                     onIncrement={this.handleIncrement}
                     onDecrement={this.handleDecrement}
                     onChecked={this.handleChange}
+                    itemDeliveryFee={this.state.itemDeliveryFee}
                   />
                 );
               })}
@@ -150,24 +151,27 @@ class Cart extends Component {
         <section>
           <div className="productPrice">
             <p>
-              총<strong>2</strong>개의 상품금액
+              총<strong>{selectedItems.length}</strong>개의 상품금액
             </p>
             <p>
-              <strong>36,000</strong>원
+              <strong>{sumPrice.toLocaleString()}</strong>원
             </p>
           </div>
           <i class="fas fa-plus-circle" />
           <div className="deliveryFee">
             <p>배송비</p>
             <p>
-              <strong>0</strong>원
+              <strong>{deliveryFee.toLocaleString()}</strong>원
             </p>
           </div>
           <i class="fas fa-equals" />
           <div className="totalPrice">
             <p>합계</p>
             <p>
-              <strong className="totalColor">36,000</strong>원
+              <strong className="totalColor">
+                {totalPrice.toLocaleString()}
+              </strong>
+              원
             </p>
           </div>
         </section>
@@ -176,7 +180,7 @@ class Cart extends Component {
             <button className="selectItemDelete" onClick={this.handleDelete}>
               선택 상품 삭제
             </button>
-            <button className="selectItemWish">선택 상품 찜</button>
+            {/* <button className="selectItemWish">선택 상품 찜</button> */}
           </div>
           <div className="rightButtonContainer">
             <button className="selectItemOrder">선택 상품 주문</button>

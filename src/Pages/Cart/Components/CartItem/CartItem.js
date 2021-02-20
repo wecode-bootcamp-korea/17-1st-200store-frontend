@@ -15,6 +15,7 @@ class CartItem extends Component {
   };
 
   render() {
+    // const itemDeliveryFee = this.props.price < 30000 ? 2500 : 0;
     return (
       <tr className="CartItem">
         <td className="checkbox">
@@ -41,11 +42,11 @@ class CartItem extends Component {
         <td className="productPrice">
           {(this.props.price * this.props.quantity).toLocaleString()}원
         </td>
-        <td className="deliveryFee">
+        {/* <td className="deliveryFee">
           <p>기본배송비</p>
-          <p>0원</p>
+          <p>{this.props.itemDeliveryFee}원</p>
           <p>(택배-선결제)</p>
-        </td>
+        </td> */}
       </tr>
     );
   }
