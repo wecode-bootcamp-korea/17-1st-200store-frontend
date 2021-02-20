@@ -15,7 +15,7 @@ class Main extends Component {
   }
 
   componentDidMount() {
-    fetch('data/mainData.json', {
+    fetch('/data/mainData.json', {
       method: 'GET',
     })
       .then(res => res.json())

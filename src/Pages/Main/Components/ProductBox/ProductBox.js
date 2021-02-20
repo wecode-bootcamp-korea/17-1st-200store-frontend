@@ -3,12 +3,6 @@ import { withRouter } from 'react-router-dom';
 import './ProductBox.scss';
 
 class ProductBox extends Component {
-  finalPrice = (
-    Math.round((this.props.price * (1 - this.props.sale)) / 1000) * 1000
-  ).toLocaleString();
-
-  saleNumber = this.props.sale * 100;
-
   goToMyPage = url => {
     this.props.history.push(url);
   };
@@ -19,7 +13,13 @@ class ProductBox extends Component {
   };
 
   render() {
-    const { name, imgSrc, isBest, isNew, isSale, sale, price } = this.props;
+    const saleNumToInt = Math.ceil(this.props.sale);
+    const saleNumber = this.props.sale * 100;
+    const originalPrice = Math.ceil(this.props.price).toLocaleString();
+    const finalPrice = (
+      Math.round((this.props.price * (1 - this.props.sale)) / 100) * 100
+    ).toLocaleString();
+    const { name, imgSrc, isBest, isNew, isSale, sale } = this.props;
     return (
       <div className="ProductBox">
         <div
@@ -42,13 +42,13 @@ class ProductBox extends Component {
             </div>
           </div>
         </div>
-        {Boolean(sale) && <span className="sale"> {this.saleNumber}%</span>}
+        {sale > 0 && <span className="sale"> {saleNumber}%</span>}
         <p>{name}</p>
-        {!sale && <p className="price">{price.toLocaleString()}원</p>}
-        {Boolean(sale) && (
+        {saleNumToInt === 0 && <p className="price">{originalPrice}원</p>}
+        {sale > 0 && (
           <div className="priceContainer">
-            <p className="oldPrice"> {price.toLocaleString()}원 </p>
-            <p className="salePrice">{this.finalPrice}원</p>
+            <p className="oldPrice"> {originalPrice}원 </p>
+            <p className="salePrice">{finalPrice}원</p>
           </div>
         )}
       </div>
