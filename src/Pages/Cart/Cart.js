@@ -11,6 +11,7 @@ class Cart extends Component {
       cartList: [],
       checkList: [],
       itemDeliveryFee: 0,
+      selected: true,
     };
   }
   componentDidMount() {
@@ -21,6 +22,10 @@ class Cart extends Component {
           cartList: res,
         });
       });
+
+    this.setState({
+      cartList: this.state.cartList.map(item => (item['value'] = true)),
+    });
   }
 
   handleIncrement = item => {
@@ -72,27 +77,64 @@ class Cart extends Component {
           item.value = true;
           return this.setState({ selectAll: true });
         });
+    this.setState({ cartList: this.state.cartList });
   };
 
-  //need to do price * qty. this is just adding up price without considering qty per each item
-  handleDeliveryFee = () => {
-    const priceTotal = this.state.cartList.reduce(
-      (accumulator, current) => accumulator + current.price,
-      0
-    );
+  sendCheckedList = () => {
     this.setState({
-      itemDeliveryFee: priceTotal < 30000 ? 2500 : 0,
+      checkList: this.state.cartList.filter(item => item.value),
     });
   };
 
+  // selectedToPayment = () => {
+  //   this.state.checkList
+  // }
+  // selectedToPayment = () => {
+  //   this.state.cartList.forEach(item => {
+  //     item.value &&
+  //       fetch(``, {
+  //         method: 'POST',
+  //         headers: {
+  //           Authorization: localStorage.getItem('token'),
+  //         },
+  //         body: JSON.stringify({
+  //           cart_item_id: item.id,
+  //           select: 'True',
+  //         }),
+  //       })
+  //         .then(res => res.json())
+  //         .then(result => console.log(result));
+  //   });
+  // };
+
+  // allToPayment = () => {
+  //   this.state.cartList.forEach(item => {
+  //     item.value &&
+  //       fetch(``, {
+  //         method: 'POST',
+  //         headers: {
+  //           Authorization: localStorage.getItem('token'),
+  //         },
+  //         body: JSON.stringify({
+  //           cart_item_id: item.id,
+  //           select: 'True',
+  //         }),
+  //       })
+  //         .then(res => res.json())
+  //         .then(result => console.log(result));
+  //   });
+  // };
+
   render() {
-    console.log(this.state.itemDeliveryFee);
     const selectedItems = this.state.cartList.filter(item => item.value);
     const sumPrice = Math.floor(
       selectedItems.reduce((acc, item) => acc + item.price * item.quantity, 0)
     );
     const deliveryFee = sumPrice < 30000 ? 2500 : 0;
     const totalPrice = sumPrice + deliveryFee;
+    console.log('선택된 상품입니다 >>>>>>', selectedItems);
+    console.log('체크리스트 업뎃 >>>>>>>>>', this.state.checkList);
+    console.log('선택된 상품만 결제로 보내기>>>>', this.state.cartList);
     return (
       <div className="Cart">
         <div className="cartTitleContainer">
@@ -183,7 +225,9 @@ class Cart extends Component {
             {/* <button className="selectItemWish">선택 상품 찜</button> */}
           </div>
           <div className="rightButtonContainer">
-            <button className="selectItemOrder">선택 상품 주문</button>
+            <button className="selectItemOrder" onClick={this.sendCheckedList}>
+              선택 상품 주문
+            </button>
             <button className="allItemOrder">전체 상품 주문</button>
           </div>
         </div>

@@ -15,15 +15,14 @@ class CartItem extends Component {
   };
 
   render() {
-    // const itemDeliveryFee = this.props.price < 30000 ? 2500 : 0;
     return (
       <tr className="CartItem">
         <td className="checkbox">
           <input
             type="checkbox"
             id={this.props.id}
-            checked={this.props.cartItem.value}
             onChange={this.props.onChecked}
+            checked={this.props.cartItem.value}
           />
         </td>
         <td className="productInfoContainer">
