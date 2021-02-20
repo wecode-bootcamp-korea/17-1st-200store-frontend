@@ -7,7 +7,6 @@ class Cart extends Component {
     super();
     this.state = {
       selectAll: false,
-      // selectOne: true,
       cartList: [],
       checkList: [],
       itemDeliveryFee: 0,
@@ -15,17 +14,18 @@ class Cart extends Component {
     };
   }
   componentDidMount() {
-    fetch('data/cartListData.json')
+    fetch('192.168.0.46:8000/order/cart')
       .then(res => res.json())
       .then(res => {
+        console.log(res.result);
         this.setState({
-          cartList: res,
+          cartList: res.result,
         });
       });
 
-    this.setState({
-      cartList: this.state.cartList.map(item => (item['value'] = true)),
-    });
+    // this.setState({
+    //   cartList: this.state.cartList.map(item => (item['value'] = true)),
+    // });
   }
 
   handleIncrement = item => {
@@ -166,16 +166,16 @@ class Cart extends Component {
               </tr>
             </thead>
             <tbody className="cartItemContainer">
-              {this.state.cartList.map(item => {
+              {this.state.cartList.map((item, idx) => {
                 return (
                   <CartItem
                     cartItem={item}
-                    key={item.id}
-                    id={item.id}
-                    imgSrc={item.imgSrc}
-                    name={item.name}
+                    key={idx}
+                    id={idx}
+                    imgSrc={item.url_image}
+                    name={item.product}
                     quantity={item.quantity}
-                    price={item.price}
+                    price={item.total_price}
                     onIncrement={this.handleIncrement}
                     onDecrement={this.handleDecrement}
                     onChecked={this.handleChange}
