@@ -1,9 +1,9 @@
-.top_contents {
+.topContents {
   width: 100%;
   display: flex;
   flex-direction: column;
 
-  .member_info {
+  .memberInfo {
     width: 1200px;
     height: 64px;
     margin: 125px auto 0;
@@ -24,7 +24,7 @@
       color: #d1d1d1;
     }
 
-    .second_li {
+    .secondLi {
       color: black;
     }
   }
@@ -41,7 +41,7 @@
       font-weight: bold;
     }
 
-    .info_container {
+    .infoContainer {
       display: flex;
       justify-content: space-between;
       margin: 0 0 40px 0;
@@ -143,13 +143,13 @@
         }
       }
     }
-    .btn_center_Box {
+    .btnCenterBox {
       margin: 30px auto;
       display: flex;
       justify-content: center;
     }
 
-    .btn_member_cancel {
+    .btnMemberCancel {
       width: 150px;
       height: 45px;
       color: #3e3d3c;
@@ -160,7 +160,7 @@
       cursor: pointer;
     }
 
-    .btn_comfirm_js_btn_join {
+    .btnComfirmJsBtnJoin {
       margin-left: 6px;
       width: 150px;
       height: 45px;

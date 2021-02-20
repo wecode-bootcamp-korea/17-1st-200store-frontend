@@ -4,7 +4,7 @@ import './ProductDetail.scss';
 import Reviews from './review';
 import AdminMsg from './admin_msg';
 import Itemgoodstab from './Itemgoodstab';
-// import Modal from './Modal';
+import Modal from './Modal';
 
 class ProductDetail extends React.Component {
   constructor(props) {
@@ -13,8 +13,14 @@ class ProductDetail extends React.Component {
       count: 1,
       price: 19000,
       reviewList: [],
+      isModalView: false,
     };
   }
+
+  handleModal = () => {
+    console.log(!this.state.isModalView);
+    this.setState({ isModalView: !this.state.isModalView });
+  };
 
   componentDidMount() {
     fetch('http://localhost:3000/data/reviewdata.json', {
@@ -273,17 +279,22 @@ class ProductDetail extends React.Component {
                 <div className="product_review">
                   <div className="review_box">
                     <h3 id="review">
-                      상품후기
+                      상품후기&nbsp;
                       <span class="review_count">
                         {this.state.reviewList.length}
                       </span>
                     </h3>
 
-                    <a href="#" className="btn_reviews_write">
+                    <button
+                      className="btn_reviews_write"
+                      onClick={this.handleModal}
+                    >
                       상품후기 글쓰기
-                    </a>
+                    </button>
                   </div>
-                  {/* <Modal /> */}
+                  {this.state.isModalView && (
+                    <Modal handleModal={this.handleModal} />
+                  )}
                   <Reviews reviewList={this.state.reviewList} />
                   <div className="page">
                     <ul>
