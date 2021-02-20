@@ -60,13 +60,34 @@ class ProductList extends Component {
               >
                 인기순
               </p>
-              <p color={this.state.color} onClick={this.handleColor}>
+              <p
+                className={
+                  this.state.selectedItem === '최신순'
+                    ? 'selected'
+                    : 'unselected'
+                }
+                onClick={e => this.handleColor(e)}
+              >
                 최신순
               </p>
-              <p color={this.state.color} onClick={this.handleColor}>
+              <p
+                className={
+                  this.state.selectedItem === '낮은가격순'
+                    ? 'selected'
+                    : 'unselected'
+                }
+                onClick={e => this.handleColor(e)}
+              >
                 낮은가격순
               </p>
-              <p color={this.state.color} onClick={this.handleColor}>
+              <p
+                className={
+                  this.state.selectedItem === '높은가격순'
+                    ? 'selected'
+                    : 'unselected'
+                }
+                onClick={e => this.handleColor(e)}
+              >
                 높은가격순
               </p>
             </div>
@@ -83,6 +104,7 @@ class ProductList extends Component {
                     isBest={item.isBest}
                     isNew={item.isNew}
                     isSale={item.isSale}
+                    howMuchSale={item.howMuchSale}
                   />
                 );
               })}

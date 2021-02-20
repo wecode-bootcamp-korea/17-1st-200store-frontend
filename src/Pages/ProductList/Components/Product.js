@@ -7,7 +7,16 @@ class Product extends Component {
     console.log(props.isBest);
   }
   render() {
-    const { key, price, name, imgSrc, isBest, isNew, isSale } = this.props;
+    const {
+      key,
+      price,
+      name,
+      imgSrc,
+      isBest,
+      isNew,
+      isSale,
+      howMuchSale,
+    } = this.props;
     return (
       <div className="Best">
         <div
@@ -30,13 +39,13 @@ class Product extends Component {
             </div>
           </div>
         </div>
-        {/* {howMuchSale > 0 && (
+        {howMuchSale > 0 && (
           <span className="howMuchSale"> {howMuchSale}%</span>
-        )} */}
+        )}
         <p>{name}</p>
-        {/* {howMuchSale === 0 && (
+        {howMuchSale === 0 && (
           <p className="price">{price.toLocaleString()}원</p>
-        )} */}
+        )}
         {this.props.howMuchSale > 0 && (
           <div className="priceContainer">
             <p className="oldPrice"> {price.toLocaleString()}원 </p>
