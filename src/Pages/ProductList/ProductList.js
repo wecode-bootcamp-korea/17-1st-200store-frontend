@@ -13,7 +13,8 @@ class ProductList extends Component {
     };
   }
 
-  changeColor = () => {};
+  // chang`eColor = () => {};
+
   componentDidMount() {
     fetch('/ProductListData.json')
       .then(res => res.json())
@@ -26,7 +27,7 @@ class ProductList extends Component {
 
   handleColor = e => {
     this.setState({ selectedItem: e.target.innerText });
-    console.log(this.state.selectedItem);
+    // console.log(this.state.selectedItem);
   };
 
   render() {
