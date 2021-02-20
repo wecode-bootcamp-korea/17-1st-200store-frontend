@@ -14,7 +14,9 @@ class Cart extends Component {
     };
   }
   componentDidMount() {
-    fetch('192.168.0.46:8000/order/cart')
+    fetch('192.168.0.18:8000/order/cart', {
+      method: 'GET',
+    })
       .then(res => res.json())
       .then(res => {
         console.log(res.result);
