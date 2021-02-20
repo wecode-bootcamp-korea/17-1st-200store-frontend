@@ -84,13 +84,13 @@ class Signup extends React.Component {
 
   render() {
     return (
-      <div className="top_contents">
-        <div className="member_info">
+      <div className="topContents">
+        <div className="memberInfo">
           <ol>
             <li>
               <span>01 약관동의 > </span>
             </li>
-            <li className="second_li">
+            <li className="secondLi">
               <span>02 정보입력 > </span>
             </li>
             <li>
@@ -99,19 +99,19 @@ class Signup extends React.Component {
           </ol>
         </div>
         <div className="contents">
-          <div className="member_cont">
-            <div className="base_info_box">
-              <div className="info_container">
+          <div className="memberCont">
+            <div className="baseInfobox">
+              <div className="infoContainer">
                 <div>
                   <h3>기본정보</h3>
                 </div>
                 <div>
-                  <span className="important_item">
+                  <span className="importantItem">
                     • 표시는 반드시 입력하셔야 하는 항목입니다.
                   </span>
                 </div>
               </div>
-              <div className="base_info_Sec">
+              <div className="baseInfoSec">
                 <table>
                   <tbody>
                     <tr>
@@ -119,7 +119,7 @@ class Signup extends React.Component {
                         <span className="important">• 아이디</span>
                       </th>
                       <td>
-                        <div class="member_warning">
+                        <div className="memberWarning">
                           <input
                             // onChange={this.signupEnable}
                             onKeyUp={this.handleSignUpButton}
@@ -135,7 +135,7 @@ class Signup extends React.Component {
                         <span className="important">• 비밀번호</span>
                       </th>
                       <td>
-                        <div className="member_warning">
+                        <div className="memberWarning">
                           <input
                             onKeyUp={this.handleSignUpButton}
                             type="password"
@@ -150,11 +150,11 @@ class Signup extends React.Component {
                         <span className="important">• 비밀번호 확인</span>
                       </th>
                       <td>
-                        <div class="member_warning">
+                        <div className="member_warning">
                           <input
                             onKeyUp={this.handleSignUpButton}
                             type="password"
-                            id="mempw_check"
+                            id="mempwcheck"
                             name="pwcheck"
                           />
                         </div>
@@ -165,7 +165,7 @@ class Signup extends React.Component {
                         <span className="important">• 이름</span>
                       </th>
                       <td>
-                        <div className="member_warning">
+                        <div className="memberWarning">
                           <input
                             onKeyUp={this.handleSignUpButton}
                             type="text"
@@ -180,7 +180,7 @@ class Signup extends React.Component {
                         <span className="important">• 이메일</span>
                       </th>
                       <td>
-                        <div className="member_warning">
+                        <div className="memberWarning">
                           <input
                             onKeyUp={this.handleSignUpButton}
                             type="email"
@@ -201,7 +201,7 @@ class Signup extends React.Component {
                               <option value="8">Icould.com</option>
                             </select>
                           </form>
-                          <div className="form_element">
+                          <div className="formElement">
                             <input
                               id="checkid"
                               type="checkbox"
@@ -220,14 +220,14 @@ class Signup extends React.Component {
                         <span className="important">• 휴대폰번호</span>
                       </th>
                       <td>
-                        <div class="member_warning">
+                        <div className="memberWarning">
                           <input
                             onKeyUp={this.handleSignUpButton}
                             type="text"
                             id="memphone"
                             name="phone"
                           />
-                          <div className="form_element">
+                          <div className="formElement">
                             <input
                               id="checkid2"
                               type="checkbox"
@@ -246,7 +246,7 @@ class Signup extends React.Component {
                         <span className="important">&nbsp;&nbsp;전화번호</span>
                       </th>
                       <td>
-                        <div className="member_warning">
+                        <div className="memberWarning">
                           <input
                             type="text"
                             id="memnum"
@@ -261,7 +261,7 @@ class Signup extends React.Component {
                         <span className="important">• 주소</span>
                       </th>
                       <td className="last_td">
-                        <div className="member_warning">
+                        <div className="memberWarning">
                           <input
                             onKeyUp={this.handleSignUpButton}
                             type="text"
@@ -271,7 +271,7 @@ class Signup extends React.Component {
                           <button
                             type="button"
                             id="btnPostcode"
-                            class="btn_post_search"
+                            className="btn_post_search"
                           >
                             우편번호검색
                           </button>
@@ -296,14 +296,14 @@ class Signup extends React.Component {
                 </table>
               </div>
             </div>
-            <div className="btn_center_Box">
-              <button type="button" className="btn_member_cancel">
+            <div className="btnCenterBox">
+              <button type="button" className="btnMemberCancel">
                 취소
               </button>
               <button
                 disabled={this.state.isSignup}
                 onClick={this.goToMain}
-                className="btn_comfirm_js_btn_join"
+                className="btnComfirmjsBtnjoin"
                 type="button"
               >
                 회원가입
