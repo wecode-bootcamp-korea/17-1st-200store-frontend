@@ -26,7 +26,9 @@ class Reviews extends React.Component {
               <>
                 <tr className="reviewTr" id={review.id}>
                   <td className="reviewBox1" id="firstReviewBox">
-                    <span className="star">{review.star_rate}</span>
+                    <span className="star">
+                      {Array(review.star_rate + 1).join('★')}
+                    </span>
                   </td>
                   <td className="reviewBox2">
                     <span onClick={() => this.clickHandler(review.id)}>

@@ -13,9 +13,12 @@ class ProductDetail extends React.Component {
     this.state = {
       count: 1,
       isModalView: false,
-      reviewList: [],
-      productView: [],
-      productImages: [],
+      // reviewList: [],
+      // productView: [],
+      // productImages: [],
+      productDetail: [],
+      productImage: [],
+      productReview: [],
     };
   }
 
@@ -25,7 +28,19 @@ class ProductDetail extends React.Component {
   };
 
   componentDidMount() {
-    fetch('/data/reviewdata.json')
+    fetch('/data/productdetaildata.json')
+      .then(res => res.json())
+      .then(data => {
+        console.log('data받기', data[0].product_reviews);
+        this.setState({
+          productDetail: data[0].product_view,
+          productImage: data[0].product_images,
+          productReview: data[0].product_reviews,
+        });
+      });
+  }
+
+  /*     fetch('/data/reviewdata.json')
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -47,8 +62,7 @@ class ProductDetail extends React.Component {
         this.setState({
           productImages: data,
         });
-      });
-  }
+      }); */
 
   countUp = () => {
     const { count } = this.state;
@@ -72,23 +86,22 @@ class ProductDetail extends React.Component {
   };
 
   render() {
-    const { price, count } = this.state;
+    console.log('productDetail list', this.state.productDetail);
+    const { count } = this.state;
 
     return (
       <div className="productDetail">
         <div className="contents">
-          {this.state.productView.map(productview => {
+          {this.state.productDetail.map(detail => {
             const finalPrice = (
-              Math.round((productview.price * (1 - productview.sale)) / 100) *
-              100
+              Math.round((detail.price * (1 - detail.sale)) / 100) * 100
             ).toLocaleString();
-
             return (
-              <div className="itemPhotoInfoSec" id={productview.id}>
+              <div className="itemPhotoInfoSec" id={detail.id}>
                 <div className="itemPhotoViewBox">
                   <div className="itemPhotoBig">
                     <img
-                      src={productview.imageURL}
+                      src={detail.imageURL}
                       alt="ㅋㅋ안 보이는 양말 세트"
                       className="middle"
                     />
@@ -97,7 +110,7 @@ class ProductDetail extends React.Component {
                 <div className="itemInfoBox">
                   <div className="itemDetailCont">
                     <div className="itemDetail">
-                      <h3>{productview.name}</h3>
+                      <h3>{detail.name}</h3>
                     </div>
                     <div className="itemDetailList">
                       <dl>
@@ -105,7 +118,7 @@ class ProductDetail extends React.Component {
                         <dd>
                           <del>
                             <span className="originalPrice">
-                              {productview.price.toLocaleString()}원
+                              {detail.price.toLocaleString()}원
                             </span>
                           </del>
                         </dd>
@@ -158,7 +171,7 @@ class ProductDetail extends React.Component {
                           </td>
                           <td className="itemChoicePrice">
                             <strong className="optionPriceDisplay">
-                              {(count * productview.price).toLocaleString()}
+                              {(count * detail.price).toLocaleString()}
                             </strong>
                             원
                           </td>
@@ -179,7 +192,7 @@ class ProductDetail extends React.Component {
                       <dt>총 합계금액</dt>
                       <dd className="totalPricedd">
                         <strong className="totalPrice">
-                          {(count * productview.price).toLocaleString()}
+                          {(count * detail.price).toLocaleString()}
                           <b>원</b>
                         </strong>
                       </dd>
@@ -202,7 +215,7 @@ class ProductDetail extends React.Component {
           })}
           <div className="detail">
             <Itemgoodstab />
-            {this.state.productImages.map(image => {
+            {this.state.productImage.map(image => {
               return (
                 <div className="detailCont" id="detailInfo">
                   <h3 className="mustInfo">상품상세정보</h3>
@@ -239,7 +252,7 @@ class ProductDetail extends React.Component {
                         <h3 id="review">
                           상품후기&nbsp;
                           <span class="reviewCount">
-                            {this.state.reviewList.length}
+                            {this.state.productReview.length}
                           </span>
                         </h3>
 
@@ -253,7 +266,7 @@ class ProductDetail extends React.Component {
                       {this.state.isModalView && (
                         <Modal handleModal={this.handleModal} />
                       )}
-                      <Reviews reviewList={this.state.reviewList} />
+                      <Reviews reviewList={this.state.productReview} />
                       <div className="page">
                         <ul>
                           <li className="on">
