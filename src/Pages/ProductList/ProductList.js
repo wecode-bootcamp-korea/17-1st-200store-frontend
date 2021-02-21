@@ -25,10 +25,26 @@ class ProductList extends Component {
       });
   }
 
+  getData = () => {
+    fetch('/ProductList.json')
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          productList: res,
+        });
+      });
+  };
+
   handleColor = e => {
     this.setState({ selectedItem: e.target.innerText });
-    // console.log(this.state.selectedItem);
   };
+
+  menuHandle = e => {
+    this.getData();
+    this.handleColor(e);
+  };
+
+  //두개를묶는다 menuhandle
 
   render() {
     const { productList } = this.state;
@@ -46,7 +62,7 @@ class ProductList extends Component {
                     ? 'selected'
                     : 'unselected'
                 }
-                onClick={e => this.handleColor(e)}
+                onClick={e => this.menuHandle(e)}
               >
                 추천순
               </p>
