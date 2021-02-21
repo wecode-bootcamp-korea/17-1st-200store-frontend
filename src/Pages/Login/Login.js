@@ -20,6 +20,20 @@ class Login extends Component {
     });
   };
 
+  // isPwstatus = pw => {};
+
+  // onpwCheck = () => {
+  //   if (!this.isPwstatus(this.state.pw)) {
+  //     this.setState({
+  //       pwError: '비밀번호를 다시 입력해주세요',
+  //     });
+  //   } else {
+  //     this.setState({
+  //       pwError: '',
+  //     });
+  //   }
+  // };
+
   handleClick = e => {
     this.state.id.length >= 5 && this.state.pw.length >= 8
       ? this.goToMain()
@@ -73,7 +87,13 @@ class Login extends Component {
                     type="password"
                     name="pw"
                     onChange={this.handleInput}
+                    onKeyUp={this.onpwCheck}
                   />
+                  {
+                    <div className="errorMessage">
+                      {this.state.passwordError}
+                    </div>
+                  }
                 </div>
                 <div className="idChk">
                   <input type="checkBox" className="saveid" />
