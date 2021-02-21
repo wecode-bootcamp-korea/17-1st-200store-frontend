@@ -72,7 +72,7 @@ class ProductList extends Component {
                     ? 'selected'
                     : 'unselected'
                 }
-                onClick={e => this.handleColor(e)}
+                onClick={e => this.menuHandle(e)}
               >
                 인기순
               </p>
@@ -82,7 +82,7 @@ class ProductList extends Component {
                     ? 'selected'
                     : 'unselected'
                 }
-                onClick={e => this.handleColor(e)}
+                onClick={e => this.menuHandle(e)}
               >
                 최신순
               </p>
@@ -92,7 +92,7 @@ class ProductList extends Component {
                     ? 'selected'
                     : 'unselected'
                 }
-                onClick={e => this.handleColor(e)}
+                onClick={e => this.menuHandle(e)}
               >
                 낮은가격순
               </p>
@@ -102,7 +102,7 @@ class ProductList extends Component {
                     ? 'selected'
                     : 'unselected'
                 }
-                onClick={e => this.handleColor(e)}
+                onClick={e => this.menuHandle(e)}
               >
                 높은가격순
               </p>
