@@ -24,7 +24,7 @@ class Nav extends Component {
   }
 
   handleScroll = () => {
-    this.setState({ navScrolled: window.pageYOffset > 200 });
+    this.setState({ navScrolled: window.pageYOffset > 100 });
   };
 
   goToLogin = () => {

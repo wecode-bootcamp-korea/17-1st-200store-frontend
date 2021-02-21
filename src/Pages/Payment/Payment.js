@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import DaumPostCode from 'react-daum-postcode';
+import BuyerInfo from './Components/BuyerInfo/BuyerInfo';
+import DeliveryInfo from './Components/DeliveryInfo/DeliveryInfo';
+import PaymentInfo from './Components/PaymentInfo/PaymentInfo';
 import './Payment.scss';
 
 class Payment extends Component {
@@ -10,7 +13,7 @@ class Payment extends Component {
       buyerPhone: '',
       buyerEmail: '',
       receiverName: '',
-      receiverAddress: '',
+      fullAddress: '',
       receiverPostCode: '',
       receiverPhone: '',
       isDaumPost: false,
@@ -61,6 +64,7 @@ class Payment extends Component {
     }
   };
 
+  // 백앤드와 통신시 사용할 fetch 함수
   // paymentComplete = () => {
   //   fetch('API', {
   //     method: 'POST',
@@ -69,7 +73,7 @@ class Payment extends Component {
   //       buyerPhone: this.state.buyerPhone,
   //       buyerEmail: this.state.buyerEmail,
   //       receiverName: this.state.receiverName,
-  //       receiverAddress: this.state.receiverAddress,
+  //       receiverAddress: this.state.fullAddress,
   //       receiverPostCode: this.state.receiverPostCode,
   //       receiverPhone: this.state.receiverPhone,
   //     }),
@@ -83,19 +87,27 @@ class Payment extends Component {
   // };
 
   render() {
-    console.log('주소야 떠라', this.state.receiverAddress);
     const width = 595;
     const height = 450;
     const modalStyle = {
       display: 'block',
       position: 'absolute',
-      top: '50%',
-      left: '50%',
+      top: '20%',
+      left: '60%',
       zIndex: '1000',
       border: '1px solid #000000',
       overflow: 'hidden',
     };
-    const { isDaumPost, fullAddress, zoneCode } = this.state;
+    const {
+      isDaumPost,
+      fullAddress,
+      zoneCode,
+      buyerName,
+      buyerPhone,
+      buyerEmail,
+      receiverName,
+      receiverPhone,
+    } = this.state;
     return (
       <div className="Payment">
         <header>
@@ -108,6 +120,16 @@ class Payment extends Component {
             <li>03 주문완료</li>
           </ul>
         </header>
+
+        <h2>주문자 정보</h2>
+        <BuyerInfo
+          handleAllInput={this.handleAllInput}
+          buyerName={buyerName}
+          buyerPhone={buyerPhone}
+          buyerEmail={buyerEmail}
+          handleEmailInput={this.handleEmailInput}
+        />
+        <h2>배송정보</h2>
         {isDaumPost ? (
           <DaumPostCode
             onComplete={this.handleAddress}
@@ -118,166 +140,20 @@ class Payment extends Component {
             isDaumPost={isDaumPost}
           />
         ) : null}
-        <h2>주문자 정보</h2>
-        <table className="buyerInfo">
-          <tr>
-            <th>
-              <li>주문하시는 분</li>
-            </th>
-            <td>
-              <input
-                name="buyerName"
-                onChange={this.handleAllInput}
-                value={this.state.buyerName}
-              />
-            </td>
-          </tr>
-          <tr>
-            <th className="notRequired">
-              <li>전화번호</li>
-            </th>
-            <td>
-              <input />
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <li>휴대폰 번호</li>
-            </th>
-            <td>
-              <input
-                name="buyerPhone"
-                onChange={this.handleAllInput}
-                value={this.state.buyerPhone}
-              />
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <li>이메일</li>
-            </th>
-            <td>
-              <form>
-                <input
-                  name="buyerEmail"
-                  onChange={this.handleAllInput}
-                  value={this.state.buyerEmail}
-                />
-                <select name="emailList" onChange={this.handleEmailInput}>
-                  <option value="">직접입력</option>
-                  <option value="naver.com">naver.com</option>
-                  <option value="hanmail.net">hanmail.net</option>
-                  <option value="daum.net">daum.net</option>
-                  <option value="nate.com">nate.com</option>
-                  <option value="gmail.com">gmail.com</option>
-                  <option value="hotmail.com">hotmail.com</option>
-                </select>
-              </form>
-            </td>
-          </tr>
-        </table>
-        <h2>배송정보</h2>
-        <table className="deliveryInfo">
-          <tr>
-            <th>
-              <li>받으실분</li>
-            </th>
-            <td>
-              <input
-                name="receiverName"
-                onChange={this.handleAllInput}
-                value={this.state.receiverName}
-              />
-            </td>
-          </tr>
-          <tr>
-            <th rowSpan="2">
-              <li>받으실 곳</li>
-            </th>
-            <td>
-              <input
-                name="receiverPostCode"
-                onChange={this.handleAllInput}
-                value={zoneCode}
-              />
-              <button onClick={this.handlePostSearch}>우편번호검색</button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <input
-                className="addressLongInput"
-                name="receiverAddress"
-                value={fullAddress}
-                onChange={this.handleAllInput}
-              />
-              <input className="addressShortInput" />
-            </td>
-          </tr>
-          <tr>
-            <th className="notRequired">
-              <li>전화번호</li>
-            </th>
-            <td>
-              <input />
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <li>휴대폰 번호</li>
-            </th>
-            <td>
-              <input
-                name="receiverPhone"
-                onChange={this.handleAllInput}
-                value={this.state.receiverPhone}
-              />
-            </td>
-          </tr>
-          <tr>
-            <th className="notRequired">
-              <li>남기실 말씀</li>
-            </th>
-            <td>
-              <input />
-            </td>
-          </tr>
-        </table>
+        <DeliveryInfo
+          handleAllInput={this.handleAllInput}
+          receiverName={receiverName}
+          receiverPhone={receiverPhone}
+          fullAddress={fullAddress}
+          zoneCode={zoneCode}
+          handlePostSearch={this.handlePostSearch}
+        />
         <h2>결제정보</h2>
-        <table className="paymentInfo">
-          <tr>
-            <th>
-              <li>상품 합계 금액</li>
-            </th>
-            <td>
-              <p>
-                <strong>29,500</strong>원
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <li>배송비</li>
-            </th>
-            <td>
-              <p>2,500원</p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <li>최종 결제 금액</li>
-            </th>
-            <td>
-              <p>
-                <strong>32,000</strong>원
-              </p>
-            </td>
-          </tr>
-        </table>
+        <PaymentInfo />
         <section>
           <span>
             최종 결제 금액
-            <strong>32,000원</strong>
+            <strong>100,000원</strong>
           </span>
         </section>
         <div class="paymentFooter">
