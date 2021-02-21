@@ -1,0 +1,51 @@
+.OrderList {
+  h3 {
+    margin: 12px 0px;
+    font-size: 15px;
+  }
+  .orderListTable {
+    width: 100%;
+    margin: 0 auto;
+    border-top: 1px solid black;
+    border-bottom: 1px solid rgba(211, 211, 211, 0.495);
+    font-size: 13px;
+    font-weight: bold;
+
+    .headRow {
+      height: 40px;
+      background-color: #f7f7f7;
+      border-bottom: 1px solid rgba(211, 211, 211, 0.495);
+
+      th {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        font-size: 13px;
+        border-bottom: 1px solid rgba(211, 211, 211, 0.495);
+      }
+
+      .dateAndNumber {
+        width: 150px;
+      }
+
+      .nameAndOption {
+        width: 350px;
+      }
+      .priceAndQty {
+        width: 150px;
+      }
+
+      .orderStatus {
+        width: 100px;
+      }
+
+      .confirmAndReview {
+        width: 100px;
+      }
+    }
+
+    tbody {
+      width: 100%;
+    }
+  }
+}

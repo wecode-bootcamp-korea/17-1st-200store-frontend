@@ -1,0 +1,26 @@
+.OrderListItem {
+  height: 50px;
+  font-weight: normal;
+  td {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(211, 211, 211, 0.495);
+  }
+  .priceAndQty {
+    span {
+      margin: 3px;
+    }
+  }
+
+  .confirmAndReview {
+    .confirmBtn {
+      border: 1px solid black;
+      border-radius: 8px;
+      height: 30px;
+      background-color: lightgray;
+      color: black;
+    }
+  }
+}

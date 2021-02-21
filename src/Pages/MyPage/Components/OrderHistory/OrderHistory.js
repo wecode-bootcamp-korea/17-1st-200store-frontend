@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
+import OrderList from '../OrderList/OrderList';
 
 import './OrderHistory.scss';
 import './react-datepicker.css';
@@ -10,6 +11,7 @@ class OrderHistory extends Component {
     this.state = {
       startDate: new Date(),
       endDate: new Date(),
+      optionColor: true,
     };
     this.handleStartChange = this.handleStartChange.bind(this);
     this.handleEndChange = this.handleEndChange.bind(this);
@@ -30,8 +32,11 @@ class OrderHistory extends Component {
 
   onFormSubmit(e) {
     e.preventDefault();
-    console.log(this.state.startDate);
   }
+
+  handleBtnColor = () => {
+    this.setState({ optionColor: !this.state.optionColor });
+  };
 
   handleBtnClicked = e => {
     const todayDate = new Date();
@@ -96,8 +101,13 @@ class OrderHistory extends Component {
     }
   };
 
+  btnHandler = e => {
+    this.handleBtnColor();
+    this.handleBtnClicked(e);
+  };
+
   render() {
-    let optionBtn = this.state.white ? 'notClickedBtn' : 'clickedBtn';
+    let optionBtn = this.state.optionColor ? 'notClickedBtn' : 'clickedBtn';
     console.log('첫날짜', this.state.startDate);
     console.log('두번째', this.state.endDate);
     return (
@@ -107,25 +117,41 @@ class OrderHistory extends Component {
           <span>조회기간</span>
           <div className="buttonContainer">
             <button
-              style={{ backgroundColor: this.state.btnColor }}
-              onClick={this.handleBtnClicked}
+              className={optionBtn}
+              onClick={this.btnHandler}
               value="오늘"
             >
               오늘
             </button>
-            <button onClick={this.handleBtnClicked} value="7일">
+            <button className={optionBtn} onClick={this.btnHandler} value="7일">
               7일
             </button>
-            <button onClick={this.handleBtnClicked} value="15일">
+            <button
+              className={optionBtn}
+              onClick={this.btnHandler}
+              value="15일"
+            >
               15일
             </button>
-            <button onClick={this.handleBtnClicked} value="1개월">
+            <button
+              className={optionBtn}
+              onClick={this.handleBtnClicked}
+              value="1개월"
+            >
               1개월
             </button>
-            <button onClick={this.handleBtnClicked} value="3개월">
+            <button
+              className={optionBtn}
+              onClick={this.handleBtnClicked}
+              value="3개월"
+            >
               3개월
             </button>
-            <button onClick={this.handleBtnClicked} value="1년">
+            <button
+              className={optionBtn}
+              onClick={this.handleBtnClicked}
+              value="1년"
+            >
               1년
             </button>
           </div>
@@ -152,9 +178,10 @@ class OrderHistory extends Component {
           </div>
           <div className="searchContainer">
             <button className="searchHistory">조회</button>
-            <i class="fas fa-search" />
+            <i className="fas fa-search" />
           </div>
         </section>
+        <OrderList />
       </div>
     );
   }
