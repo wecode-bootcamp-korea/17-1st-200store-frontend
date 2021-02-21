@@ -3,15 +3,6 @@ import { withRouter } from 'react-router-dom';
 import './ProductBox.scss';
 
 class ProductBox extends Component {
-  goToMyPage = url => {
-    this.props.history.push(url);
-  };
-  // url = '/mypage'
-
-  goToCart = () => {
-    this.props.history.push('/cart');
-  };
-
   render() {
     const saleNumToInt = Math.ceil(this.props.sale);
     const saleNumber = this.props.sale * 100;
@@ -34,17 +25,17 @@ class ProductBox extends Component {
             {isSale && <span className="isSale"> SALE </span>}
           </div>
           <div className="hoverContainer">
-            <div onClick={this.goToMyPage} className="hoverHeart">
+            <div className="hoverHeart">
               <i className="far fa-heart" />
             </div>
-            <div onClick={this.goToCart} className="hoverCart">
+            <div className="hoverCart">
               <i className="fas fa-shopping-cart" />
             </div>
           </div>
         </div>
         {sale > 0 && <span className="sale"> {saleNumber}%</span>}
         <p>{name}</p>
-        {saleNumToInt === 0 && <p className="price">{originalPrice}원</p>}
+        {!saleNumToInt && <p className="price">{originalPrice}원</p>}
         {sale > 0 && (
           <div className="priceContainer">
             <p className="oldPrice"> {originalPrice}원 </p>

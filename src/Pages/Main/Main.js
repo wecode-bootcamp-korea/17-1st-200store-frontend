@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Slider from './Components/Slider/Slider';
 import ProductContainer from './Components/ProductContainer/ProductContainer';
-import GiftBox from './Components/GiftBox/GiftBox';
-import GIFTDATA from './GiftBoxData';
 import './Main.scss';
 
 class Main extends Component {
@@ -10,9 +8,9 @@ class Main extends Component {
     super();
     this.state = {
       allList: [],
-      giftList: [],
     };
   }
+
   //백엔드랑 통신할때는 allList: res.data
   componentDidMount() {
     fetch('/data/mainData.json', {
@@ -25,11 +23,8 @@ class Main extends Component {
           allList: res,
         });
       });
-
-    this.setState({ giftList: GIFTDATA });
   }
   render() {
-    console.log('allList 보여줘..제발...', this.state.allList);
     return (
       <div className="Main">
         <Slider />
@@ -37,22 +32,6 @@ class Main extends Component {
           {Object.values(this.state.allList).map((el, idx) => {
             return <ProductContainer key={idx} id={idx} list={el} />;
           })}
-          <section className="giftBox">
-            <h2>선물하기 딱 좋아요!</h2>
-            <div className="giftContainer">
-              {this.state.giftList.map(gift => {
-                return (
-                  <GiftBox
-                    key={gift.id}
-                    alt={gift.alt}
-                    src={gift.src}
-                    h3Text={gift.h3Text}
-                    h4Text={gift.h4Text}
-                  />
-                );
-              })}
-            </div>
-          </section>
         </div>
       </div>
     );
