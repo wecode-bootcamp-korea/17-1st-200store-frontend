@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import CartItem from './Components/CartItem/CartItem';
+import CartList from './Components/CartList/CartList';
+import CartPrice from './Components/CartPrice/CartPrice';
 import './Cart.scss';
 
 class Cart extends Component {
@@ -8,7 +9,6 @@ class Cart extends Component {
     this.state = {
       cartList: [],
       checkList: [],
-      deliveryFee: 0,
     };
   }
   componentDidMount() {
@@ -75,8 +75,15 @@ class Cart extends Component {
     });
   };
 
+  handleAllChecked = e => {
+    let cartList = this.state.cartList;
+    cartList.forEach(item => (item.value = e.target.checked));
+    this.setState({ cartList: cartList });
+  };
+
   render() {
-    const selectedItems = this.state.cartList.filter(item => item.value);
+    const { cartList } = this.state;
+    const selectedItems = cartList.filter(item => item.value);
     const sumPrice = Math.floor(
       selectedItems.reduce(
         (acc, item) => acc + item.total_price * item.quantity,
@@ -97,69 +104,31 @@ class Cart extends Component {
             <li>03 주문완료</li>
           </ul>
         </div>
-        <form>
-          <table>
-            <thead>
-              <tr className="headRow">
-                <th className="checkBoxAll">
-                  <input type="checkbox" name="checkAll" />
-                </th>
-                <th className="productInfo">상품/옵션 정보</th>
-                <th className="productQty">수량</th>
-                <th className="productPrice">상품금액</th>
-              </tr>
-            </thead>
-            <tbody className="cartItemContainer">
-              {this.state.cartList.map(item => {
-                return (
-                  <CartItem
-                    cartItem={item}
-                    key={item.id}
-                    id={item.id}
-                    imgSrc={item.url_image}
-                    name={item.product}
-                    quantity={item.quantity}
-                    price={item.total_price}
-                    onIncrement={this.handleIncrement}
-                    onDecrement={this.handleDecrement}
-                    onChecked={this.handleChange}
-                  />
-                );
-              })}
-            </tbody>
-          </table>
-        </form>
+        {!cartList.length && (
+          <div className="emptyCartWrapper">
+            <p className="emptyCart">장바구니에 담겨있는 상품이 없습니다.</p>
+          </div>
+        )}
+        {cartList.length > 0 && (
+          <CartList
+            cartList={this.state.cartList}
+            handleAllChecked={this.handleAllChecked}
+            onIncrement={this.handleIncrement}
+            onDecrement={this.handleDecrement}
+            onChecked={this.handleChange}
+          />
+        )}
         <p className="continueShop">
           <i class="fas fa-chevron-left" />
           쇼핑 계속하기
         </p>
-        <section>
-          <div className="productPrice">
-            <p>
-              총<strong>{selectedItems.length}</strong>개의 상품금액
-            </p>
-            <p>
-              <strong>{sumPrice.toLocaleString()}</strong>원
-            </p>
-          </div>
-          <i class="fas fa-plus-circle" />
-          <div className="deliveryFee">
-            <p>배송비</p>
-            <p>
-              <strong>{deliveryFee.toLocaleString()}</strong>원
-            </p>
-          </div>
-          <i class="fas fa-equals" />
-          <div className="totalPrice">
-            <p>합계</p>
-            <p>
-              <strong className="totalColor">
-                {totalPrice.toLocaleString()}
-              </strong>
-              원
-            </p>
-          </div>
-        </section>
+        <CartPrice
+          cartList={this.state.cartList}
+          selectedItems={selectedItems}
+          sumPrice={sumPrice}
+          deliveryFee={deliveryFee}
+          totalPrice={totalPrice}
+        />
         <div className="buttonContainer">
           <div className="leftButtonContainer">
             <button className="selectItemDelete" onClick={this.handleDelete}>
