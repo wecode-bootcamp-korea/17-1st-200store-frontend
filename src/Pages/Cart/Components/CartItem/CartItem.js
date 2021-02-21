@@ -41,11 +41,6 @@ class CartItem extends Component {
         <td className="productPrice">
           {(this.props.price * this.props.quantity).toLocaleString()}원
         </td>
-        {/* <td className="deliveryFee">
-          <p>기본배송비</p>
-          <p>{this.props.itemDeliveryFee}원</p>
-          <p>(택배-선결제)</p>
-        </td> */}
       </tr>
     );
   }
