@@ -6,10 +6,9 @@ class Cart extends Component {
   constructor() {
     super();
     this.state = {
-      selectAll: false,
       cartList: [],
+      checkList: [],
       deliveryFee: 0,
-      selected: true,
     };
   }
   componentDidMount() {
@@ -18,7 +17,6 @@ class Cart extends Component {
     })
       .then(res => res.json())
       .then(res => {
-        console.log(res.result);
         this.setState({
           cartList: res,
         });
@@ -26,7 +24,6 @@ class Cart extends Component {
   }
 
   handleIncrement = item => {
-    console.log('올라가닝...');
     const cartList = [...this.state.cartList];
     const index = cartList.indexOf(item);
     cartList[index].quantity++;
@@ -34,12 +31,15 @@ class Cart extends Component {
   };
 
   handleDecrement = item => {
-    console.log('좀 내려가봐...');
     const cartList = [...this.state.cartList];
     const index = cartList.indexOf(item);
     const quantity = cartList[index].quantity - 1;
     cartList[index].quantity = quantity < 0 ? 0 : quantity;
-    this.setState({ cartList: cartList });
+    this.setState(prevState => {
+      return {
+        cartList: prevState.cartList.filter(item => item.quantity > 0),
+      };
+    });
   };
 
   handleChange = e => {
@@ -61,37 +61,30 @@ class Cart extends Component {
     });
   };
 
-  handleAllCheck = () => {
-    this.state.cartList.reduce(
-      (result, item) => (result = result && item.value),
-      true
-    )
-      ? this.state.cartList.map(item => {
-          item.value = false;
-          return this.setState({ selectAll: false });
-        })
-      : this.state.cartList.map(item => {
-          item.value = true;
-          return this.setState({ selectAll: true });
-        });
-    this.setState({ cartList: this.state.cartList });
+  sendCheckedList = () => {
+    this.setState(prevState => {
+      return {
+        checkList: prevState.cartList.filter(item => item.value),
+      };
+    });
   };
 
-  sendCheckedList = () => {
+  sendAllList = () => {
     this.setState({
-      checkList: this.state.cartList.filter(item => item.value),
+      cartList: this.state.cartList,
     });
   };
 
   render() {
     const selectedItems = this.state.cartList.filter(item => item.value);
     const sumPrice = Math.floor(
-      selectedItems.reduce((acc, item) => acc + item.price * item.quantity, 0)
+      selectedItems.reduce(
+        (acc, item) => acc + item.total_price * item.quantity,
+        0
+      )
     );
     const deliveryFee = sumPrice < 30000 ? 2500 : 0;
     const totalPrice = sumPrice + deliveryFee;
-    console.log('선택된 상품입니다 >>>>>>', selectedItems);
-    console.log('선택된 상품만 결제로 보내기>>>>', this.state.cartList);
     return (
       <div className="Cart">
         <div className="cartTitleContainer">
@@ -108,13 +101,8 @@ class Cart extends Component {
           <table>
             <thead>
               <tr className="headRow">
-                <th>
-                  <input
-                    type="checkbox"
-                    name="checkAll"
-                    checked={this.state.selectAll}
-                    onClick={this.handleAllCheck}
-                  />
+                <th className="checkBoxAll">
+                  <input type="checkbox" name="checkAll" />
                 </th>
                 <th className="productInfo">상품/옵션 정보</th>
                 <th className="productQty">수량</th>
@@ -122,12 +110,12 @@ class Cart extends Component {
               </tr>
             </thead>
             <tbody className="cartItemContainer">
-              {this.state.cartList.map((item, idx) => {
+              {this.state.cartList.map(item => {
                 return (
                   <CartItem
                     cartItem={item}
-                    key={idx}
-                    id={idx}
+                    key={item.id}
+                    id={item.id}
                     imgSrc={item.url_image}
                     name={item.product}
                     quantity={item.quantity}
@@ -177,13 +165,15 @@ class Cart extends Component {
             <button className="selectItemDelete" onClick={this.handleDelete}>
               선택 상품 삭제
             </button>
-            {/* <button className="selectItemWish">선택 상품 찜</button> */}
+            <button className="selectItemWish">선택 상품 찜</button>
           </div>
           <div className="rightButtonContainer">
             <button className="selectItemOrder" onClick={this.sendCheckedList}>
               선택 상품 주문
             </button>
-            <button className="allItemOrder">전체 상품 주문</button>
+            <button className="allItemOrder" onClick={this.sendAllList}>
+              전체 상품 주문
+            </button>
           </div>
         </div>
         <span>주문서 작성단계에서 할인/적립금 적용을 하실 수 있습니다.</span>

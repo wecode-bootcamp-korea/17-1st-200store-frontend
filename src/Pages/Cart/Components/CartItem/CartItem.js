@@ -15,32 +15,40 @@ class CartItem extends Component {
   };
 
   render() {
+    const {
+      price,
+      quantity,
+      id,
+      onChecked,
+      cartItem,
+      name,
+      imgSrc,
+    } = this.props;
+    const productPrice = price * quantity;
     return (
       <tr className="CartItem">
         <td className="checkbox">
           <input
             type="checkbox"
-            id={this.props.id}
-            onChange={this.props.onChecked}
-            checked={this.props.cartItem.value}
+            id={id}
+            onChange={onChecked}
+            checked={cartItem.value}
           />
         </td>
         <td className="productInfoContainer">
           <div className="productInfo">
-            <img alt={this.props.name} src={this.props.imgSrc} />
-            <p className="productName">{this.props.name}</p>
+            <img alt={name} src={imgSrc} />
+            <p className="productName">{name}</p>
           </div>
         </td>
         <td className="productQtyContainer">
           <div className="productQty">
             <i class="fas fa-minus" onClick={this.handleDecrement} />
-            <p>{this.props.quantity}</p>
+            <p>{quantity}</p>
             <i class="fas fa-plus" onClick={this.handleIncrement} />
           </div>
         </td>
-        <td className="productPrice">
-          {(this.props.price * this.props.quantity).toLocaleString()}원
-        </td>
+        <td className="productPrice">{productPrice.toLocaleString()}원</td>
       </tr>
     );
   }
