@@ -16,7 +16,6 @@ export default class MyPage extends React.Component {
   };
 
   render() {
-    console.log(this.state.currentId);
     return (
       <div className="MyPage">
         <MyPageAside />

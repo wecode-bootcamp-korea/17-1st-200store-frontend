@@ -1,5 +1,4 @@
 import React from 'react';
-
 import './MyPageHeader.scss';
 
 export default class MyPageHeader extends React.Component {

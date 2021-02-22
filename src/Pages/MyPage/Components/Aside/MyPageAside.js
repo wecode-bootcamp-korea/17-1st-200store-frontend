@@ -1,8 +1,6 @@
 import React from 'react';
-
-import './MyPageAside.scss';
-
 import MyPageMain from '../../MyPageMain';
+import './MyPageAside.scss';
 
 export default class MyPageHeader extends React.Component {
   render() {
@@ -16,7 +14,6 @@ export default class MyPageHeader extends React.Component {
                 {category.title}
                 <ul>
                   {category.subCategory.map((subCategory, idx2) => {
-                    console.log('이거되니?');
                     return (
                       <li
                         className="subCategory"
