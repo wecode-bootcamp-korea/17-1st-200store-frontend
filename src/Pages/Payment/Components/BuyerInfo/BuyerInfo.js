@@ -45,7 +45,7 @@ class BuyerInfo extends Component {
             <form>
               <input
                 name="buyerEmail"
-                onChange={this.handleAllInput}
+                onChange={this.props.handleAllInput}
                 value={this.props.buyerEmail}
               />
               <select name="emailList" onChange={this.props.handleEmailInput}>
