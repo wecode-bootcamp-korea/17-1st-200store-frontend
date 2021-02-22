@@ -19,9 +19,10 @@ class Signup extends React.Component {
       isSignup: true,
     };
   }
-
+  handleChange = e => {
+    this.setState({ email: e.target.value });
+  };
   handleEmailInput = e => {
-    console.log('data');
     this.setState({ email: this.state.email + '@' + e.target.value });
   };
 
@@ -178,22 +179,23 @@ class Signup extends React.Component {
                             className="memberEmail"
                             onKeyUp={this.handleSignUpButton}
                             value={this.state.email}
+                            onChange={this.handleChange}
                           />
                           <form>
                             <select
                               name="selectbox"
-                              onClick={this.state.handleEmailInput}
+                              onChange={this.handleEmailInput}
                             >
                               <option value="" selected>
                                 직접입력
                               </option>
-                              <option value="naver">naver.com</option>
-                              <option value="hanmail">hanmail.net</option>
-                              <option value="daum">daum.net</option>
-                              <option value="nate">nate.com</option>
-                              <option value="hotmail">hotmail.com</option>
-                              <option value="gmail">gmail.com</option>
-                              <option value="icloud">Icould.com</option>
+                              <option value="naver.com">naver.com</option>
+                              <option value="hanmail.net">hanmail.net</option>
+                              <option value="daum.net">daum.net</option>
+                              <option value="nate.com">nate.com</option>
+                              <option value="hotmail.com">hotmail.com</option>
+                              <option value="gmail.com">gmail.com</option>
+                              <option value="icloud.com">Icould.com</option>
                             </select>
                           </form>
                           <div className="formElement">
