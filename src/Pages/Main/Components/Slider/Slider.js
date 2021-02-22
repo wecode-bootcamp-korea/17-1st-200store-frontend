@@ -1,7 +1,22 @@
 import React, { Component } from 'react';
 import Slider from 'react-slick';
+import SLIDERDATA from './sliderData';
+import './Slider.scss';
 
 export default class SimpleSlider extends Component {
+  constructor() {
+    super();
+    this.state = {
+      sliderList: [],
+    };
+  }
+
+  componentDidMount() {
+    this.setState({
+      sliderList: SLIDERDATA,
+    });
+  }
+
   render() {
     const settings = {
       dots: true,
@@ -9,7 +24,21 @@ export default class SimpleSlider extends Component {
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 1000,
     };
-    return <div className="Slider"></div>;
+    return (
+      <div className="Slider">
+        <Slider {...settings}>
+          {this.state.sliderList.map((data, idx) => {
+            return (
+              <div className="sliderItem" key={idx}>
+                <img alt={data.name} src={data.src} />
+              </div>
+            );
+          })}
+        </Slider>
+      </div>
+    );
   }
 }
