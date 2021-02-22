@@ -21,6 +21,7 @@ class Signup extends React.Component {
   }
 
   handleEmailInput = e => {
+    console.log('data');
     this.setState({ email: this.state.email + '@' + e.target.value });
   };
 
@@ -181,7 +182,7 @@ class Signup extends React.Component {
                           <form>
                             <select
                               name="selectbox"
-                              onChange={this.state.handleEmailInput}
+                              onClick={this.state.handleEmailInput}
                             >
                               <option value="" selected>
                                 직접입력
