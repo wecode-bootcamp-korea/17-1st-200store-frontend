@@ -1,0 +1,25 @@
+.GiftBox {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  width: 100%;
+
+  img {
+    min-width: 800px;
+    height: 300px;
+    object-fit: none;
+  }
+
+  .giftTextContainer {
+    width: 300px;
+    font-family: 'Noto Sans KR', sans-serif;
+
+    h3 {
+      margin-bottom: 30px;
+      font-size: 30px;
+    }
+    h4 {
+      font-size: 15px;
+    }
+  }
+}

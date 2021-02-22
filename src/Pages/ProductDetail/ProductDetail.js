@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './ProductDetail.scss';
 import Reviews from './review';
 import AdminMsg from './admin_msg';
@@ -53,7 +52,6 @@ class ProductDetail extends React.Component {
   };
 
   countZero = () => {
-    const { count } = this.state;
     this.setState({
       count: 0,
     });
