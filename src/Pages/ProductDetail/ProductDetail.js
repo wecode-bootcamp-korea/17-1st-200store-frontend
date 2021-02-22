@@ -13,9 +13,6 @@ class ProductDetail extends React.Component {
     this.state = {
       count: 1,
       isModalView: false,
-      // reviewList: [],
-      // productView: [],
-      // productImages: [],
       productDetail: [],
       productImage: [],
       productReview: [],
@@ -39,30 +36,6 @@ class ProductDetail extends React.Component {
         });
       });
   }
-
-  /*     fetch('/data/reviewdata.json')
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          reviewList: data,
-        });
-      });
-
-    fetch('/data/productview.json')
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          productView: data,
-        });
-      });
-
-    fetch('/data/productimages.json')
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          productImages: data,
-        });
-      }); */
 
   countUp = () => {
     const { count } = this.state;
@@ -113,20 +86,25 @@ class ProductDetail extends React.Component {
                       <h3>{detail.name}</h3>
                     </div>
                     <div className="itemDetailList">
-                      <dl>
-                        <dt>정가</dt>
-                        <dd>
-                          <del>
-                            <span className="originalPrice">
-                              {detail.price.toLocaleString()}원
-                            </span>
-                          </del>
-                        </dd>
-                      </dl>
+                      {detail.sale > 0 && detail.stock > 0 && (
+                        <dl>
+                          <dt>정가</dt>
+                          <dd>
+                            <del>
+                              <span className="originalPrice">
+                                {detail.price.toLocaleString()}원
+                              </span>
+                            </del>
+                          </dd>
+                        </dl>
+                      )}
                       <dl className="itemPrice">
                         <dt>판매가격</dt>
                         <dd>
-                          <strong>{finalPrice}원</strong>
+                          {!detail.stock && (
+                            <strong className="soldOutPrice">품절</strong>
+                          )}
+                          {detail.stock > 0 && <strong>{finalPrice}원</strong>}
                         </dd>
                       </dl>
                       <dl className="itemDelivery">
@@ -187,7 +165,6 @@ class ProductDetail extends React.Component {
                       </tbody>
                     </table>
                     <hr className="hairline" />
-
                     <dl className="totalAmount">
                       <dt>총 합계금액</dt>
                       <dd className="totalPricedd">
@@ -204,9 +181,16 @@ class ProductDetail extends React.Component {
                       <button type="button" class="btnAddcart">
                         장바구니
                       </button>
-                      <button type="button" class="btnAddorder">
-                        바로 구매
-                      </button>
+                      {!detail.stock && (
+                        <button type="button" className="soldOut" disabled>
+                          SOLD OUT
+                        </button>
+                      )}
+                      {detail.stock > 0 && (
+                        <button type="button" class="btnAddorder">
+                          바로 구매
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
