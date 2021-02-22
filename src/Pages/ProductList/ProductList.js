@@ -13,17 +13,13 @@ class ProductList extends Component {
     };
   }
 
-  // chang`eColor = () => {};
-
-  componentDidMount() {
-    fetch('/ProductListData.json')
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          productList: res,
-        });
-      });
-  }
+  // componentDidMount() {
+  //   fetch('/ProductListData.json')
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       this.setState({});
+  //     });
+  // }
 
   getData = () => {
     fetch('/ProductList.json')
@@ -44,11 +40,9 @@ class ProductList extends Component {
     this.handleColor(e);
   };
 
-  //두개를묶는다 menuhandle
-
   render() {
     const { productList } = this.state;
-    console.log(productList);
+    console.log('확인', productList.price);
     return (
       <>
         <div className="Container">
@@ -117,11 +111,11 @@ class ProductList extends Component {
                     key={item.id}
                     price={item.price}
                     name={item.name}
-                    imgSrc={item.imgSrc}
+                    imgSrc={item.imageUrl}
                     isBest={item.isBest}
                     isNew={item.isNew}
                     isSale={item.isSale}
-                    howMuchSale={item.howMuchSale}
+                    howMuchSale={item.sale}
                     stock={item.stock}
                   />
                 );
