@@ -25,8 +25,8 @@ class ProductDetail extends React.Component {
   };
 
   componentDidMount() {
-    fetch('http://10.58.2.240:8000/product/goods_view/1', { method: 'GET' })
-      // fetch('/data/productdetaildata.json')
+    // fetch('http://10.58.2.240:8000/product/goods_view/1', { method: 'GET' })
+    fetch('/data/productdetaildata.json')
       .then(res => res.json())
       .then(data => {
         console.log('data받기', data.data);
@@ -84,7 +84,7 @@ class ProductDetail extends React.Component {
                 <div className="itemInfoBox">
                   <div className="itemDetailCont">
                     <div className="itemDetail">
-                      <h3>{detail.name}</h3>
+                      <h3 className="datailName">{detail.name}</h3>
                     </div>
                     <div className="itemDetailList">
                       {detail.sale > 0 && detail.stock > 0 && (

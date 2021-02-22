@@ -34,6 +34,13 @@
       height: 585px;
       font-weight: bold;
 
+      .datailName {
+        font-size: 30px;
+        margin-bottom: 50px;
+        font-weight: bold;
+        font-family: sans-serif;
+      }
+
       dt {
         width: 120px;
         height: 27px;
@@ -55,7 +62,7 @@
       font-size: 18px;
       font-weight: bold;
       display: block;
-      font-family: ‘Noto Sans KR’, sans-serif;
+      font-family: NanumGothic;
       margin-top: 10px;
     }
 
