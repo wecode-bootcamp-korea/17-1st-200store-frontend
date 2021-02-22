@@ -25,8 +25,8 @@ class ProductDetail extends React.Component {
   };
 
   componentDidMount() {
-    // fetch('http://192.168.43.173:8000/product/goods_view/1', { method: 'GET' })
-    fetch('/data/productdetaildata.json')
+    fetch('http://10.58.2.240:8000/product/goods_view/1', { method: 'GET' })
+      // fetch('/data/productdetaildata.json')
       .then(res => res.json())
       .then(data => {
         console.log('data받기', data.data);
@@ -234,7 +234,7 @@ class ProductDetail extends React.Component {
                     <Itemgoodstab />
                     <div className="productReview">
                       <div className="reviewBox">
-                        <h3 className="review">
+                        <h3 id="review" className="review">
                           상품후기&nbsp;
                           <span className="reviewCount">
                             {this.state.productReview.length}
