@@ -25,14 +25,15 @@ class ProductDetail extends React.Component {
   };
 
   componentDidMount() {
+    // fetch('http://192.168.43.173:8000/product/goods_view/1', { method: 'GET' })
     fetch('/data/productdetaildata.json')
       .then(res => res.json())
       .then(data => {
-        console.log('data받기', data[0].product_reviews);
+        console.log('data받기', data.data);
         this.setState({
-          productDetail: data[0].product_view,
-          productImage: data[0].product_images,
-          productReview: data[0].product_reviews,
+          productDetail: data.data.product,
+          productImage: data.data.images,
+          productReview: data.data.review,
         });
       });
   }
@@ -74,7 +75,7 @@ class ProductDetail extends React.Component {
                 <div className="itemPhotoViewBox">
                   <div className="itemPhotoBig">
                     <img
-                      src={detail.imageURL}
+                      src={detail.imageUrl}
                       alt="ㅋㅋ안 보이는 양말 세트"
                       className="middle"
                     />
@@ -205,7 +206,7 @@ class ProductDetail extends React.Component {
                   <h3 className="mustInfo">상품상세정보</h3>
                   <div className="detailExplainBox " id={image.id}>
                     <div className="detailPhotoBox" />
-                    <img src={image.imageURL} alt="사진" />
+                    <img src={image.imageUrl} alt="사진" />
                     <div className="detailInfo">
                       <h3 className="mustInfo">상품필수정보</h3>
                       <ProductdetailTable />
@@ -233,9 +234,9 @@ class ProductDetail extends React.Component {
                     <Itemgoodstab />
                     <div className="productReview">
                       <div className="reviewBox">
-                        <h3 id="review">
+                        <h3 className="review">
                           상품후기&nbsp;
-                          <span class="reviewCount">
+                          <span className="reviewCount">
                             {this.state.productReview.length}
                           </span>
                         </h3>

@@ -1,64 +1,64 @@
-[
-  {
-    "product_view": [
+{
+  "data": {
+    "product": [
       {
         "id": 1,
         "name": "ㅋㅋ잘써지는 볼펜",
         "price": 8900,
         "sale": 0.05,
-        "imageURL": "https://images.unsplash.com/photo-1588947618741-2250fc97321a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=645&q=80",
+        "imageUrl": "https://images.unsplash.com/photo-1588947618741-2250fc97321a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=645&q=80",
         "stock": 0
       }
     ],
-    "product_images": [
+    "images": [
       {
         "id": 1,
-        "imageURL": "https://store.baemin.com/data/editor/goods/200724/002403c7fbbcfdb9dd0728c98239be01_154446.png"
+        "imageUrl": "https://store.baemin.com/data/editor/goods/200724/002403c7fbbcfdb9dd0728c98239be01_154446.png"
       }
     ],
-    "product_reviews": [
+    "review": [
       {
         "id": 1,
-        "star_rate": 5,
-        "comment": "볼펜 케이스부터가 센스 넘쳐요^^",
-        "name": "li***",
-        "date": "2021.02.01"
+        "starRating": 5,
+        "content": "볼펜 케이스부터가 센스 넘쳐요^^",
+        "userId": "li***",
+        "createAt": "2021.02.01"
       },
       {
         "id": 2,
-        "star_rate": 4,
-        "comment": "지인 연말 모임갈 때 가져갈 선물로 구매한 볼펜세트가... ",
-        "name": "ab***",
-        "date": "2021.01.30"
+        "starRating": 4,
+        "content": "지인 연말 모임갈 때 가져갈 선물로 구매한 볼펜세트가... ",
+        "userId": "ab***",
+        "createAt": "2021.01.30"
       },
       {
         "id": 3,
-        "star_rate": 5,
-        "comment": "배송빠릅니다. 물건 다들 너무 귀여움",
-        "name": "f3***",
-        "date": "2021.01.17"
+        "starRating": 5,
+        "content": "배송빠릅니다. 물건 다들 너무 귀여움",
+        "userId": "f3***",
+        "createAt": "2021.01.17"
       },
       {
         "id": 4,
-        "star_rate": 4,
-        "comment": "상품 잘 받았고 매우 만족합니다~",
-        "name": "pp***",
-        "date": "2021.01.16"
+        "starRating": 4,
+        "content": "상품 잘 받았고 매우 만족합니다~",
+        "userId": "pp***",
+        "createAt": "2021.01.16"
       },
       {
         "id": 5,
-        "star_rate": 5,
-        "comment": "10개 사서 주변에 있는 친구들에게 나눠줬어요. ",
-        "name": "op***",
-        "date": "2021.01.14"
+        "starRating": 5,
+        "content": "10개 사서 주변에 있는 친구들에게 나눠줬어요. ",
+        "userId": "op***",
+        "createAt": "2021.01.14"
       },
       {
         "id": 6,
-        "star_rate": 5,
-        "comment": "같이 일하는 사람한테 선물하면 엄청 좋아함!!^^.",
-        "name": "ii***",
-        "date": "2021.01.01"
+        "starRating": 5,
+        "content": "같이 일하는 사람한테 선물하면 엄청 좋아함!!^^.",
+        "userId": "ii***",
+        "createAt": "2021.01.01"
       }
     ]
   }
-]
+}

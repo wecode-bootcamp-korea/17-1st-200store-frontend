@@ -27,19 +27,19 @@ class Reviews extends React.Component {
                 <tr className="reviewTr" id={review.id}>
                   <td className="reviewBox1" id="firstReviewBox">
                     <span className="star">
-                      {Array(review.star_rate + 1).join('★')}
+                      {Array(review.starRating + 1).join('★')}
                     </span>
                   </td>
                   <td className="reviewBox2">
                     <span onClick={() => this.clickHandler(review.id)}>
-                      {review.comment}
+                      {review.content}
                     </span>
                   </td>
                   <td className="reviewBox1">
-                    <span>{review.name}</span>
+                    <span>{review.userId}</span>
                   </td>
                   <td className="reviewBox1">
-                    <span>{review.date}</span>
+                    <span>{review.createAt}</span>
                   </td>
                 </tr>
                 {/* <--display속성 none으로 주기--> */}
@@ -56,7 +56,7 @@ class Reviews extends React.Component {
                     <span className="star"></span>
                   </td>
                   <td className="reviewBox2">
-                    <span> {review.comment} </span>
+                    <span> {review.content} </span>
                   </td>
                   <td className="reviewBox1">
                     <span></span>

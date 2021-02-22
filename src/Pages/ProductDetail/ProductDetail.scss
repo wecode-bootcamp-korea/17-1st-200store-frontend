@@ -52,12 +52,11 @@
       padding: 0px 0px 10px;
     }
     h3 {
-      font-size: 35px;
+      font-size: 18px;
       font-weight: bold;
       display: block;
       font-family: ‘Noto Sans KR’, sans-serif;
       margin-top: 10px;
-      padding: 0px 0px 30px;
     }
 
     dl {
@@ -330,9 +329,13 @@
     justify-content: space-between;
     align-items: right;
     margin-top: 0px;
-
-    .reviewCount {
-      color: var(--color-green);
+    h3 {
+      color: black;
+      font-family: NanumGothic;
+      font-size: 18px;
+      .reviewCount {
+        color: var(--color-green);
+      }
     }
   }
   .reviewsTable {
@@ -379,6 +382,14 @@
         }
       }
     }
+  }
+  h3 {
+    width: 900px;
+    height: 81px;
+    font-family: NanumGothic;
+    padding: 45px 0px 10px 10px;
+    font-size: 18px;
+    align-items: center;
   }
 }
 .btnReviewsWrite {
