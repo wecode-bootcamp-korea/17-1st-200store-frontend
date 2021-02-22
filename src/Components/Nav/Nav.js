@@ -24,7 +24,7 @@ class Nav extends Component {
   }
 
   handleScroll = () => {
-    this.setState({ navScrolled: window.pageYOffset > 100 });
+    this.setState({ navScrolled: window.pageYOffset > 0 });
   };
 
   goToLogin = () => {
@@ -36,7 +36,6 @@ class Nav extends Component {
   goToMyPage = () => {
     this.props.history.push('/mypage');
   };
-
   goToCart = () => {
     this.props.history.push('/cart');
   };
