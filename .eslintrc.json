@@ -1,6 +1,9 @@
 {
   "extends": ["react-app", "plugin:prettier/recommended"],
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
   "rules": {
     "prettier/prettier": [
       "error",

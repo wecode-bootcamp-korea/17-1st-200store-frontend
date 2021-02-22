@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import './Signup.scss';
 import '../../config';
@@ -288,6 +289,13 @@ class Signup extends React.Component {
         </div>
       </div>
     );
+=======
+import React, { Component } from 'react';
+
+class Signup extends Component {
+  render() {
+    return <div></div>;
+>>>>>>> master
   }
 }
 
