@@ -87,6 +87,7 @@ class Payment extends Component {
   // };
 
   render() {
+    console.log(this.state.buyerPhone);
     const width = 595;
     const height = 450;
     const modalStyle = {
