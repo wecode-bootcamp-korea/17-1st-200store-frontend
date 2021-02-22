@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './Login.scss';
 import { LoginApi } from '../../config';
 import { withRouter } from 'react-router-dom';
+import './Login.scss';
 
 class Login extends Component {
   constructor() {
@@ -19,20 +19,6 @@ class Login extends Component {
       [e.target.name]: value,
     });
   };
-
-  // isPwstatus = pw => {};
-
-  // onpwCheck = () => {
-  //   if (!this.isPwstatus(this.state.pw)) {
-  //     this.setState({
-  //       pwError: '비밀번호를 다시 입력해주세요',
-  //     });
-  //   } else {
-  //     this.setState({
-  //       pwError: '',
-  //     });
-  //   }
-  // };
 
   handleClick = e => {
     this.state.id.length >= 5 && this.state.pw.length >= 8
