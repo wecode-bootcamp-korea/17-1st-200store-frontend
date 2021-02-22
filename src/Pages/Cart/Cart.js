@@ -12,13 +12,14 @@ class Cart extends Component {
     };
   }
   componentDidMount() {
-    fetch('data/cartListData.json', {
+    fetch('http://10.58.1.249:8000/order/cart', {
       method: 'GET',
     })
       .then(res => res.json())
       .then(res => {
+        console.log('backend data>>>>', res);
         this.setState({
-          cartList: res,
+          cartList: res.result,
         });
       });
   }
@@ -47,11 +48,17 @@ class Cart extends Component {
     this.setState(prevState => {
       return {
         cartList: prevState.cartList.map(item =>
-          item.id === +id ? { ...item, value: !item.value } : item
+          item.productId === +id ? { ...item, value: e.target.checked } : item
         ),
       };
     });
   };
+
+  // handleChange = e => {
+  //   this.setState({
+  //     selected: !this.state.selected,
+  //   });
+  // };
 
   handleDelete = () => {
     this.setState(prevState => {
@@ -86,12 +93,14 @@ class Cart extends Component {
     const selectedItems = cartList.filter(item => item.value);
     const sumPrice = Math.floor(
       selectedItems.reduce(
-        (acc, item) => acc + item.total_price * item.quantity,
+        (acc, item) => acc + item.totalPrice * item.quantity,
         0
       )
     );
     const deliveryFee = sumPrice < 30000 ? 2500 : 0;
     const totalPrice = sumPrice + deliveryFee;
+    console.log('this.state.checklist', this.state.checkList);
+    console.log('selectedItems', selectedItems);
     return (
       <div className="Cart">
         <div className="cartTitleContainer">

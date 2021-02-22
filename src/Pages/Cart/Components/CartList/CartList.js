@@ -11,6 +11,7 @@ class CartList extends Component {
       onChecked,
       cartList,
     } = this.props;
+
     return (
       <form className="CartList">
         <table>
@@ -26,15 +27,16 @@ class CartList extends Component {
           </thead>
           <tbody className="cartItemContainer">
             {cartList.map(item => {
+              console.log({ item });
               return (
                 <CartItem
                   cartItem={item}
-                  key={item.id}
-                  id={item.id}
-                  imgSrc={item.url_image}
+                  key={item.productId}
+                  id={item.productId}
+                  imgSrc={item.urlImage}
                   name={item.product}
                   quantity={item.quantity}
-                  price={item.total_price}
+                  price={item.totalPrice}
                   onIncrement={onIncrement}
                   onDecrement={onDecrement}
                   onChecked={onChecked}

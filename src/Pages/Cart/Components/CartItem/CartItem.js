@@ -25,6 +25,7 @@ class CartItem extends Component {
       imgSrc,
     } = this.props;
     const productPrice = price * quantity;
+    console.log('this.props.cartItem.value', this.props.cartItem.value);
     return (
       <tr className="CartItem">
         <td className="checkbox">
