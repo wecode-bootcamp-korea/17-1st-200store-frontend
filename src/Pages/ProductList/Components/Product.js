@@ -16,28 +16,36 @@ class Product extends Component {
       isNew,
       isSale,
       howMuchSale,
+      stock,
     } = this.props;
+    console.log(stock);
     return (
       <div className="Best">
         <div
-          className="bestImage"
+          className={stock === 0 ? 'soldOut' : 'bestImage'}
           style={{
             backgroundImage: `url(${imgSrc})`,
           }}
         >
-          <div className="labelContainer">
-            {isBest && <span className="isBest"> BEST </span>}
-            {isNew && <span className="isNew"> NEW </span>}
-            {isSale && <span className="isSale"> SALE </span>}
-          </div>
-          <div className="hoverContainer">
-            <div className="hoverHeart">
-              <i class="far fa-heart" />
-            </div>
-            <div className="hoverCart">
-              <i class="fas fa-shopping-cart" />
-            </div>
-          </div>
+          {stock !== 0 && (
+            <>
+              <div className="labelContainer">
+                {isBest && <span className="isBest"> BEST </span>}
+                {isNew && <span className="isNew"> NEW </span>}
+                {isSale && <span className="isSale"> SALE </span>}
+              </div>
+
+              <div className="hoverContainer">
+                <div className="hoverHeart">
+                  <i class="far fa-heart" />
+                </div>
+                <div className="hoverCart">
+                  <i class="fas fa-shopping-cart" />
+                </div>
+              </div>
+            </>
+          )}
+          {stock === 0 && <span className="soldOutText">SOLD OUT</span>}
         </div>
         {howMuchSale > 0 && (
           <span className="howMuchSale"> {howMuchSale}%</span>

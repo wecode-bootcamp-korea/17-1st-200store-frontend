@@ -7,7 +7,8 @@
     "howMuchSale": 63,
     "isBest": true,
     "isNew": true,
-    "isSale": true
+    "isSale": true,
+    "stock": 0
   },
   {
     "id": 2,
@@ -17,7 +18,8 @@
     "howMuchSale": 0,
     "isBest": false,
     "isNew": true,
-    "isSale": false
+    "isSale": false,
+    "stock": 1
   },
   {
     "id": 3,
@@ -27,7 +29,8 @@
     "howMuchSale": 0,
     "isBest": false,
     "isNew": true,
-    "isSale": false
+    "isSale": false,
+    "stock": 1
   },
   {
     "id": 4,
@@ -37,7 +40,8 @@
     "howMuchSale": 0,
     "isBest": false,
     "isNew": true,
-    "isSale": false
+    "isSale": false,
+    "stock": 0
   },
   {
     "id": 5,
@@ -47,7 +51,8 @@
     "howMuchSale": 50,
     "isBest": false,
     "isNew": true,
-    "isSale": true
+    "isSale": true,
+    "stock": 0
   },
   {
     "id": 6,
@@ -57,7 +62,8 @@
     "howMuchSale": 0,
     "isBest": false,
     "isNew": true,
-    "isSale": false
+    "isSale": false,
+    "stock": 0
   },
   {
     "id": 7,
@@ -67,7 +73,8 @@
     "howMuchSale": 10,
     "isBest": false,
     "isNew": true,
-    "isSale": true
+    "isSale": true,
+    "stock": 0
   },
   {
     "id": 8,
@@ -77,6 +84,7 @@
     "howMuchSale": 0,
     "isBest": false,
     "isNew": true,
-    "isSale": false
+    "isSale": false,
+    "stock": 0
   }
 ]

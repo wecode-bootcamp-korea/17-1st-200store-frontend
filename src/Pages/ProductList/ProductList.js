@@ -48,6 +48,7 @@ class ProductList extends Component {
 
   render() {
     const { productList } = this.state;
+    console.log(productList);
     return (
       <>
         <div className="Container">
@@ -121,6 +122,7 @@ class ProductList extends Component {
                     isNew={item.isNew}
                     isSale={item.isSale}
                     howMuchSale={item.howMuchSale}
+                    stock={item.stock}
                   />
                 );
               })}
