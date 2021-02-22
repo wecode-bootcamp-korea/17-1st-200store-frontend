@@ -11,14 +11,17 @@ class CartList extends Component {
       onChecked,
       cartList,
     } = this.props;
-
     return (
       <form className="CartList">
         <table>
           <thead>
             <tr className="headRow">
               <th className="checkBoxAll">
-                <input type="checkbox" onClick={handleAllChecked} />
+                <input
+                  type="checkbox"
+                  onClick={handleAllChecked}
+                  checked={cartList.every(item => item.value === true)}
+                />
               </th>
               <th className="productInfo">상품/옵션 정보</th>
               <th className="productQty">수량</th>

@@ -11,15 +11,14 @@ class Cart extends Component {
       checkList: [],
     };
   }
+
+  //backend와 통신할때는 cartList: res.result
   componentDidMount() {
-    fetch('http://10.58.1.249:8000/order/cart', {
-      method: 'GET',
-    })
+    fetch('data/cartListData.json')
       .then(res => res.json())
       .then(res => {
-        console.log('backend data>>>>', res);
         this.setState({
-          cartList: res.result,
+          cartList: res,
         });
       });
   }
@@ -28,7 +27,7 @@ class Cart extends Component {
     const cartList = [...this.state.cartList];
     const index = cartList.indexOf(item);
     cartList[index].quantity++;
-    this.setState({ cartList: cartList });
+    this.setState({ cartList });
   };
 
   handleDecrement = item => {
@@ -45,35 +44,23 @@ class Cart extends Component {
 
   handleChange = e => {
     const id = e.target.id;
-    this.setState(prevState => {
-      return {
-        cartList: prevState.cartList.map(item =>
-          item.productId === +id ? { ...item, value: e.target.checked } : item
-        ),
-      };
-    });
+    this.setState(prevState => ({
+      cartList: prevState.cartList.map(item =>
+        item.productId === +id ? { ...item, value: e.target.checked } : item
+      ),
+    }));
   };
 
-  // handleChange = e => {
-  //   this.setState({
-  //     selected: !this.state.selected,
-  //   });
-  // };
-
   handleDelete = () => {
-    this.setState(prevState => {
-      return {
-        cartList: prevState.cartList.filter(item => !item.value),
-      };
-    });
+    this.setState(prevState => ({
+      cartList: prevState.cartList.filter(item => !item.value),
+    }));
   };
 
   sendCheckedList = () => {
-    this.setState(prevState => {
-      return {
-        checkList: prevState.cartList.filter(item => item.value),
-      };
-    });
+    this.setState(prevState => ({
+      checkList: prevState.cartList.filter(item => item.value),
+    }));
   };
 
   sendAllList = () => {
@@ -85,11 +72,20 @@ class Cart extends Component {
   handleAllChecked = e => {
     let cartList = this.state.cartList;
     cartList.forEach(item => (item.value = e.target.checked));
-    this.setState({ cartList: cartList });
+    this.setState({ cartList });
   };
 
   render() {
     const { cartList } = this.state;
+    const {
+      handleAllChecked,
+      handleIncrement,
+      handleDecrement,
+      handleChange,
+      handleDelete,
+      sendCheckedList,
+      sendAllList,
+    } = this;
     const selectedItems = cartList.filter(item => item.value);
     const sumPrice = Math.floor(
       selectedItems.reduce(
@@ -99,17 +95,15 @@ class Cart extends Component {
     );
     const deliveryFee = sumPrice < 30000 ? 2500 : 0;
     const totalPrice = sumPrice + deliveryFee;
-    console.log('this.state.checklist', this.state.checkList);
-    console.log('selectedItems', selectedItems);
     return (
       <div className="Cart">
         <div className="cartTitleContainer">
           <h1>장바구니</h1>
           <ul>
             <li>01 장바구니</li>
-            <i id="currentSection" class="fas fa-chevron-right" />
+            <i id="currentSection" className="fas fa-chevron-right" />
             <li>02 주문서작성/결제</li>
-            <i class="fas fa-chevron-right" />
+            <i className="fas fa-chevron-right" />
             <li>03 주문완료</li>
           </ul>
         </div>
@@ -120,19 +114,20 @@ class Cart extends Component {
         )}
         {cartList.length > 0 && (
           <CartList
-            cartList={this.state.cartList}
-            handleAllChecked={this.handleAllChecked}
-            onIncrement={this.handleIncrement}
-            onDecrement={this.handleDecrement}
-            onChecked={this.handleChange}
+            cartList={cartList}
+            handleAllChecked={handleAllChecked}
+            onIncrement={handleIncrement}
+            onDecrement={handleDecrement}
+            onChecked={handleChange}
+            allChecked={this.state.allChecked}
           />
         )}
         <p className="continueShop">
-          <i class="fas fa-chevron-left" />
+          <i className="fas fa-chevron-left" />
           쇼핑 계속하기
         </p>
         <CartPrice
-          cartList={this.state.cartList}
+          cartList={cartList}
           selectedItems={selectedItems}
           sumPrice={sumPrice}
           deliveryFee={deliveryFee}
@@ -140,16 +135,16 @@ class Cart extends Component {
         />
         <div className="buttonContainer">
           <div className="leftButtonContainer">
-            <button className="selectItemDelete" onClick={this.handleDelete}>
+            <button className="selectItemDelete" onClick={handleDelete}>
               선택 상품 삭제
             </button>
             <button className="selectItemWish">선택 상품 찜</button>
           </div>
           <div className="rightButtonContainer">
-            <button className="selectItemOrder" onClick={this.sendCheckedList}>
+            <button className="selectItemOrder" onClick={sendCheckedList}>
               선택 상품 주문
             </button>
-            <button className="allItemOrder" onClick={this.sendAllList}>
+            <button className="allItemOrder" onClick={sendAllList}>
               전체 상품 주문
             </button>
           </div>

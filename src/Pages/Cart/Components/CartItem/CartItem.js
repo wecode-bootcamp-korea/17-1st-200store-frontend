@@ -2,18 +2,6 @@ import React, { Component } from 'react';
 import './CartItem.scss';
 
 class CartItem extends Component {
-  handleIncrement = () => {
-    this.props.onIncrement(this.props.cartItem);
-  };
-
-  handleDecrement = () => {
-    this.props.onDecrement(this.props.cartItem);
-  };
-
-  handleDelete = () => {
-    this.props.onRemove(this.props.cartItem);
-  };
-
   render() {
     const {
       price,
@@ -23,6 +11,8 @@ class CartItem extends Component {
       cartItem,
       name,
       imgSrc,
+      onDecrement,
+      onIncrement,
     } = this.props;
     const productPrice = price * quantity;
     console.log('this.props.cartItem.value', this.props.cartItem.value);
@@ -44,9 +34,9 @@ class CartItem extends Component {
         </td>
         <td className="productQtyContainer">
           <div className="productQty">
-            <i class="fas fa-minus" onClick={this.handleDecrement} />
+            <i class="fas fa-minus" onClick={() => onDecrement(cartItem)} />
             <p>{quantity}</p>
-            <i class="fas fa-plus" onClick={this.handleIncrement} />
+            <i class="fas fa-plus" onClick={() => onIncrement(cartItem)} />
           </div>
         </td>
         <td className="productPrice">{productPrice.toLocaleString()}원</td>

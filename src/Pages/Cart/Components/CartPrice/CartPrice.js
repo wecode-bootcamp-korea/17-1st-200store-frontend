@@ -23,16 +23,12 @@ class CartPrice extends Component {
         <i class="fas fa-plus-circle" />
         <div className="deliveryFee">
           <p>배송비</p>
-          {!cartList.length && (
-            <p>
-              <strong>0</strong>원
-            </p>
-          )}
-          {cartList.length > 0 && (
-            <p>
-              <strong>{deliveryFee.toLocaleString()}</strong>원
-            </p>
-          )}
+          <p>
+            <strong>
+              {!cartList.length ? 0 : deliveryFee.toLocaleString()}
+            </strong>
+            원
+          </p>
         </div>
         <i class="fas fa-equals" />
         <div className="totalPrice">
