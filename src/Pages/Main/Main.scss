@@ -1,0 +1,12 @@
+@import '../../Styles/common.scss';
+@import url('https://use.fontawesome.com/releases/v5.15.2/css/all.css');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
+.Main {
+  .mainContent {
+    @extend %flexCenter;
+    flex-direction: column;
+    margin: 0 auto;
+    min-width: 1100px;
+  }
+}
