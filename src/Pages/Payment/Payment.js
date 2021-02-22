@@ -17,7 +17,18 @@ class Payment extends Component {
       receiverPostCode: '',
       receiverPhone: '',
       isDaumPost: false,
+      cartList: [],
     };
+  }
+
+  componentDidMount() {
+    fetch('data/cartListData.json')
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          cartList: res,
+        });
+      });
   }
 
   handleAllInput = e => {
@@ -56,12 +67,6 @@ class Payment extends Component {
       zoneCode: zoneCodes,
       isDaumPost: false,
     });
-  };
-
-  closePostSearch = e => {
-    if (e.key === 27) {
-      this.setState({ isDaumPost: false });
-    }
   };
 
   // 백앤드와 통신시 사용할 fetch 함수
@@ -109,31 +114,39 @@ class Payment extends Component {
       receiverName,
       receiverPhone,
     } = this.state;
+
+    const {
+      handleAllInput,
+      handleEmailInput,
+      handleAddress,
+      handlePostSearch,
+      paymentComplete,
+    } = this;
     return (
       <div className="Payment">
         <header>
           <h1>주문서작성/결제</h1>
           <ul>
             <li>01 장바구니</li>
-            <i class="fas fa-chevron-right" />
+            <i className="fas fa-chevron-right" />
             <li className="currentStep">02 주문서작성/결제</li>
-            <i id="currentSection" class="fas fa-chevron-right" />
+            <i id="currentSection" className="fas fa-chevron-right" />
             <li>03 주문완료</li>
           </ul>
         </header>
 
         <h2>주문자 정보</h2>
         <BuyerInfo
-          handleAllInput={this.handleAllInput}
+          handleAllInput={handleAllInput}
           buyerName={buyerName}
           buyerPhone={buyerPhone}
           buyerEmail={buyerEmail}
-          handleEmailInput={this.handleEmailInput}
+          handleEmailInput={handleEmailInput}
         />
         <h2>배송정보</h2>
         {isDaumPost ? (
           <DaumPostCode
-            onComplete={this.handleAddress}
+            onComplete={handleAddress}
             autoClose
             width={width}
             height={height}
@@ -142,12 +155,12 @@ class Payment extends Component {
           />
         ) : null}
         <DeliveryInfo
-          handleAllInput={this.handleAllInput}
+          handleAllInput={handleAllInput}
           receiverName={receiverName}
           receiverPhone={receiverPhone}
           fullAddress={fullAddress}
           zoneCode={zoneCode}
-          handlePostSearch={this.handlePostSearch}
+          handlePostSearch={handlePostSearch}
         />
         <h2>결제정보</h2>
         <PaymentInfo />
@@ -157,7 +170,7 @@ class Payment extends Component {
             <strong>100,000원</strong>
           </span>
         </section>
-        <div class="paymentFooter">
+        <div className="paymentFooter">
           <span>
             전자상거래 등에서의 소비자보호에 관한 법률에 의거하여 미성년자가
             물품을 구매하는 경우,
@@ -166,12 +179,12 @@ class Payment extends Component {
             법정대리인이 동의하지 않으면 미성년자 본인 또는 법정대리인이 구매를
             취소할 수 있습니다.
           </span>
-          <div class="confirmContainer">
+          <div className="confirmContainer">
             <input type="checkbox" />
             <b>(필수)</b>
             구매하실 상품의 결제정보를 확인하였으며, 구매진행에 동의합니다.
           </div>
-          <button onClick={this.paymentComplete}>결제하기</button>
+          <button onClick={paymentComplete}>결제하기</button>
         </div>
       </div>
     );

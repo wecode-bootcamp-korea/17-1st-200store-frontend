@@ -13,70 +13,72 @@ class DeliveryInfo extends Component {
     } = this.props;
     return (
       <table className="deliveryInfo">
-        <tr>
-          <th>
-            <li>받으실분</li>
-          </th>
-          <td>
-            <input
-              name="receiverName"
-              onChange={handleAllInput}
-              value={receiverName}
-            />
-          </td>
-        </tr>
-        <tr>
-          <th rowSpan="2">
-            <li>받으실 곳</li>
-          </th>
-          <td>
-            <input
-              name="receiverPostCode"
-              onChange={handleAllInput}
-              value={zoneCode}
-            />
-            <button onClick={handlePostSearch}>우편번호검색</button>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <input
-              className="addressLongInput"
-              name="receiverAddress"
-              value={fullAddress}
-              onChange={handleAllInput}
-            />
-            <input className="addressShortInput" />
-          </td>
-        </tr>
-        <tr>
-          <th className="notRequired">
-            <li>전화번호</li>
-          </th>
-          <td>
-            <input />
-          </td>
-        </tr>
-        <tr>
-          <th>
-            <li>휴대폰 번호</li>
-          </th>
-          <td>
-            <input
-              name="receiverPhone"
-              onChange={handleAllInput}
-              value={receiverPhone}
-            />
-          </td>
-        </tr>
-        <tr>
-          <th className="notRequired">
-            <li>남기실 말씀</li>
-          </th>
-          <td>
-            <input />
-          </td>
-        </tr>
+        <tbody>
+          <tr>
+            <th>
+              <li>받으실분</li>
+            </th>
+            <td>
+              <input
+                name="receiverName"
+                onChange={handleAllInput}
+                value={receiverName}
+              />
+            </td>
+          </tr>
+          <tr>
+            <th rowSpan="2">
+              <li>받으실 곳</li>
+            </th>
+            <td>
+              <input
+                name="receiverPostCode"
+                onChange={handleAllInput}
+                value={zoneCode}
+              />
+              <button onClick={handlePostSearch}>우편번호검색</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input
+                className="addressLongInput"
+                name="receiverAddress"
+                value={fullAddress}
+                onChange={handleAllInput}
+              />
+              <input className="addressShortInput" />
+            </td>
+          </tr>
+          <tr>
+            <th className="notRequired">
+              <li>전화번호</li>
+            </th>
+            <td>
+              <input />
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <li>휴대폰 번호</li>
+            </th>
+            <td>
+              <input
+                name="receiverPhone"
+                onChange={handleAllInput}
+                value={receiverPhone}
+              />
+            </td>
+          </tr>
+          <tr>
+            <th className="notRequired">
+              <li>남기실 말씀</li>
+            </th>
+            <td>
+              <input />
+            </td>
+          </tr>
+        </tbody>
       </table>
     );
   }
