@@ -174,12 +174,23 @@ class ProductDetail extends React.Component {
                       </dd>
                     </dl>
                     <div className="btnChoiceBox">
-                      <button type="button" class="btnAddwish">
+                      <button type="button" className="btnAddwish">
                         <i class="far fa-heart" />
                       </button>
-                      <button type="button" class="btnAddcart">
-                        장바구니
-                      </button>
+                      {!detail.stock && (
+                        <button
+                          type="button"
+                          className="btnAddcartNone"
+                          disabled
+                        >
+                          장바구니
+                        </button>
+                      )}
+                      {detail.stock > 0 && (
+                        <button type="button" className="btnAddcart">
+                          장바구니
+                        </button>
+                      )}
                       {!detail.stock && (
                         <button type="button" className="soldOut" disabled>
                           SOLD OUT
