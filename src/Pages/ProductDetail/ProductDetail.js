@@ -25,8 +25,8 @@ class ProductDetail extends React.Component {
   };
 
   componentDidMount() {
-    // fetch('http://10.58.2.240:8000/product/goods_view/1', { method: 'GET' })
-    fetch('/data/productdetaildata.json')
+    fetch('http://10.58.2.240:8000/product/goods_view/1', { method: 'GET' })
+      // fetch('/data/productdetaildata.json')
       .then(res => res.json())
       .then(data => {
         console.log('data받기', data.data);
