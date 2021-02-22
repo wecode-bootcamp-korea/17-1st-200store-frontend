@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from 'react';
 import './Signup.scss';
 import '../../config';
@@ -20,6 +19,10 @@ class Signup extends React.Component {
       isSignup: true,
     };
   }
+
+  handleEmailInput = e => {
+    this.setState({ email: this.state.email + '@' + e.target.value });
+  };
 
   handleSignUpButton = e => {
     const { value, name } = e.target;
@@ -70,6 +73,7 @@ class Signup extends React.Component {
   };
 
   render() {
+    console.log(this.state.email);
     return (
       <div className="topContents">
         <div className="memberInfo">
@@ -168,14 +172,18 @@ class Signup extends React.Component {
                       <td>
                         <div className="memberWarning">
                           <input
-                            onKeyUp={this.handleSignUpButton}
                             type="email"
                             name="email"
                             className="memberEmail"
+                            onKeyUp={this.handleSignUpButton}
+                            value={this.state.email}
                           />
                           <form>
-                            <select name="selectbox">
-                              <option value="select" selected>
+                            <select
+                              name="selectbox"
+                              onChange={this.state.handleEmailInput}
+                            >
+                              <option value="" selected>
                                 직접입력
                               </option>
                               <option value="naver">naver.com</option>
@@ -289,13 +297,6 @@ class Signup extends React.Component {
         </div>
       </div>
     );
-=======
-import React, { Component } from 'react';
-
-class Signup extends Component {
-  render() {
-    return <div></div>;
->>>>>>> master
   }
 }
 
