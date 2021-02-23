@@ -46,14 +46,6 @@ class Modal extends React.Component {
                     className="formControlTextModal"
                   ></textarea>
                 </div>
-                {/* <div className="reveiwModalSection">
-                <div className="reviewModalSectionWriter">작성자</div>
-                <input className="inputTitle" />
-              </div>
-              <div className="reveiwModalSection">
-                <div className="reviewModalSectionDate">작성일</div>
-                <input className="inputTitle" type="date" />
-              </div> */}
                 <button className="reviewBtn" type="Submit">
                   완료
                 </button>

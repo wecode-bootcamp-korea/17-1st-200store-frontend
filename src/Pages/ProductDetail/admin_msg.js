@@ -3,7 +3,7 @@ import React from 'react';
 class AdminMsg extends React.Component {
   render() {
     return (
-      <>
+      <div>
         <div className="adminMsg">
           <h3 className="info" id="exchange">
             교환 및 반품안내
@@ -16,7 +16,7 @@ class AdminMsg extends React.Component {
           <p>
             - 단, 재화 등의 내용이 표시, 광고 내용과 다르거나 계약내용을 다르게
             이행한 경우에는 재화 등을 공급받은 날로부터 3개월 이내, 그 사실을 안
-            날 또는 알 수 있었던 날로부터 30일 이내에 교환 및 반품이
+            날 또는 알 수 있었던 날로부터 30일 이내에 교환 및 반품이{' '}
           </p>
           <p>가능합니다.</p>
           <br></br>
@@ -68,7 +68,7 @@ class AdminMsg extends React.Component {
             고시)에 따라 피해를 보상받을 수 있습니다.
           </p>
         </div>
-      </>
+      </div>
     );
   }
 }

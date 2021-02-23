@@ -1,10 +1,10 @@
 import React from 'react';
-import './ProductDetail.scss';
 import Reviews from './review';
 import AdminMsg from './admin_msg';
 import Itemgoodstab from './Itemgoodstab';
 import ProductdetailTable from './productdetailtable';
 import Modal from './Modal';
+import './ProductDetail.scss';
 
 class ProductDetail extends React.Component {
   constructor(props) {
@@ -19,7 +19,6 @@ class ProductDetail extends React.Component {
   }
 
   handleModal = () => {
-    console.log(!this.state.isModalView);
     this.setState({ isModalView: !this.state.isModalView });
   };
 
@@ -28,7 +27,6 @@ class ProductDetail extends React.Component {
     fetch('/data/productdetaildata.json')
       .then(res => res.json())
       .then(data => {
-        console.log('data받기', data.data);
         this.setState({
           productDetail: data.data.product,
           productImage: data.data.images,
