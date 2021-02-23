@@ -42,14 +42,12 @@ class Reviews extends React.Component {
                     <span>{review.createAt}</span>
                   </td>
                 </tr>
-                {/* <--display속성 none으로 주기--> */}
                 <tr
-                  className="reviewTr2"
                   id={review.id}
-                  style={
+                  className={
                     this.state.reviewDisplay.includes(review.id)
-                      ? { height: '109px' }
-                      : { display: 'none' }
+                      ? 'reviewTr2 height'
+                      : 'reviewTr2 hideDisplay'
                   }
                 >
                   <td className="reviewBox1" id="firstReviewBox">

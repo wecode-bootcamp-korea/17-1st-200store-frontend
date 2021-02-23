@@ -137,6 +137,7 @@
         .downGoodsCnt {
           height: 20px;
         }
+
         .upGoodsCnt,
         .downGoodsCnt,
         .delGoodsCnt {
@@ -170,6 +171,7 @@
     }
   }
 }
+
 .btnChoiceBox {
   display: flex;
   justify-content: space-evenly;
@@ -196,6 +198,7 @@
       }
     }
   }
+
   .btnAddcartNone {
     width: 152px;
     height: 52px;
@@ -234,6 +237,7 @@
       border: none;
     }
   }
+
   .soldOut {
     width: 230px;
     height: 52px;
@@ -258,6 +262,7 @@
   align-items: center;
   margin: 0 auto;
   width: 1200px;
+
   .itemGoodsTab {
     border-bottom: 1px solid #bbbbbb;
     padding: 40px 0 0 0;
@@ -293,14 +298,17 @@
           }
         }
       }
+
       .lastChild {
         border-right: 1px solid #bbbbbb;
       }
     }
   }
+
   .mustInfo {
     margin: 0 auto;
   }
+
   table {
     font-size: 12px;
     font-family: NanumGothic;
@@ -326,6 +334,7 @@
       padding-left: 15px;
     }
   }
+
   h3 {
     width: 900px;
     height: 81px;
@@ -341,24 +350,29 @@
     margin: 5px 10px;
   }
 }
+
 .productReview {
   .reviewBox {
     display: flex;
     justify-content: space-between;
     align-items: right;
     margin-top: 0px;
+
     h3 {
       color: black;
       font-family: NanumGothic;
       font-size: 18px;
+
       .reviewCount {
         color: var(--color-green);
       }
     }
   }
+
   .reviewsTable {
     border: none;
     border-top: 1px solid grey;
+
     tbody {
       tr {
         #firstReviewBox {
@@ -371,10 +385,12 @@
           text-align: center;
           border: none;
           border-bottom: 1px solid lightgrey;
+
           .star {
             font-size: 20px;
           }
         }
+
         .reviewBox2 {
           width: 733px;
           border: none;
@@ -382,17 +398,25 @@
           cursor: pointer;
         }
       }
-      .reviewTr2 {
-        background-color: #f8f8f8;
+
+      .height {
+        background-color: #f7f7f7;
         height: 109px;
+      }
+
+      .hideDisplay {
+        display: none;
       }
     }
   }
+
   .page {
     width: 1200px;
+
     ul {
       padding: 20px 0 0;
       text-align: center;
+
       .on {
         span {
           align-items: center;
@@ -401,6 +425,7 @@
       }
     }
   }
+
   h3 {
     width: 900px;
     height: 81px;
@@ -410,6 +435,7 @@
     align-items: center;
   }
 }
+
 .btnReviewsWrite {
   display: inline-block;
   width: 142px;
