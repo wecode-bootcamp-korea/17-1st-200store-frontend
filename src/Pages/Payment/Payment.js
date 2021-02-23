@@ -134,7 +134,6 @@ class Payment extends Component {
             <li>03 주문완료</li>
           </ul>
         </header>
-
         <h2>주문자 정보</h2>
         <BuyerInfo
           handleAllInput={handleAllInput}
