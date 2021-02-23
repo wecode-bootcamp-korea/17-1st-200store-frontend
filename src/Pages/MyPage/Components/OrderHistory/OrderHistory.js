@@ -14,6 +14,9 @@ class OrderHistory extends Component {
       optionColor: true,
       isReviewModalOn: false,
       isReviewViewOn: false,
+      starRating: '',
+      title: '',
+      content: '',
     };
     this.handleStartChange = this.handleStartChange.bind(this);
     this.handleEndChange = this.handleEndChange.bind(this);
@@ -113,11 +116,49 @@ class OrderHistory extends Component {
       isReviewModalOn: !this.state.isReviewModalOn,
     });
   };
+
+  getStarValue = e => {
+    this.setState({
+      starRating: e.target.value,
+    });
+  };
+
+  handleReviewInput = e => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  ///리뷰를 등록했을때
+  submitReview = () => {
+    fetch('data/cartListData.json', {
+      method: 'POST',
+      body: JSON.stringify({
+        starRating: this.state.starRating,
+        title: this.state.title,
+        content: this.state.content,
+        productId: 1,
+        orderId: 100,
+      }),
+    })
+      .then(res => res.json())
+      .then(res =>
+        res.message === 'SUCCESS'
+          ? alert('리뷰가 등록되었습니다')
+          : this.setState({
+              isReviewViewOn: true,
+            })
+      );
+  };
+
   render() {
     let optionBtn = this.state.optionColor ? 'notClickedBtn' : 'clickedBtn';
     console.log('첫날짜', this.state.startDate);
     console.log('두번째', this.state.endDate);
     console.log('modal', this.state.isReviewModalOn);
+    console.log('starRating>>>>', this.state.starRating);
+    console.log('title>>>>>', this.state.title);
+    console.log('content >>>>>', this.state.content);
     return (
       <div className="OrderHistory">
         <h1>주문목록/배송조회</h1>
@@ -190,7 +231,13 @@ class OrderHistory extends Component {
           </div>
         </section>
         <OrderListContainer writeReview={this.writeReview} />
-        {this.state.isReviewModalOn && <Modal writeReview={this.writeReview} />}
+        {this.state.isReviewModalOn && (
+          <Modal
+            writeReview={this.writeReview}
+            getStarValue={this.getStarValue}
+            handleReviewInput={this.handleReviewInput}
+          />
+        )}
       </div>
     );
   }

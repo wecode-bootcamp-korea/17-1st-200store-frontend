@@ -3,6 +3,7 @@ import './Modal.scss';
 
 class Modal extends React.Component {
   render() {
+    const { getStarValue, handleReviewInput } = this.props;
     return (
       <div className="ModalTop">
         <div className="reactModal">
@@ -21,28 +22,59 @@ class Modal extends React.Component {
               <form className="reviewModalForm">
                 <div className="reviewModalSection">별점 평가</div>
                 <div className="reviewModalFormStarWrap">
-                  <input type="radio" name="chk_info" value="★☆" />
+                  <input
+                    onClick={getStarValue}
+                    type="radio"
+                    name="chk_info"
+                    value="1"
+                  />
                   ★
-                  <input type="radio" name="chk_info" value="★★" />
+                  <input
+                    onClick={getStarValue}
+                    type="radio"
+                    name="chk_info"
+                    value="2"
+                  />
                   ★★
-                  <input type="radio" name="chk_info" value="★★★" />
+                  <input
+                    onClick={getStarValue}
+                    type="radio"
+                    name="chk_info"
+                    value="3"
+                  />
                   ★★★
-                  <input type="radio" name="chk_info" value="★★★★" />
+                  <input
+                    onClick={getStarValue}
+                    type="radio"
+                    name="chk_info"
+                    value="4"
+                  />
                   ★★★★
-                  <input type="radio" name="chk_info" value="★★★★★" />
+                  <input
+                    onClick={getStarValue}
+                    type="radio"
+                    name="chk_info"
+                    value="5"
+                  />
                   ★★★★★
                 </div>
               </form>
               <div className="reveiwModalSection">
                 <div className="reviewModalSectionTitle">글제목</div>
-                <input className="inputTitle" />
+                <input
+                  name="title"
+                  className="inputTitle"
+                  onChange={handleReviewInput}
+                />
               </div>
               <div className="reveiwModalSection">
                 <div className="reveiwModalSection">
                   <div className="reviewModalSectionComment">리뷰작성</div>
                   <textarea
+                    name="content"
                     placeholder="자세하고 솔직한 리뷰는 다른 고객에게 큰 도움이 됩니다."
                     className="formControlTextModal"
+                    onChange={handleReviewInput}
                   ></textarea>
                 </div>
                 {/* <div className="reveiwModalSection">
@@ -53,7 +85,11 @@ class Modal extends React.Component {
                 <div className="reviewModalSectionDate">작성일</div>
                 <input className="inputTitle" type="date" />
               </div> */}
-                <button className="reviewBtn" type="Submit">
+                <button
+                  onClick={this.props.submitReview}
+                  className="reviewBtn"
+                  type="Submit"
+                >
                   완료
                 </button>
               </div>
