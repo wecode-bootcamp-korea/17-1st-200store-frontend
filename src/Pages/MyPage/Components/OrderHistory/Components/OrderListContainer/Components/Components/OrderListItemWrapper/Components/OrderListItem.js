@@ -16,6 +16,7 @@ class OrderListItem extends Component {
   };
 
   render() {
+    // console.log('review view on', this.props.isReviewViewOn);
     return (
       <tr className="OrderListItem">
         <td className="dateAndNumber">2021022212345</td>
@@ -28,18 +29,24 @@ class OrderListItem extends Component {
         </td>
         <td className="orderStatus">주문완료</td>
         <td className="confirmAndReview">
-          {!this.state.confirmPaymentBtn && (
+          {!this.props.isReviewViewOn && !this.state.confirmPaymentBtn && (
             <button className="confirmBtn" onClick={this.confirmPayment}>
               구매확정
             </button>
           )}
-          {this.state.confirmPaymentBtn && (
+          {!this.props.isReviewViewOn && this.state.confirmPaymentBtn && (
             <>
               <p>구매확정</p>
               <button className="reviewBtn" onClick={this.props.writeReview}>
                 리뷰쓰기
               </button>
             </>
+          )}
+
+          {this.props.isReviewViewOn && (
+            <button onClick={this.props.goToReview} className="viewReview">
+              리뷰보기
+            </button>
           )}
         </td>
       </tr>

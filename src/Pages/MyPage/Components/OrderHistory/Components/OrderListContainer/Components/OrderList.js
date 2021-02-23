@@ -9,7 +9,11 @@ class OrderList extends Component {
         <tbody className="orderItemContainer">
           <h4>2021-02-21</h4>
           {/* 몇개 샀는지 만큼 맵돌리기 */}
-          <OrderListItem writeReview={this.props.writeReview} />
+          <OrderListItem
+            writeReview={this.props.writeReview}
+            isReviewViewOn={this.props.isReviewViewOn}
+            goToReview={this.props.goToReview}
+          />
         </tbody>
         <div className="totalPrice">
           <p>

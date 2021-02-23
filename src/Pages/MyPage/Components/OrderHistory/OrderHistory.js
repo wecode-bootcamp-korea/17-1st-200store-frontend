@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
-import DatePicker from 'react-datepicker';
 import OrderListContainer from './Components/OrderListContainer/OrderListContainer';
 import Modal from '../Modal.js';
+import Calendar from './Components/Calendar/Calendar';
 import './OrderHistory.scss';
 import './react-datepicker.css';
 
 class OrderHistory extends Component {
   constructor(props) {
-    super(props); // React.Component의 생성자 메소드를 먼저 실행
+    super(props);
     this.state = {
       startDate: new Date(),
       endDate: new Date(),
-      optionColor: true,
       isReviewModalOn: false,
       isReviewViewOn: false,
       starRating: '',
@@ -131,111 +130,62 @@ class OrderHistory extends Component {
 
   ///리뷰를 등록했을때
   submitReview = () => {
-    fetch('data/cartListData.json', {
-      method: 'POST',
-      body: JSON.stringify({
-        starRating: this.state.starRating,
-        title: this.state.title,
-        content: this.state.content,
-        productId: 1,
-        orderId: 100,
-      }),
-    })
-      .then(res => res.json())
-      .then(res =>
-        res.message === 'SUCCESS'
-          ? alert('리뷰가 등록되었습니다')
-          : this.setState({
-              isReviewViewOn: true,
-            })
-      );
+    // fetch('data/cartListData.json', {
+    //   method: 'POST',
+    //   body: JSON.stringify({
+    //     starRating: this.state.starRating,
+    //     title: this.state.title,
+    //     content: this.state.content,
+    //     productId: 1,
+    //     orderId: 100,
+    //   }),
+    // })
+    // .then(res => res.json())
+    // .then(res =>
+    //   res.message === 'SUCCESS'
+    //     ? alert('리뷰가 등록되었습니다'):
+    console.log('찍힌다! 찍힌다 ! 찍힌다! 찍힌다!');
+    this.setState({
+      isReviewViewOn: true,
+      isReviewModalOn: false,
+    });
+    // );
+  };
+
+  goToReview = () => {
+    // fetch('', {
+    //   method: 'POST',
+    //   body: JSON.stringify({
+    //     productId: 1,
+    //   }),
+    // });
+    console.log('REVIEW로 가라');
   };
 
   render() {
-    let optionBtn = this.state.optionColor ? 'notClickedBtn' : 'clickedBtn';
-    console.log('첫날짜', this.state.startDate);
-    console.log('두번째', this.state.endDate);
-    console.log('modal', this.state.isReviewModalOn);
-    console.log('starRating>>>>', this.state.starRating);
-    console.log('title>>>>>', this.state.title);
-    console.log('content >>>>>', this.state.content);
+    console.log('token checkkk', localStorage.getItem('accessToken'));
     return (
       <div className="OrderHistory">
         <h1>주문목록/배송조회</h1>
-        <section>
-          <span>조회기간</span>
-          <div className="buttonContainer">
-            <button
-              className={optionBtn}
-              onClick={this.btnHandler}
-              value="오늘"
-            >
-              오늘
-            </button>
-            <button className={optionBtn} onClick={this.btnHandler} value="7일">
-              7일
-            </button>
-            <button
-              className={optionBtn}
-              onClick={this.btnHandler}
-              value="15일"
-            >
-              15일
-            </button>
-            <button
-              className={optionBtn}
-              onClick={this.handleBtnClicked}
-              value="1개월"
-            >
-              1개월
-            </button>
-            <button
-              className={optionBtn}
-              onClick={this.handleBtnClicked}
-              value="3개월"
-            >
-              3개월
-            </button>
-            <button
-              className={optionBtn}
-              onClick={this.handleBtnClicked}
-              value="1년"
-            >
-              1년
-            </button>
-          </div>
-          <div className="calendarContainer">
-            <div className="calendarWrapper">
-              <DatePicker
-                selected={this.state.startDate}
-                onChange={this.handleStartChange}
-                name="startDate"
-                dateFormat="MM/dd/yyyy"
-              />
-              <i className="far fa-calendar-alt" />
-            </div>
-            <span className="calendarConnect">~</span>
-            <div className="calendarWrapper">
-              <DatePicker
-                selected={this.state.endDate}
-                onChange={this.handleEndChange}
-                name="endDate"
-                dateFormat="MM/dd/yyyy"
-              />
-              <i className="far fa-calendar-alt" />
-            </div>
-          </div>
-          <div className="searchContainer">
-            <button className="searchHistory">조회</button>
-            <i className="fas fa-search" />
-          </div>
-        </section>
-        <OrderListContainer writeReview={this.writeReview} />
+        <Calendar
+          btnHandler={this.btnHandler}
+          handleBtnClicked={this.handleBtnClicked}
+          startDate={this.state.startDate}
+          endDate={this.state.endDate}
+          handleStartChange={this.handleStartChange}
+          handleEndChange={this.handleEndChange}
+        />
+        <OrderListContainer
+          goToReview={this.goToReview}
+          writeReview={this.writeReview}
+          isReviewViewOn={this.state.isReviewViewOn}
+        />
         {this.state.isReviewModalOn && (
           <Modal
             writeReview={this.writeReview}
             getStarValue={this.getStarValue}
             handleReviewInput={this.handleReviewInput}
+            submitReview={this.submitReview}
           />
         )}
       </div>

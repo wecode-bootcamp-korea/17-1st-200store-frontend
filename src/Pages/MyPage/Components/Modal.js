@@ -77,14 +77,6 @@ class Modal extends React.Component {
                     onChange={handleReviewInput}
                   ></textarea>
                 </div>
-                {/* <div className="reveiwModalSection">
-                <div className="reviewModalSectionWriter">작성자</div>
-                <input className="inputTitle" />
-              </div>
-              <div className="reveiwModalSection">
-                <div className="reviewModalSectionDate">작성일</div>
-                <input className="inputTitle" type="date" />
-              </div> */}
                 <button
                   onClick={this.props.submitReview}
                   className="reviewBtn"

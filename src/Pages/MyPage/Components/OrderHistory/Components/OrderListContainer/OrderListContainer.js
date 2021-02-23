@@ -19,7 +19,11 @@ class OrderListContainer extends Component {
             </tr>
           </thead>
           {/* //산 주문 횟수만큼 map 돌리기 */}
-          <OrderList writeReview={this.props.writeReview} />
+          <OrderList
+            writeReview={this.props.writeReview}
+            isReviewViewOn={this.props.isReviewViewOn}
+            goToReview={this.props.goToReview}
+          />
         </table>
       </div>
     );

@@ -1,0 +1,19 @@
+{
+  "sub_products": [
+    {
+      "id": 100,
+      "imageUrl": "https://images.unsplash.com/photo-1610300052051-a79c1ab1f8e8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+      "totalPrice": 24000,
+      "quantity": 2,
+      "productStatus": 2,
+      "isReview": false
+    },
+    {
+      "serialNumber": 543212345,
+      "orderStatus": 3,
+      "orderDate": "2021-02-03",
+      "orderId": 7777,
+      "subProducts": "이게뭐고..."
+    }
+  ]
+}
