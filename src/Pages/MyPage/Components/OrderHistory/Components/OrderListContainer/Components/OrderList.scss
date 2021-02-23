@@ -1,4 +1,5 @@
 tbody {
+  position: relative;
   margin: 10px;
   border-bottom: 2px solid black;
   h4 {
@@ -6,17 +7,18 @@ tbody {
     text-align: center;
     font-size: 15px;
   }
+}
+.totalPrice {
+  height: 30px;
+  position: absolute;
+  right: 210px;
+  // display: flex;
+  // align-items: flex-end;
 
-  .totalPrice {
-    height: 30px;
-    display: flex;
-    align-items: flex-end;
-
-    p {
-      span {
-        margin-left: 10px;
-        font-size: 25px;
-      }
+  p {
+    span {
+      margin-left: 10px;
+      font-size: 25px;
     }
   }
 }

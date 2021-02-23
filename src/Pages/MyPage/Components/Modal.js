@@ -33,7 +33,6 @@ class Modal extends React.Component {
                   ★★★★★
                 </div>
               </form>
-
               <div className="reveiwModalSection">
                 <div className="reviewModalSectionTitle">글제목</div>
                 <input className="inputTitle" />
