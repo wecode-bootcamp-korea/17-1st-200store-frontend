@@ -20,10 +20,10 @@ class Login extends Component {
     });
   };
 
-  handleClick = e => {
-    const { id, pw } = this.state;
-    id.length >= 5 && pw.length >= 8 ? this.goToMain() : alert('로그인실패');
-  };
+  // handleClick = e => {
+  //   const { id, pw } = this.state;
+  //   id.length >= 5 && pw.length >= 8 ? this.goToMain() : alert('로그인실패');
+  // };
 
   handleKeyPress = e => {
     const { pw, id } = this.state;
@@ -32,8 +32,8 @@ class Login extends Component {
         fetch(LoginApi, {
           method: 'POST',
           body: JSON.stringify({
-            user_id: this.state.id,
-            user_password: this.state.pw,
+            account: this.state.id,
+            password: this.state.pw,
           }),
         })
           .then(res => res.json())
@@ -44,7 +44,7 @@ class Login extends Component {
 
   loginCheck = res => {
     if (res.message === 'SUCCESS') {
-      localStorage.setItem('ACCESS_TOKEN', res.TOKEN);
+      localStorage.setItem('accessToken', res.accessToken);
       this.goToMain();
     } else {
       alert('로그인에 실패했습니다!');
@@ -72,9 +72,8 @@ class Login extends Component {
                   type="password"
                   name="pw"
                   onChange={this.handleInput}
-                  onKeyUp={this.onpwCheck}
+                  onKeyPress={this.handleKeyPress}
                 />
-                {<div className="errorMessage">{this.state.passwordError}</div>}
               </div>
               <div className="idChk">
                 <input type="checkBox" className="saveid" />
