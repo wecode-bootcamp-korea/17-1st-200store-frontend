@@ -57,22 +57,14 @@ class ProductDetail extends React.Component {
   };
 
   goToHeart = () => {
-    fetch('http://10.58.5.199:8000/order/cart', {
+    fetch('http://10.58.0.63:8000/product/product_like', {
       method: 'POST',
-      header: {
-        인증키: localStorage.getItem('access_token'),
+      headers: {
+        Authorization:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyX3BrIjoxfQ.WnriqHGfdo1cCfm4osWftUc1a4ntqI1yvQoXncGPgA7GWgNbdTwutuNM8d_5CTjaU9r68rAEZtgKZsAJtRQ4pw',
       },
       body: JSON.stringify({
         productId: this.state.productDetail[0].id,
-        totalPrice:
-          this.state.count *
-          Math.round(
-            (this.state.productDetail[0].price *
-              (1 - this.state.productDetail[0].sale)) /
-              100
-          ) *
-          100,
-        quantity: this.state.count,
       }),
     })
       .then(response => response.json())
@@ -87,7 +79,7 @@ class ProductDetail extends React.Component {
   goToCart = () => {
     fetch('http://10.58.5.199:8000/order/cart', {
       method: 'POST',
-      header: {
+      headers: {
         인증키: localStorage.getItem('access_token'),
       },
       body: JSON.stringify({
@@ -114,7 +106,7 @@ class ProductDetail extends React.Component {
   goToPayment = () => {
     fetch('http://10.58.5.199:8000/order/cart', {
       method: 'POST',
-      header: {
+      headers: {
         인증키: localStorage.getItem('access_token'),
       },
       body: JSON.stringify({
