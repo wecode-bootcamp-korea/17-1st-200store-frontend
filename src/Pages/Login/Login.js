@@ -21,9 +21,8 @@ class Login extends Component {
   };
 
   handleClick = e => {
-    this.state.id.length >= 5 && this.state.pw.length >= 8
-      ? this.goToMain()
-      : alert('로그인실패');
+    const { id, pw } = this.state;
+    id.length >= 5 && pw.length >= 8 ? this.goToMain() : alert('로그인실패');
   };
 
   handleKeyPress = e => {
