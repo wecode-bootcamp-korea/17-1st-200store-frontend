@@ -1,0 +1,74 @@
+@import '../../../../Styles/common.scss';
+
+.CartItem {
+  height: 100px;
+
+  td {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+  }
+  .checkbox {
+    width: 10px;
+
+    input {
+      width: 30px;
+      background-color: red;
+    }
+  }
+
+  .productInfo {
+    width: 500px;
+    display: flex;
+    align-items: center;
+
+    img {
+      margin: 0 10px;
+      width: 40px;
+    }
+
+    p {
+      margin-left: 10px;
+      font-weight: bold;
+      font-size: 13px;
+    }
+  }
+
+  .productQty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    i {
+      margin: 0 20px;
+      padding: 5px;
+      background-color: lightgrey;
+      border-radius: 10px;
+      color: white;
+      font-size: 10px;
+
+      &:hover {
+        background-color: var(--color-green);
+        cursor: pointer;
+      }
+    }
+
+    p {
+      font-size: 15px;
+    }
+  }
+
+  .productPrice {
+    width: 100px;
+  }
+  .deliveryFee {
+    border-left: 1px solid rgb(215, 214, 214);
+    width: 100px;
+
+    p {
+      margin-bottom: 4px;
+      color: gray;
+      font-weight: normal;
+    }
+  }
+}
