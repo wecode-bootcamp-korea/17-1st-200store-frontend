@@ -1,9 +1,10 @@
 import React from 'react';
-import Reviews from './review';
-import AdminMsg from './admin_msg';
-import Itemgoodstab from './Itemgoodstab';
-import ProductdetailTable from './productdetailtable';
-import Modal from './Modal';
+import Reviews from './Components/review';
+import AdminMsg from './Components/admin_msg';
+import Itemgoodstab from './Components/Itemgoodstab';
+import ProductdetailTable from './Components/productdetailtable';
+// import Modal from './Modal';
+import ItemPhotoInfoSec from './Components/itemphotoinfosec';
 import './ProductDetail.scss';
 
 class ProductDetail extends React.Component {
@@ -96,163 +97,21 @@ class ProductDetail extends React.Component {
   };
 
   render() {
-    console.log('productDetail list', this.state.productDetail);
     const { count } = this.state;
-
+    console.log(this.state.productDetail);
     return (
       <div className="productDetail">
         <div className="contents">
-          {this.state.productDetail.map(detail => {
-            const finalPrice = (
-              Math.round((detail.price * (1 - detail.sale)) / 100) * 100
-            ).toLocaleString();
-            return (
-              <div className="itemPhotoInfoSec" id={detail.id}>
-                <div className="itemPhotoViewBox">
-                  <div className="itemPhotoBig">
-                    <img
-                      src={detail.imageUrl}
-                      alt="ㅋㅋ안 보이는 양말 세트"
-                      className="middle"
-                    />
-                  </div>
-                </div>
-                <div className="itemInfoBox">
-                  <div className="itemDetailCont">
-                    <div className="itemDetail">
-                      <h3 className="datailName">{detail.name}</h3>
-                    </div>
-                    <div className="itemDetailList">
-                      {detail.sale > 0 && detail.stock > 0 && (
-                        <dl>
-                          <dt>정가</dt>
-                          <dd>
-                            <del>
-                              <span className="originalPrice">
-                                {detail.price.toLocaleString()}원
-                              </span>
-                            </del>
-                          </dd>
-                        </dl>
-                      )}
-                      <dl className="itemPrice">
-                        <dt>판매가격</dt>
-                        <dd>
-                          {!detail.stock && (
-                            <strong className="soldOutPrice">품절</strong>
-                          )}
-                          {detail.stock > 0 && <strong>{finalPrice}원</strong>}
-                        </dd>
-                      </dl>
-                      <dl className="itemDelivery">
-                        <dt>배송정보</dt>
-                        <dd>
-                          <p className="deliveryFeeFree">
-                            2,500원 (3만원 이상 구매시 무료)
-                          </p>
-                          <p className="limitTime">오후 2시 당일배송마감</p>
-                        </dd>
-                      </dl>
-                    </div>
-                    <div className="optionDisplayAreaWrap" />
-                    <table className="optionDisplayArea">
-                      <tbody>
-                        <tr className="checkOption">
-                          <td className="cartPrdtName">
-                            <p className="productName">ㅋㅋ보이는 연필 세트</p>
-                          </td>
-                          <td className="prdtCount">
-                            <div className="count">
-                              <input
-                                type="text"
-                                value={count}
-                                className="countBox"
-                              />
-                              <div className="countBtn">
-                                <button
-                                  className="upGoodsCnt"
-                                  onClick={this.countUp}
-                                >
-                                  ∧
-                                </button>
-                                <button
-                                  className="downGoodsCnt"
-                                  onClick={this.countDown}
-                                >
-                                  ∨
-                                </button>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="itemChoicePrice">
-                            <strong className="optionPriceDisplay">
-                              {(count * detail.price).toLocaleString()}
-                            </strong>
-                            원
-                          </td>
-                          <td className="itemDelete">
-                            <button
-                              className="delGoodsCnt"
-                              onClick={this.countZero}
-                            >
-                              X
-                            </button>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <hr className="hairline" />
-                    <dl className="totalAmount">
-                      <dt>총 합계금액</dt>
-                      <dd className="totalPricedd">
-                        <strong className="totalPrice">
-                          {(count * detail.price).toLocaleString()}
-                          <b>원</b>
-                        </strong>
-                      </dd>
-                    </dl>
-                    <div className="btnChoiceBox">
-                      <button type="button" className="btnAddwish">
-                        <i class="far fa-heart" />
-                      </button>
-                      {!detail.stock && (
-                        <button
-                          type="button"
-                          className="btnAddcartNone"
-                          disabled
-                        >
-                          장바구니
-                        </button>
-                      )}
-                      {detail.stock > 0 && (
-                        <button
-                          type="button"
-                          className="btnAddcart"
-                          onClick={this.goToCart}
-                        >
-                          장바구니
-                        </button>
-                      )}
-                      {!detail.stock && (
-                        <button type="button" className="soldOut" disabled>
-                          SOLD OUT
-                        </button>
-                      )}
-                      {detail.stock > 0 && (
-                        <button
-                          type="button"
-                          class="btnAddorder"
-                          onClick={this.goToPayment}
-                        >
-                          바로 구매
-                        </button>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+          {/* 컴포넌트화 */}
+          <ItemPhotoInfoSec
+            productDetail={this.state.productDetail}
+            countUp={this.countUp}
+            countDown={this.countDown}
+            countZero={this.countZero}
+            goToCart={this.goToCart}
+            goToPayment={this.goToPayment}
+            count={this.state.count}
+          />
           <div className="detail">
             <Itemgoodstab />
             {this.state.productImage.map(image => {
@@ -295,17 +154,8 @@ class ProductDetail extends React.Component {
                             {this.state.productReview.length}
                           </span>
                         </h3>
-
-                        <button
-                          className="btnReviewsWrite"
-                          onClick={this.handleModal}
-                        >
-                          상품후기 글쓰기
-                        </button>
                       </div>
-                      {this.state.isModalView && (
-                        <Modal handleModal={this.handleModal} />
-                      )}
+
                       <Reviews reviewList={this.state.productReview} />
                       <div className="page">
                         <ul>
