@@ -18,7 +18,6 @@ class Main extends Component {
     })
       .then(res => res.json())
       .then(res => {
-        console.log(res);
         this.setState({
           allList: res,
         });

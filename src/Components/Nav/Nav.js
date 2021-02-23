@@ -24,7 +24,7 @@ class Nav extends Component {
   }
 
   handleScroll = () => {
-    this.setState({ navScrolled: window.pageYOffset > 200 });
+    this.setState({ navScrolled: window.pageYOffset > 0 });
   };
 
   goToLogin = () => {
@@ -36,7 +36,6 @@ class Nav extends Component {
   goToMyPage = () => {
     this.props.history.push('/mypage');
   };
-
   goToCart = () => {
     this.props.history.push('/cart');
   };
@@ -93,8 +92,8 @@ class Nav extends Component {
           </div>
         )}
         <ul className="menuContainer">
-          {menuList.map(menu => {
-            return <li>{menu.title}</li>;
+          {menuList.map((menu, idx) => {
+            return <li key={idx}>{menu.title}</li>;
           })}
         </ul>
       </nav>
