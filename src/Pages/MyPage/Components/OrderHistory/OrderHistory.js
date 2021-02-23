@@ -13,6 +13,7 @@ class OrderHistory extends Component {
       endDate: new Date(),
       optionColor: true,
       isReviewModalOn: false,
+      isReviewViewOn: false,
     };
     this.handleStartChange = this.handleStartChange.bind(this);
     this.handleEndChange = this.handleEndChange.bind(this);

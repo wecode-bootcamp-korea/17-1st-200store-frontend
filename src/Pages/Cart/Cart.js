@@ -51,7 +51,7 @@ class Cart extends Component {
     }));
   };
 
-  handleDelete = () => {
+  handleDelete = e => {
     this.setState(prevState => ({
       cartList: prevState.cartList.filter(item => !item.value),
     }));
@@ -119,7 +119,6 @@ class Cart extends Component {
             onIncrement={handleIncrement}
             onDecrement={handleDecrement}
             onChecked={handleChange}
-            allChecked={this.state.allChecked}
           />
         )}
         <p className="continueShop">

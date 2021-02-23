@@ -12,7 +12,6 @@
   width: 100%;
 
   .reactModal {
-    // margin-top: 10%;
     .reviewModal {
       position: relative;
       width: 500px;
@@ -20,6 +19,7 @@
       margin: 0 auto;
       border-radius: 4px;
       border: 2px solid var(--color-green);
+      box-shadow: 2px 3px 5px var(--color-green);
       background-color: white;
       color: black;
       padding: 40px 40px 0;

@@ -30,7 +30,6 @@ class CartList extends Component {
           </thead>
           <tbody className="cartItemContainer">
             {cartList.map(item => {
-              console.log({ item });
               return (
                 <CartItem
                   cartItem={item}

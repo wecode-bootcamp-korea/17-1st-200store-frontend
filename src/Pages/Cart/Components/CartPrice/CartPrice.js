@@ -31,7 +31,7 @@ class CartPrice extends Component {
           </p>
         </div>
         <i class="fas fa-equals" />
-        <div className="totalPrice">
+        <div className="totalPricetoPayment">
           <p>합계</p>
           <p>
             <strong className="totalColor">
