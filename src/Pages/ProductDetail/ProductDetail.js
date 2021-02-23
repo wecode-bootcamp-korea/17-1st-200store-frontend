@@ -24,8 +24,8 @@ class ProductDetail extends React.Component {
   };
 
   componentDidMount() {
-    fetch('http://10.58.2.240:8000/product/goods_view/1', { method: 'GET' })
-      // fetch('/data/productdetaildata.json')
+    // fetch('http://10.58.2.240:8000/product/goods_view/1', { method: 'GET' })
+    fetch('/data/productdetaildata.json')
       .then(res => res.json())
       .then(data => {
         console.log('data받기', data.data);
@@ -55,6 +55,46 @@ class ProductDetail extends React.Component {
     this.setState({
       count: 0,
     });
+  };
+
+  goToCart = () => {
+    fetch('LOG_IN_API', {
+      method: 'POST',
+      header: {
+        인증키: localStorage.getItem('access_token'),
+      },
+      body: JSON.stringify({
+        productId: this.state.productDetail.id,
+        totalPrice: this.state.finalPrice,
+        quantity: this.state.count,
+      }),
+    })
+      .then(response => response.json())
+      .then(result =>
+        result.message === 'SUCCESS'
+          ? this.props.history.push('/cart')
+          : this.props.history.push('/login')
+      );
+  };
+
+  goToPayment = () => {
+    fetch('LOG_IN_API', {
+      method: 'POST',
+      header: {
+        인증키: localStorage.getItem('access_token'),
+      },
+      body: JSON.stringify({
+        productId: this.state.productDetail.id,
+        totalPrice: this.state.finalPrice,
+        quantity: this.state.count,
+      }),
+    })
+      .then(response => response.json())
+      .then(result =>
+        result.message === 'SUCCESS'
+          ? this.props.history.push('/cart')
+          : this.props.history.push('/login')
+      );
   };
 
   render() {
@@ -187,7 +227,11 @@ class ProductDetail extends React.Component {
                         </button>
                       )}
                       {detail.stock > 0 && (
-                        <button type="button" className="btnAddcart">
+                        <button
+                          type="button"
+                          className="btnAddcart"
+                          onClick={this.goToCart}
+                        >
                           장바구니
                         </button>
                       )}
@@ -197,7 +241,11 @@ class ProductDetail extends React.Component {
                         </button>
                       )}
                       {detail.stock > 0 && (
-                        <button type="button" class="btnAddorder">
+                        <button
+                          type="button"
+                          class="btnAddorder"
+                          onClick={this.goToPayment}
+                        >
                           바로 구매
                         </button>
                       )}
