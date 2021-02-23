@@ -1,0 +1,50 @@
+@import '../../../../Styles/common.scss';
+@import url('https://use.fontawesome.com/releases/v5.15.2/css/all.css');
+
+.CartList {
+  table {
+    width: 100%;
+    margin: 0 auto;
+    border-top: 1px solid black;
+    border-bottom: 1px solid rgba(211, 211, 211, 0.495);
+    font-size: 13px;
+    font-weight: bold;
+
+    .headRow {
+      height: 40px;
+      background-color: #f7f7f7;
+      border-bottom: 1px solid rgba(211, 211, 211, 0.495);
+
+      th {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+
+        input {
+          padding: 3px;
+        }
+      }
+
+      .checkBoxAll {
+        width: 20px;
+        padding: 3px;
+      }
+      .productInfo {
+        width: 500px;
+      }
+      .productQty {
+        width: 100px;
+      }
+      .productPrice {
+        width: 100px;
+      }
+      .deliveryFee {
+        width: 100px;
+      }
+    }
+  }
+
+  tbody {
+    width: 100%;
+  }
+}
