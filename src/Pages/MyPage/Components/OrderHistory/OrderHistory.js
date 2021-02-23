@@ -16,10 +16,24 @@ class OrderHistory extends Component {
       starRating: '',
       title: '',
       content: '',
+      orderList: [],
+      btnDisabled: false,
     };
     this.handleStartChange = this.handleStartChange.bind(this);
     this.handleEndChange = this.handleEndChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    fetch('/data/orderData.json', {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          orderList: res,
+        });
+      });
   }
 
   handleStartChange(date) {
@@ -105,9 +119,11 @@ class OrderHistory extends Component {
     }
   };
 
-  btnHandler = e => {
-    this.handleBtnColor();
-    this.handleBtnClicked(e);
+  handleStatus = e => {
+    const ProductStatus = ['취소', '교환', '환불', '구매확정'];
+    const idx = e.target.value;
+    const alertStatus = ProductStatus[idx];
+    alert(alertStatus + '되었습니다!');
   };
 
   writeReview = () => {
@@ -144,7 +160,6 @@ class OrderHistory extends Component {
     // .then(res =>
     //   res.message === 'SUCCESS'
     //     ? alert('리뷰가 등록되었습니다'):
-    console.log('찍힌다! 찍힌다 ! 찍힌다! 찍힌다!');
     this.setState({
       isReviewViewOn: true,
       isReviewModalOn: false,
@@ -159,33 +174,56 @@ class OrderHistory extends Component {
     //     productId: 1,
     //   }),
     // });
-    console.log('REVIEW로 가라');
+    alert('리뷰로 가버렸...');
   };
 
   render() {
-    console.log('token checkkk', localStorage.getItem('accessToken'));
+    const {
+      btnHandler,
+      handleBtnClicked,
+      handleStartChange,
+      handleEndChange,
+      goToReview,
+      writeReview,
+      handleStatus,
+      getStarValue,
+      handleReviewInput,
+      submitReview,
+    } = this;
+
+    const {
+      startDate,
+      endDate,
+      orderList,
+      isReviewViewOn,
+      btnDisabled,
+      isReviewModalOn,
+    } = this.state;
     return (
       <div className="OrderHistory">
         <h1>주문목록/배송조회</h1>
         <Calendar
-          btnHandler={this.btnHandler}
-          handleBtnClicked={this.handleBtnClicked}
-          startDate={this.state.startDate}
-          endDate={this.state.endDate}
-          handleStartChange={this.handleStartChange}
-          handleEndChange={this.handleEndChange}
+          btnHandler={btnHandler}
+          handleBtnClicked={handleBtnClicked}
+          startDate={startDate}
+          endDate={endDate}
+          handleStartChange={handleStartChange}
+          handleEndChange={handleEndChange}
         />
         <OrderListContainer
-          goToReview={this.goToReview}
-          writeReview={this.writeReview}
-          isReviewViewOn={this.state.isReviewViewOn}
+          orderList={orderList}
+          goToReview={goToReview}
+          writeReview={writeReview}
+          isReviewViewOn={isReviewViewOn}
+          handleStatus={handleStatus}
+          btnDisabled={btnDisabled}
         />
-        {this.state.isReviewModalOn && (
+        {isReviewModalOn && (
           <Modal
-            writeReview={this.writeReview}
-            getStarValue={this.getStarValue}
-            handleReviewInput={this.handleReviewInput}
-            submitReview={this.submitReview}
+            writeReview={writeReview}
+            getStarValue={getStarValue}
+            handleReviewInput={handleReviewInput}
+            submitReview={submitReview}
           />
         )}
       </div>

@@ -4,22 +4,34 @@ import './OrderList.scss';
 
 class OrderList extends Component {
   render() {
+    const {
+      writeReview,
+      isReviewViewOn,
+      goToReview,
+      handleStatus,
+      btnDisabled,
+    } = this.props;
+    const serialNum = this.props.orderArticle.serialNumber;
+    const orderStatusId = this.props.orderArticle.orderStatus;
     return (
       <>
         <tbody className="orderItemContainer">
-          <h4>2021-02-21</h4>
-          {/* 몇개 샀는지 만큼 맵돌리기 */}
-          <OrderListItem
-            writeReview={this.props.writeReview}
-            isReviewViewOn={this.props.isReviewViewOn}
-            goToReview={this.props.goToReview}
-          />
+          <h4>{this.props.orderArticle.orderDate}</h4>
+          {this.props.orderArticle.subProducts.map(item => {
+            return (
+              <OrderListItem
+                orderItem={item}
+                serialNum={serialNum}
+                orderStatusId={orderStatusId}
+                writeReview={writeReview}
+                isReviewViewOn={isReviewViewOn}
+                goToReview={goToReview}
+                handleStatus={handleStatus}
+                btnDisabled={btnDisabled}
+              />
+            );
+          })}
         </tbody>
-        <div className="totalPrice">
-          <p>
-            총 금액<span>100,000원</span>
-          </p>
-        </div>
       </>
     );
   }

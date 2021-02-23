@@ -4,6 +4,13 @@ import './OrderListContainer.scss';
 
 class OrderListContainer extends Component {
   render() {
+    const {
+      writeReview,
+      isReviewViewOn,
+      goToReview,
+      handleStatus,
+      btnDisabled,
+    } = this.props;
     return (
       <div className="OrderListContainer">
         <h3>주문목록 / 배송조회 내역 총 0건</h3>
@@ -18,12 +25,18 @@ class OrderListContainer extends Component {
               <th className="confirmAndReview">확인/리뷰</th>
             </tr>
           </thead>
-          {/* //산 주문 횟수만큼 map 돌리기 */}
-          <OrderList
-            writeReview={this.props.writeReview}
-            isReviewViewOn={this.props.isReviewViewOn}
-            goToReview={this.props.goToReview}
-          />
+          {this.props.orderList.map(item => {
+            return (
+              <OrderList
+                orderArticle={item}
+                writeReview={writeReview}
+                isReviewViewOn={isReviewViewOn}
+                goToReview={goToReview}
+                handleStatus={handleStatus}
+                btnDisabled={btnDisabled}
+              />
+            );
+          })}
         </table>
       </div>
     );

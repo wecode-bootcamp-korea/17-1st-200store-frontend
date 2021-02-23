@@ -16,35 +16,56 @@ class OrderListItem extends Component {
   };
 
   render() {
-    // console.log('review view on', this.props.isReviewViewOn);
+    const {
+      serialNum,
+      orderItem,
+      btnDisabled,
+      handleStatus,
+      isReviewViewOn,
+      writeReview,
+      goToReview,
+      orderStatusId,
+    } = this.props;
+    const { confirmPaymentBtn } = this.state;
+    const Oid = orderStatusId - 1;
+    const Pid = orderItem.productStatus - 1;
+    const OrderStatus = ['입금대기', '입금완료', '배송중', '배송완료'];
+    const ProductStatus = ['취소', '교환', '환불', '구매확정'];
     return (
       <tr className="OrderListItem">
-        <td className="dateAndNumber">2021022212345</td>
-        <td className="nameAndOption">이건 상품명입니다</td>
+        <td className="dateAndNumber">{serialNum}</td>
+        <td className="nameAndOption">{orderItem.name}</td>
         <td className="price">
-          <span>1200원</span>
+          <span>
+            {(orderItem.totalPrice / orderItem.quantity).toLocaleString()}원
+          </span>
         </td>
         <td className="qty">
-          <span>3개</span>
+          <span>{orderItem.quantity}개</span>
         </td>
-        <td className="orderStatus">주문완료</td>
+        <td className="orderStatus">{OrderStatus[Oid]}</td>
         <td className="confirmAndReview">
-          {!this.props.isReviewViewOn && !this.state.confirmPaymentBtn && (
+          {Pid + 1 !== 4 && !btnDisabled && (
+            <button onClick={handleStatus} value={Pid} className="statusBtn">
+              교환/취소/환불
+            </button>
+          )}
+          {Pid + 1 !== 4 && btnDisabled && <p>{ProductStatus[Pid]}</p>}
+          {Pid + 1 === 4 && !isReviewViewOn && !confirmPaymentBtn && (
             <button className="confirmBtn" onClick={this.confirmPayment}>
               구매확정
             </button>
           )}
-          {!this.props.isReviewViewOn && this.state.confirmPaymentBtn && (
+          {!isReviewViewOn && confirmPaymentBtn && (
             <>
               <p>구매확정</p>
-              <button className="reviewBtn" onClick={this.props.writeReview}>
+              <button className="reviewBtn" onClick={writeReview}>
                 리뷰쓰기
               </button>
             </>
           )}
-
-          {this.props.isReviewViewOn && (
-            <button onClick={this.props.goToReview} className="viewReview">
+          {Pid + 1 === 4 && isReviewViewOn && (
+            <button onClick={goToReview} className="viewReview">
               리뷰보기
             </button>
           )}
