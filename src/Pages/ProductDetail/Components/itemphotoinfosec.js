@@ -4,18 +4,25 @@ class ItemPhotoInfoSec extends React.Component {
   render() {
     const {
       count,
-      goToCart,
-      goToPayment,
       countUp,
       countDown,
       countZero,
+      goToHeart,
+      goToCart,
+      goToPayment,
     } = this.props;
     return (
       <>
         {this.props.productDetail.map(detail => {
-          const finalPrice = (
+          const salePrice = (
             Math.round((detail.price * (1 - detail.sale)) / 100) * 100
           ).toLocaleString();
+          const finalPrice = (
+            Math.round((detail.price * (1 - detail.sale)) / 100) *
+            100 *
+            count
+          ).toLocaleString();
+
           return (
             <div className="itemPhotoInfoSec" id={detail.id}>
               <div className="itemPhotoViewBox">
@@ -51,7 +58,7 @@ class ItemPhotoInfoSec extends React.Component {
                         {!detail.stock && (
                           <strong className="soldOutPrice">품절</strong>
                         )}
-                        {detail.stock > 0 && <strong>{finalPrice}원</strong>}
+                        {detail.stock > 0 && <strong>{salePrice}원</strong>}
                       </dd>
                     </dl>
                     <dl className="itemDelivery">
@@ -93,7 +100,7 @@ class ItemPhotoInfoSec extends React.Component {
                         </td>
                         <td className="itemChoicePrice">
                           <strong className="optionPriceDisplay">
-                            {(count * detail.price).toLocaleString()}
+                            {finalPrice.toLocaleString()}
                           </strong>
                           원
                         </td>
@@ -110,13 +117,17 @@ class ItemPhotoInfoSec extends React.Component {
                     <dt>총 합계금액</dt>
                     <dd className="totalPricedd">
                       <strong className="totalPrice">
-                        {(count * detail.price).toLocaleString()}
+                        {finalPrice}
                         <b>원</b>
                       </strong>
                     </dd>
                   </dl>
                   <div className="btnChoiceBox">
-                    <button type="button" className="btnAddwish">
+                    <button
+                      type="button"
+                      className="btnAddwish"
+                      onClick={goToHeart}
+                    >
                       <i class="far fa-heart" />
                     </button>
                     {!detail.stock && (

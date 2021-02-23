@@ -56,15 +56,50 @@ class ProductDetail extends React.Component {
     });
   };
 
-  goToCart = () => {
-    fetch('LOG_IN_API', {
+  goToHeart = () => {
+    fetch('http://10.58.5.199:8000/order/cart', {
       method: 'POST',
       header: {
         인증키: localStorage.getItem('access_token'),
       },
       body: JSON.stringify({
-        productId: this.state.productDetail.id,
-        totalPrice: this.state.finalPrice,
+        productId: this.state.productDetail[0].id,
+        totalPrice:
+          this.state.count *
+          Math.round(
+            (this.state.productDetail[0].price *
+              (1 - this.state.productDetail[0].sale)) /
+              100
+          ) *
+          100,
+        quantity: this.state.count,
+      }),
+    })
+      .then(response => response.json())
+      .then(result => {
+        console.log(result);
+        result.message === 'SUCCESS'
+          ? this.props.history.push('/mypage')
+          : this.props.history.push('/login');
+      });
+  };
+
+  goToCart = () => {
+    fetch('http://10.58.5.199:8000/order/cart', {
+      method: 'POST',
+      header: {
+        인증키: localStorage.getItem('access_token'),
+      },
+      body: JSON.stringify({
+        productId: this.state.productDetail[0].id,
+        totalPrice:
+          this.state.count *
+          Math.round(
+            (this.state.productDetail[0].price *
+              (1 - this.state.productDetail[0].sale)) /
+              100
+          ) *
+          100,
         quantity: this.state.count,
       }),
     })
@@ -77,21 +112,21 @@ class ProductDetail extends React.Component {
   };
 
   goToPayment = () => {
-    fetch('LOG_IN_API', {
+    fetch('http://10.58.5.199:8000/order/cart', {
       method: 'POST',
       header: {
         인증키: localStorage.getItem('access_token'),
       },
       body: JSON.stringify({
-        productId: this.state.productDetail.id,
-        totalPrice: this.state.finalPrice,
+        productId: this.state.productDetail[0].id,
+        totalPrice: this.state.count * this.state.productDetail[0].price,
         quantity: this.state.count,
       }),
     })
       .then(response => response.json())
       .then(result =>
         result.message === 'SUCCESS'
-          ? this.props.history.push('/cart')
+          ? this.props.history.push('/payment')
           : this.props.history.push('/login')
       );
   };
@@ -111,6 +146,7 @@ class ProductDetail extends React.Component {
             goToCart={this.goToCart}
             goToPayment={this.goToPayment}
             count={this.state.count}
+            goToHeart={this.goToHeart}
           />
           <div className="detail">
             <Itemgoodstab />
