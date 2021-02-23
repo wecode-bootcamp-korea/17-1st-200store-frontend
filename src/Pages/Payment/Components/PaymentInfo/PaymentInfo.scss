@@ -2,6 +2,7 @@ table {
   tr {
     border-bottom: 1px solid lightgrey;
     height: 60px;
+
     th {
       background-color: #f7f7f7;
       vertical-align: middle;
@@ -11,8 +12,10 @@ table {
       font-size: 13px;
       font-weight: bold;
     }
+
     .notRequired {
       list-style-type: none;
+
       li {
         padding-left: 18px;
       }

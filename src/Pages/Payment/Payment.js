@@ -92,7 +92,6 @@ class Payment extends Component {
   // };
 
   render() {
-    console.log(this.state.buyerPhone);
     const width = 595;
     const height = 450;
     const modalStyle = {
@@ -143,7 +142,7 @@ class Payment extends Component {
           handleEmailInput={handleEmailInput}
         />
         <h2>배송정보</h2>
-        {isDaumPost ? (
+        {isDaumPost && (
           <DaumPostCode
             onComplete={handleAddress}
             autoClose
@@ -152,7 +151,7 @@ class Payment extends Component {
             style={modalStyle}
             isDaumPost={isDaumPost}
           />
-        ) : null}
+        )}
         <DeliveryInfo
           handleAllInput={handleAllInput}
           receiverName={receiverName}
