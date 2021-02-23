@@ -14,11 +14,12 @@ class Cart extends Component {
 
   //backend와 통신할때는 cartList: res.result
   componentDidMount() {
-    fetch('data/cartListData.json')
+    fetch('http://10.58.5.199:8000/order/cart')
       .then(res => res.json())
       .then(res => {
+        console.log('getgetget', res);
         this.setState({
-          cartList: res,
+          cartList: res.result,
         });
       });
   }
@@ -52,6 +53,23 @@ class Cart extends Component {
   };
 
   handleDelete = () => {
+    fetch('http://10.58.5.199:8000/order/cart', {
+      method: 'DELETE',
+      headers: {
+        Authorization:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyX3BrIjoxfQ.WnriqHGfdo1cCfm4osWftUc1a4ntqI1yvQoXncGPgA7GWgNbdTwutuNM8d_5CTjaU9r68rAEZtgKZsAJtRQ4pw',
+      },
+      body: JSON.stringify({
+        product: this.state.cartList.filter(item => item.value),
+      }),
+    })
+      .then(response => response.json())
+      .then(res => {
+        console.log('backend message>>>>', res);
+        if (res.message === 'SUCCESS') {
+          alert('선택 상품을 삭제 완료 하였습니다.');
+        } else alert('선택 상품 삭제를 실패 하였습니다');
+      });
     this.setState(prevState => ({
       cartList: prevState.cartList.filter(item => !item.value),
     }));
@@ -89,12 +107,15 @@ class Cart extends Component {
     const selectedItems = cartList.filter(item => item.value);
     const sumPrice = Math.floor(
       selectedItems.reduce(
-        (acc, item) => acc + item.totalPrice * item.quantity,
+        (acc, item) => acc + item.eachPrice * item.quantity,
         0
       )
     );
+    // const selectedItemsLength = cartList
+
     const deliveryFee = sumPrice < 30000 ? 2500 : 0;
-    const totalPrice = sumPrice + deliveryFee;
+    const price = sumPrice + deliveryFee;
+    console.log('parent sumprice', sumPrice);
     return (
       <div className="Cart">
         <div className="cartTitleContainer">
@@ -131,7 +152,7 @@ class Cart extends Component {
           selectedItems={selectedItems}
           sumPrice={sumPrice}
           deliveryFee={deliveryFee}
-          totalPrice={totalPrice}
+          price={price}
         />
         <div className="buttonContainer">
           <div className="leftButtonContainer">

@@ -39,7 +39,7 @@ class CartList extends Component {
                   imgSrc={item.urlImage}
                   name={item.product}
                   quantity={item.quantity}
-                  price={item.totalPrice}
+                  price={item.eachPrice}
                   onIncrement={onIncrement}
                   onDecrement={onDecrement}
                   onChecked={onChecked}

@@ -14,8 +14,10 @@ class CartItem extends Component {
       onDecrement,
       onIncrement,
     } = this.props;
-    const productPrice = price * quantity;
-    console.log('this.props.cartItem.value', this.props.cartItem.value);
+    const eachPrice = price / quantity;
+
+    console.log('productPrice', eachPrice);
+
     return (
       <tr className="CartItem">
         <td className="checkbox">
@@ -39,7 +41,9 @@ class CartItem extends Component {
             <i class="fas fa-plus" onClick={() => onIncrement(cartItem)} />
           </div>
         </td>
-        <td className="productPrice">{productPrice.toLocaleString()}원</td>
+        <td className="productPrice">
+          {(price * quantity).toLocaleString()}원
+        </td>
       </tr>
     );
   }
