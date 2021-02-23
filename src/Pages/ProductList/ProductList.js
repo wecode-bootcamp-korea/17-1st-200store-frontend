@@ -13,13 +13,15 @@ class ProductList extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   fetch('/ProductListData.json')
-  //     .then(res => res.json())
-  //     .then(res => {
-  //       this.setState({});
-  //     });
-  // }
+  componentDidMount() {
+    fetch('/ProductListData.json')
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          productList: res,
+        });
+      });
+  }
 
   getData = () => {
     fetch('/ProductList.json')
@@ -42,7 +44,8 @@ class ProductList extends Component {
 
   render() {
     const { productList } = this.state;
-    console.log('확인', productList.price);
+    // console.log(productList[0].howMuchSale);
+
     return (
       <>
         <div className="Container">
@@ -115,7 +118,7 @@ class ProductList extends Component {
                     isBest={item.isBest}
                     isNew={item.isNew}
                     isSale={item.isSale}
-                    howMuchSale={item.sale}
+                    sale={item.sale}
                     stock={item.stock}
                   />
                 );

@@ -2,11 +2,16 @@ import React, { Component } from 'react';
 import './Product.scss';
 
 class Product extends Component {
-  constructor(props) {
-    super(props);
-    console.log(props.isBest);
-  }
   render() {
+    // const saleNumToInt = Math.ceil(this.props.sale);
+    // const saleNumber = this.props.sale * 100;
+    // const originalPrice = Math.ceil(
+    //   this.props.price - this.finalPrice
+    // ).toLocaleString();
+    const finalPrice = Math.round(
+      (this.props.price * (1 - this.props.sale)) / 100
+    ).toLocaleString();
+
     const {
       key,
       price,
@@ -15,10 +20,14 @@ class Product extends Component {
       isBest,
       isNew,
       isSale,
-      howMuchSale,
+      sale,
       stock,
     } = this.props;
-    console.log(stock);
+
+    // console.log('세일', this.props.sale);
+    // console.log('세일', finalPrice);
+    console.log('확인', this.originalPrice);
+
     return (
       <div className="Best">
         <div
@@ -47,17 +56,14 @@ class Product extends Component {
           )}
           {stock === 0 && <span className="soldOutText">SOLD OUT</span>}
         </div>
-        {howMuchSale > 0 && (
-          <span className="howMuchSale"> {howMuchSale}%</span>
-        )}
+
+        {sale > 0 && <span className="sale"> {sale}%</span>}
         <p>{name}</p>
-        {howMuchSale === 0 && (
-          <p className="price">{price.toLocaleString()}원</p>
-        )}
-        {this.props.howMuchSale > 0 && (
+        {sale === 0 && <p className="price">{price.toLocaleString()}원</p>}
+        {sale > 0 && (
           <div className="priceContainer">
             <p className="oldPrice"> {price.toLocaleString()}원 </p>
-            <p className="salePrice">{this.finalPrice}원</p>
+            <p className="salePrice">{finalPrice}원</p>
           </div>
         )}
       </div>
