@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
-import OrderList from '../OrderList/OrderList';
-
+import OrderListContainer from './Components/OrderListContainer/OrderListContainer';
+import Modal from '../Modal.js';
 import './OrderHistory.scss';
 import './react-datepicker.css';
 
@@ -12,6 +12,7 @@ class OrderHistory extends Component {
       startDate: new Date(),
       endDate: new Date(),
       optionColor: true,
+      isReviewModalOn: false,
     };
     this.handleStartChange = this.handleStartChange.bind(this);
     this.handleEndChange = this.handleEndChange.bind(this);
@@ -106,10 +107,16 @@ class OrderHistory extends Component {
     this.handleBtnClicked(e);
   };
 
+  writeReview = () => {
+    this.setState({
+      isReviewModalOn: !this.state.isReviewModalOn,
+    });
+  };
   render() {
     let optionBtn = this.state.optionColor ? 'notClickedBtn' : 'clickedBtn';
     console.log('첫날짜', this.state.startDate);
     console.log('두번째', this.state.endDate);
+    console.log('modal', this.state.isReviewModalOn);
     return (
       <div className="OrderHistory">
         <h1>주문목록/배송조회</h1>
@@ -181,7 +188,8 @@ class OrderHistory extends Component {
             <i className="fas fa-search" />
           </div>
         </section>
-        <OrderList />
+        <OrderListContainer writeReview={this.writeReview} />
+        {this.state.isReviewModalOn && <Modal writeReview={this.writeReview} />}
       </div>
     );
   }

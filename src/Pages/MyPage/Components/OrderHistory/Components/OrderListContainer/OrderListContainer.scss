@@ -1,4 +1,8 @@
-.OrderList {
+@import '../../../../../../Styles/common.scss';
+@import url('https://use.fontawesome.com/releases/v5.15.2/css/all.css');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
+.OrderListContainer {
   h3 {
     margin: 12px 0px;
     font-size: 15px;
@@ -16,7 +20,12 @@
       background-color: #f7f7f7;
       border-bottom: 1px solid rgba(211, 211, 211, 0.495);
 
-      th {
+      .dateAndNumber,
+      .nameAndOption,
+      .price,
+      .qty,
+      .orderStatus,
+      .confirmAndReview {
         display: table-cell;
         vertical-align: middle;
         text-align: center;
@@ -31,10 +40,12 @@
       .nameAndOption {
         width: 350px;
       }
-      .priceAndQty {
-        width: 150px;
+      .price {
+        width: 75px;
       }
-
+      .qty {
+        width: 75px;
+      }
       .orderStatus {
         width: 100px;
       }
@@ -42,10 +53,6 @@
       .confirmAndReview {
         width: 100px;
       }
-    }
-
-    tbody {
-      width: 100%;
     }
   }
 }
