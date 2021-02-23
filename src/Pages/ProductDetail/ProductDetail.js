@@ -123,12 +123,9 @@ class ProductDetail extends React.Component {
   };
 
   render() {
-    const { count } = this.state;
-    console.log(this.state.productDetail);
     return (
       <div className="productDetail">
         <div className="contents">
-          {/* 컴포넌트화 */}
           <ItemPhotoInfoSec
             productDetail={this.state.productDetail}
             countUp={this.countUp}
