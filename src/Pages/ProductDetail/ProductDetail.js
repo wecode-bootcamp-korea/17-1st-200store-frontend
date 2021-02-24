@@ -3,7 +3,6 @@ import Reviews from './Components/review';
 import AdminMsg from './Components/admin_msg';
 import Itemgoodstab from './Components/Itemgoodstab';
 import ProductdetailTable from './Components/productdetailtable';
-// import Modal from './Modal';
 import ItemPhotoInfoSec from './Components/itemphotoinfosec';
 import './ProductDetail.scss';
 
@@ -103,14 +102,21 @@ class ProductDetail extends React.Component {
   };
 
   goToPayment = () => {
-    fetch('http://10.58.5.199:8000/order/cart', {
+    fetch('http://10.58.2.5:8000/order/buyitnow', {
       method: 'POST',
       headers: {
         Authorization: localStorage.getItem('access_token'),
       },
       body: JSON.stringify({
         productId: this.state.productDetail[0].id,
-        totalPrice: this.state.count * this.state.productDetail[0].price,
+        totalPrice:
+          this.state.count *
+          Math.round(
+            (this.state.productDetail[0].price *
+              (1 - this.state.productDetail[0].sale)) /
+              100
+          ) *
+          100,
         quantity: this.state.count,
       }),
     })
