@@ -3,7 +3,6 @@ import './CartItem.scss';
 
 class CartItem extends Component {
   render() {
-    console.log('cartItem', this.props.cartItem.cartId);
     const {
       price,
       quantity,
@@ -16,7 +15,6 @@ class CartItem extends Component {
       onDecrement,
       onIncrement,
     } = this.props;
-    const eachPrice = price / quantity;
 
     return (
       <tr className="CartItem" id={cartId}>

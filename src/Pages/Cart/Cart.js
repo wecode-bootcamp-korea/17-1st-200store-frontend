@@ -14,12 +14,11 @@ class Cart extends Component {
 
   //backend와 통신할때는 cartList: res.result
   componentDidMount() {
-    fetch('http://10.58.2.5:8000/order/cart')
+    fetch('/data/cartListData.json')
       .then(res => res.json())
       .then(res => {
-        console.log(res);
         this.setState({
-          cartList: res.result,
+          cartList: res,
         });
       });
   }
@@ -62,7 +61,6 @@ class Cart extends Component {
       .map(e => e.join('='))
       .join('&');
 
-    // console.log('cartId>>>>>', this.state.cartList);
     fetch(`http://10.58.2.5:8000/order/cart?${deleteUrl}`, {
       method: 'DELETE',
       headers: {
@@ -71,7 +69,6 @@ class Cart extends Component {
     })
       .then(response => response.json())
       .then(res => {
-        console.log('backend message>>>>', res);
         if (res.message === 'SUCCESS') {
           alert('선택 상품을 삭제 완료 하였습니다.');
         } else alert('선택 상품 삭제를 실패 하였습니다');
@@ -90,7 +87,6 @@ class Cart extends Component {
     })
       .then(response => response.json())
       .then(res => {
-        console.log('backend message>>>>', res);
         if (res.message === 'SUCCESS') {
           alert('결제 페이지로 이동 합니다.');
         } else alert('실패');
@@ -110,7 +106,6 @@ class Cart extends Component {
     })
       .then(response => response.json())
       .then(res => {
-        console.log('backend message>>>>', res);
         if (res.message === 'SUCCESS') {
           alert('결제 페이지로 이동 합니다.');
           this.setState({
@@ -144,11 +139,8 @@ class Cart extends Component {
         0
       )
     );
-    // const selectedItemsLength = cartList
-
     const deliveryFee = sumPrice < 30000 ? 2500 : 0;
     const price = sumPrice + deliveryFee;
-    console.log('parent sumprice', sumPrice);
     return (
       <div className="Cart">
         <div className="cartTitleContainer">

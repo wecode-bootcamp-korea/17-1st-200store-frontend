@@ -4,7 +4,6 @@ import './CartList.scss';
 
 class CartList extends Component {
   render() {
-    console.log('cartList', this.props.cartList);
     const {
       handleAllChecked,
       onIncrement,
