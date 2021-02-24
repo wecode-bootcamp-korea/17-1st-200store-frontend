@@ -12,7 +12,7 @@ class ProductDetail extends React.Component {
     this.state = {
       count: 1,
       isModalView: false,
-      productDetail: [],
+      productDetail: {},
       productImage: [],
       productReview: [],
     };
@@ -23,16 +23,19 @@ class ProductDetail extends React.Component {
   };
 
   componentDidMount() {
-    // fetch('http://10.58.2.240:8000/product/goods_view/1', { method: 'GET' })
-    fetch('/data/productdetaildata.json')
+    // fetch('http://10.58.2.240:8000/product/7', { method: 'GET' })
+    // fetch('/data/productdetaildata.json')
+    fetch(`http://10.58.2.240:8000/product/${this.props.match.params.id}`)
       .then(res => res.json())
-      .then(data => {
+      .then(res => {
+        console.log(res);
         this.setState({
-          productDetail: data.data.product,
-          productImage: data.data.images,
-          productReview: data.data.review,
+          productDetail: res.data.product,
+          productImage: res.data.product.imageUrls,
+          productReview: res.data.product.reviews,
         });
       });
+    window.scrollTo(0, 0);
   }
 
   countUp = () => {
@@ -129,11 +132,12 @@ class ProductDetail extends React.Component {
   };
 
   render() {
+    console.log(this.props);
     return (
       <div className="productDetail">
         <div className="contents">
           <ItemPhotoInfoSec
-            productDetail={this.state.productDetail}
+            detail={this.state.productDetail}
             countUp={this.countUp}
             countDown={this.countDown}
             countZero={this.countZero}
@@ -150,7 +154,7 @@ class ProductDetail extends React.Component {
                   <h3 className="mustInfo">상품상세정보</h3>
                   <div className="detailExplainBox " id={image.id}>
                     <div className="detailPhotoBox" />
-                    <img src={image.imageUrl} alt="사진" />
+                    <img src={image} alt="사진" />
                     <div className="detailInfo">
                       <h3 className="mustInfo">상품필수정보</h3>
                       <ProductdetailTable />
