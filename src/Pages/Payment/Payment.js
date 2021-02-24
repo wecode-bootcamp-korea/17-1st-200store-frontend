@@ -25,8 +25,9 @@ class Payment extends Component {
     fetch('http://10.58.2.5:8000/order/payment')
       .then(res => res.json())
       .then(res => {
+        console.log(res.result);
         this.setState({
-          cartList: res.result,
+          cartList: res.result.product_info,
         });
       });
   }
@@ -90,6 +91,7 @@ class Payment extends Component {
   //         : alert('결제 실패')
   //     );
   // };
+
   paymentComplete = () => {
     alert('결제가 완료되었습니다!');
     this.props.history.push('/');
