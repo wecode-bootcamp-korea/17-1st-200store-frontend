@@ -21,16 +21,16 @@ class Payment extends Component {
     };
   }
 
-  componentDidMount() {
-    fetch('http://10.58.2.5:8000/order/payment')
-      .then(res => res.json())
-      .then(res => {
-        console.log(res.result);
-        this.setState({
-          cartList: res.result.product_info,
-        });
-      });
-  }
+  // componentDidMount() {
+  //   fetch('http://10.58.2.5:8000/order/payment')
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       console.log(res.result);
+  //       this.setState({
+  //         cartList: res.result.product_info,
+  //       });
+  //     });
+  // }
 
   handleAllInput = e => {
     this.setState({
