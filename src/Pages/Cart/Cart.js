@@ -54,26 +54,26 @@ class Cart extends Component {
 
   handleDelete = () => {
     const cartDelete = this.state.cartList.filter(item => item.value);
-    console.log('cartDelete>>>>', cartDelete);
-    const cartDeleteId = cartDelete[0].cartId;
-    console.log('cartDeleteId', cartDeleteId);
+    const cartMap = cartDelete.map(item => item.cartId);
+    console.log('cartDelete', cartDelete);
+    console.log('cartMap>>>', cartMap);
     // console.log('cartId>>>>>', this.state.cartList);
-    fetch(`http://10.58.2.5:8000/order/cart?cartId=${cartDeleteId}`, {
-      method: 'DELETE',
-      headers: {
-        Authorization: localStorage.getItem('accessToken'),
-      },
-    })
-      .then(response => response.json())
-      .then(res => {
-        console.log('backend message>>>>', res);
-        if (res.message === 'SUCCESS') {
-          alert('선택 상품을 삭제 완료 하였습니다.');
-        } else alert('선택 상품 삭제를 실패 하였습니다');
-      });
-    this.setState(prevState => ({
-      cartList: prevState.cartList.filter(item => !item.value),
-    }));
+    // fetch(`http://10.58.2.5:8000/order/cart?cartId=${cartDeleteId}`, {
+    //   method: 'DELETE',
+    //   headers: {
+    //     Authorization: localStorage.getItem('accessToken'),
+    //   },
+    // })
+    //   .then(response => response.json())
+    //   .then(res => {
+    //     console.log('backend message>>>>', res);
+    //     if (res.message === 'SUCCESS') {
+    //       alert('선택 상품을 삭제 완료 하였습니다.');
+    //     } else alert('선택 상품 삭제를 실패 하였습니다');
+    //   });
+    // this.setState(prevState => ({
+    //   cartList: prevState.cartList.filter(item => !item.value),
+    // }));
   };
 
   sendCheckedList = () => {
