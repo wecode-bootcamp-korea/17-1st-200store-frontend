@@ -6,10 +6,13 @@ class OrderListContainer extends Component {
   render() {
     const {
       writeReview,
-      isReviewViewOn,
       goToReview,
       handleStatus,
       btnDisabled,
+      isReviewModalOn,
+      getStarValue,
+      handleReviewInput,
+      submitReview,
     } = this.props;
     return (
       <div className="OrderListContainer">
@@ -25,15 +28,19 @@ class OrderListContainer extends Component {
               <th className="confirmAndReview">확인/리뷰</th>
             </tr>
           </thead>
-          {this.props.orderList.map(item => {
+          {this.props.orderList.map((item, idx) => {
             return (
               <OrderList
+                key={idx}
                 orderArticle={item}
                 writeReview={writeReview}
-                isReviewViewOn={isReviewViewOn}
                 goToReview={goToReview}
                 handleStatus={handleStatus}
                 btnDisabled={btnDisabled}
+                isReviewModalOn={isReviewModalOn}
+                getStarValue={getStarValue}
+                handleReviewInput={handleReviewInput}
+                submitReview={submitReview}
               />
             );
           })}

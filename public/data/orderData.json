@@ -2,7 +2,7 @@
   {
     "orderDate": "2021-02-24T04:20:16.385Z",
     "orderId": 2,
-    "orderStatus": 4,
+    "orderStatus": 5,
     "serialNumber": "124",
     "subProducts": [
       {
@@ -17,7 +17,7 @@
         "id": 11,
         "isReview": false,
         "name": "2021 캘린더와 함께",
-        "productStatus": 4,
+        "productStatus": 2,
         "quantity": 1,
         "totalPrice": "4500.00"
       },
@@ -25,7 +25,7 @@
         "id": 12,
         "isReview": false,
         "name": "앗 커피콩 타이어보다 싸다",
-        "productStatus": 4,
+        "productStatus": 3,
         "quantity": 1,
         "totalPrice": "9900.00"
       },

@@ -13,17 +13,24 @@
     font-size: 13px;
     border-top: 1px solid rgba(211, 211, 211, 0.495);
     border-bottom: 1px solid rgba(211, 211, 211, 0.495);
-  }
 
-  .confirmAndReview {
     .statusBtn,
-    .confirmBtn {
-      width: 100px;
-      border: 1px solid black;
+    .confirmBtn,
+    .viewRevie,
+    .writeReviewBtn {
+      margin: 2px auto;
+      width: 80px;
+      border: 1px solid ivory;
       border-radius: 8px;
-      height: 25px;
-      background-color: lightgray;
-      color: black;
+      height: 20px;
+      background-color: var(--color-green);
+      color: ivory;
+      font-size: 13px;
+    }
+
+    .confirmPayment {
+      margin: 2px auto;
+      font-weight: bold;
     }
   }
 }

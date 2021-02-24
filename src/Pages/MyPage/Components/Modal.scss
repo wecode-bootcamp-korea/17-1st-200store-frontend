@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
 
 .ModalTop {
-  // background-color: rgba(43, 45, 46, 0.8);
   z-index: 200;
   position: absolute;
   top: 200px;
@@ -19,7 +18,6 @@
       margin: 0 auto;
       border-radius: 4px;
       border: 2px solid var(--color-green);
-      box-shadow: 2px 3px 5px var(--color-green);
       background-color: white;
       color: black;
       padding: 40px 40px 0;

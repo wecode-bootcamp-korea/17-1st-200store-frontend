@@ -6,33 +6,45 @@ class OrderList extends Component {
   render() {
     const {
       writeReview,
-      isReviewViewOn,
       goToReview,
       handleStatus,
       btnDisabled,
+      isReviewModalOn,
+      getStarValue,
+      handleReviewInput,
+      submitReview,
+      orderArticle,
     } = this.props;
     const serialNum = this.props.orderArticle.serialNumber;
     const orderStatusId = this.props.orderArticle.orderStatus;
+    const date = this.props.orderArticle.orderDate
+      .split('')
+      .slice(0, 10)
+      .join('');
     return (
-      <>
-        <tbody className="orderItemContainer">
-          <h4>{this.props.orderArticle.orderDate}</h4>
-          {this.props.orderArticle.subProducts.map(item => {
-            return (
-              <OrderListItem
-                orderItem={item}
-                serialNum={serialNum}
-                orderStatusId={orderStatusId}
-                writeReview={writeReview}
-                isReviewViewOn={isReviewViewOn}
-                goToReview={goToReview}
-                handleStatus={handleStatus}
-                btnDisabled={btnDisabled}
-              />
-            );
-          })}
-        </tbody>
-      </>
+      <tbody className="orderItemContainer">
+        <tr className="orderDate">
+          <td>{date}</td>
+        </tr>
+        {orderArticle.subProducts.map((item, idx) => {
+          return (
+            <OrderListItem
+              key={idx}
+              orderItem={item}
+              serialNum={serialNum}
+              orderStatusId={orderStatusId}
+              writeReview={writeReview}
+              goToReview={goToReview}
+              handleStatus={handleStatus}
+              btnDisabled={btnDisabled}
+              isReviewModalOn={isReviewModalOn}
+              getStarValue={getStarValue}
+              handleReviewInput={handleReviewInput}
+              submitReview={submitReview}
+            />
+          );
+        })}
+      </tbody>
     );
   }
 }

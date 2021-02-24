@@ -1,19 +1,21 @@
-tbody {
+.orderItemContainer {
   position: relative;
   margin: 10px;
   border-bottom: 2px solid black;
-  h4 {
+  .orderDate {
     margin: 10px auto;
+    height: 30px;
     text-align: center;
     font-size: 15px;
+    td {
+      vertical-align: middle;
+    }
   }
 }
 .totalPrice {
   height: 30px;
   position: absolute;
   right: 210px;
-  // display: flex;
-  // align-items: flex-end;
 
   p {
     span {

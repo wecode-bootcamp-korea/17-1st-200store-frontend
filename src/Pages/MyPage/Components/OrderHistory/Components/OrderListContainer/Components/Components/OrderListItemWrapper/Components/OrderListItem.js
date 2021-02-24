@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import Modal from '../../../../../../../Modal';
 import './OrderListItem.scss';
+
 class OrderListItem extends Component {
   constructor() {
     super();
@@ -21,16 +23,17 @@ class OrderListItem extends Component {
       orderItem,
       btnDisabled,
       handleStatus,
-      isReviewViewOn,
       writeReview,
       goToReview,
       orderStatusId,
+      isReview,
+      getStarValue,
+      handleReviewInput,
+      submitReview,
     } = this.props;
     const { confirmPaymentBtn } = this.state;
-    const Oid = orderStatusId - 1;
+    const Oid = orderStatusId - 2;
     const Pid = orderItem.productStatus - 1;
-    const OrderStatus = ['입금대기', '입금완료', '배송중', '배송완료'];
-    const ProductStatus = ['취소', '교환', '환불', '구매확정'];
     return (
       <tr className="OrderListItem">
         <td className="dateAndNumber">{serialNum}</td>
@@ -47,27 +50,40 @@ class OrderListItem extends Component {
         <td className="confirmAndReview">
           {Pid + 1 !== 4 && !btnDisabled && (
             <button onClick={handleStatus} value={Pid} className="statusBtn">
-              교환/취소/환불
+              {ProductStatus[Pid]}
             </button>
           )}
           {Pid + 1 !== 4 && btnDisabled && <p>{ProductStatus[Pid]}</p>}
-          {Pid + 1 === 4 && !isReviewViewOn && !confirmPaymentBtn && (
+          {Pid + 1 === 4 && !isReview && !confirmPaymentBtn && (
             <button className="confirmBtn" onClick={this.confirmPayment}>
               구매확정
             </button>
           )}
-          {!isReviewViewOn && confirmPaymentBtn && (
+          {!isReview && confirmPaymentBtn && (
             <>
-              <p>구매확정</p>
-              <button className="reviewBtn" onClick={writeReview}>
+              <p className="confirmPayment">구매확정</p>
+              <button
+                className="writeReviewBtn"
+                value={serialNum}
+                onClick={writeReview}
+                id={orderItem.id}
+              >
                 리뷰쓰기
               </button>
             </>
           )}
-          {Pid + 1 === 4 && isReviewViewOn && (
+          {isReview && (
             <button onClick={goToReview} className="viewReview">
               리뷰보기
             </button>
+          )}
+          {this.props.isReviewModalOn && (
+            <Modal
+              writeReview={writeReview}
+              getStarValue={getStarValue}
+              handleReviewInput={handleReviewInput}
+              submitReview={submitReview}
+            />
           )}
         </td>
       </tr>
@@ -76,3 +92,12 @@ class OrderListItem extends Component {
 }
 
 export default OrderListItem;
+
+const OrderStatus = [
+  '입금대기',
+  '결재완료',
+  '상품준비중',
+  '배송중',
+  '배송완료',
+];
+const ProductStatus = ['대기', '취소', '환불', '구매확정'];

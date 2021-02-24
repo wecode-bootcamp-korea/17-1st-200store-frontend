@@ -5,7 +5,6 @@ import './Calendar.scss';
 class Calendar extends Component {
   render() {
     const {
-      btnHandler,
       handleBtnClicked,
       startDate,
       handleStartChange,
@@ -16,17 +15,13 @@ class Calendar extends Component {
       <section>
         <span>조회기간</span>
         <div className="buttonContainer">
-          <button
-            className="optionBtn"
-            onClick={this.props.btnHandler}
-            value="오늘"
-          >
+          <button className="optionBtn" onClick={handleBtnClicked} value="오늘">
             오늘
           </button>
-          <button className="optionBtn" onClick={btnHandler} value="7일">
+          <button className="optionBtn" onClick={handleBtnClicked} value="7일">
             7일
           </button>
-          <button className="optionBtn" onClick={btnHandler} value="15일">
+          <button className="optionBtn" onClick={handleBtnClicked} value="15일">
             15일
           </button>
           <button
