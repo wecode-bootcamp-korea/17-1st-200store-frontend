@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
+.ModalTop {
+  background-color: rgba(43, 45, 46, 0.8);
+  z-index: 200;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  .reactModal {
+    margin-top: 10%;
+    .reviewModal {
+      position: relative;
+      width: 680px;
+      height: 570px;
+      margin: 0 auto;
+      border-radius: 4px;
+      background-color: white;
+      color: black;
+      padding: 40px 40px 0;
+
+      .buttonreview {
+        .reviewModalClose {
+          position: absolute;
+          top: 20px;
+          right: 30px;
+          background-color: var(--color-green);
+          border: none;
+          color: white;
+          font-weight: bold;
+          height: 23px;
+          border-radius: 4px;
+        }
+      }
+      .reviewModalTitle {
+        text-align: center;
+        font-family: NanumGothic;
+        font-size: 20px;
+        display: block;
+        font-weight: bold;
+      }
+      .reviewModalFormStarWrap {
+        color: var(--color-green);
+        font-size: 16px;
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    .inputTitle {
+      border: 1px solid lightgrey;
+      height: 23px;
+      width: 580px;
+      padding: 0 10px;
+      border-radius: 4px;
+    }
+
+    .formControlTextModal {
+      width: 580px;
+      height: 110px;
+      padding: 10px;
+      border: 1px solid lightgrey;
+      border-radius: 4px;
+    }
+    .reviewModalSection,
+    .reviewModalSectionTitle,
+    .reviewModalSectionComment,
+    .reviewModalSectionWriter,
+    .reviewModalSectionDate {
+      font-family: NanumGothic;
+      font-weight: bold;
+      font-size: 16px;
+      margin: 25px 0px 20px 0px;
+    }
+
+    .reviewBtn {
+      font-size: 17px;
+      width: 600px;
+      height: 45px;
+      margin: 40px 0px;
+      background-color: var(--color-green);
+      border-radius: 4px;
+      border: none;
+      color: white;
+      font-family: NanumGothic;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+}
