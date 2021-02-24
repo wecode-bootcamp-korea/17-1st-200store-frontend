@@ -3,10 +3,12 @@ import './CartItem.scss';
 
 class CartItem extends Component {
   render() {
+    console.log('cartItem', this.props.cartItem.cartId);
     const {
       price,
       quantity,
       id,
+      cartId,
       onChecked,
       cartItem,
       name,
@@ -16,11 +18,9 @@ class CartItem extends Component {
     } = this.props;
     const eachPrice = price / quantity;
 
-    console.log('productPrice', eachPrice);
-
     return (
-      <tr className="CartItem">
-        <td className="checkbox">
+      <tr className="CartItem" id={cartId}>
+        <td className="checkbox" id={id}>
           <input
             type="checkbox"
             id={id}

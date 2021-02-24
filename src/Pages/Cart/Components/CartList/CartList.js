@@ -4,6 +4,7 @@ import './CartList.scss';
 
 class CartList extends Component {
   render() {
+    console.log('cartList', this.props.cartList);
     const {
       handleAllChecked,
       onIncrement,
@@ -30,7 +31,6 @@ class CartList extends Component {
           </thead>
           <tbody className="cartItemContainer">
             {cartList.map(item => {
-              console.log({ item });
               return (
                 <CartItem
                   cartItem={item}

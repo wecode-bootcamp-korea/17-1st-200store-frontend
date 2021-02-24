@@ -14,10 +14,10 @@ class Cart extends Component {
 
   //backend와 통신할때는 cartList: res.result
   componentDidMount() {
-    fetch('http://10.58.5.199:8000/order/cart')
+    fetch('http://10.58.2.5:8000/order/cart')
       .then(res => res.json())
       .then(res => {
-        console.log('getgetget', res);
+        console.log(res);
         this.setState({
           cartList: res.result,
         });
@@ -53,15 +53,16 @@ class Cart extends Component {
   };
 
   handleDelete = () => {
-    fetch('http://10.58.5.199:8000/order/cart', {
+    const cartDelete = this.state.cartList.filter(item => item.value);
+    console.log('cartDelete>>>>', cartDelete);
+    const cartDeleteId = cartDelete[0].cartId;
+    console.log('cartDeleteId', cartDeleteId);
+    // console.log('cartId>>>>>', this.state.cartList);
+    fetch(`http://10.58.2.5:8000/order/cart?cartId=${cartDeleteId}`, {
       method: 'DELETE',
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyX3BrIjoxfQ.WnriqHGfdo1cCfm4osWftUc1a4ntqI1yvQoXncGPgA7GWgNbdTwutuNM8d_5CTjaU9r68rAEZtgKZsAJtRQ4pw',
+        Authorization: localStorage.getItem('accessToken'),
       },
-      body: JSON.stringify({
-        product: this.state.cartList.filter(item => item.value),
-      }),
     })
       .then(response => response.json())
       .then(res => {
