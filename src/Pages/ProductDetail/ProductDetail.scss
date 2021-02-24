@@ -1,0 +1,453 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+@import url('https://use.fontawesome.com/releases/v5.15.2/css/all.css');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+
+.productDetail {
+  height: 100%;
+  width: 1450px;
+  padding: 20px 0px 0px;
+  align-items: center;
+  margin: 0 auto;
+
+  .contents {
+    margin: 0px auto;
+    padding: 40px;
+
+    .itemPhotoInfoSec {
+      display: flex;
+      width: 1200px;
+      height: 586px;
+      padding: 0px 40px;
+      margin: 0 auto;
+
+      .itemPhotoBig {
+        width: 500px;
+
+        img {
+          width: 473px;
+          height: 586px;
+        }
+      }
+    }
+    .itemDetailCont {
+      margin-left: 70px;
+      width: 556px;
+      height: 585px;
+      font-weight: bold;
+
+      .datailName {
+        font-size: 30px;
+        margin-bottom: 50px;
+        font-weight: bold;
+        font-family: 'Noto Sans JP', sans-serif;
+      }
+
+      dt {
+        width: 120px;
+        height: 27px;
+        color: #717171;
+        margin: 0 10px 0 5px;
+        font-size: 16px;
+      }
+
+      .itemDelivery {
+        margin-top: 8px;
+      }
+    }
+
+    .itemDetailList {
+      margin: 10px 0px 20px;
+      padding: 0px 0px 10px;
+    }
+    h3 {
+      font-size: 18px;
+      font-weight: bold;
+      display: block;
+      font-family: NanumGothic;
+      margin-top: 10px;
+    }
+
+    dl {
+      display: flex;
+    }
+
+    .itemPrice {
+      font-size: 21px;
+
+      .soldOutPrice {
+        color: var(--color-green);
+        font-weight: bold;
+      }
+    }
+
+    .itemDetailCont {
+      height: 585px;
+
+      .originalPrice,
+      .deliveryFeeFree,
+      .limitTime {
+        font-weight: normal;
+      }
+
+      .deliveryFeeFree {
+        margin-bottom: 10px;
+      }
+
+      table {
+        background-color: #f5f5f5;
+        height: 59px;
+        border: none;
+
+        .cartPrdtName {
+          width: 330px;
+          vertical-align: middle;
+
+          .productName {
+            font-size: 13px;
+            margin-left: 20px;
+          }
+        }
+
+        td {
+          vertical-align: middle;
+        }
+
+        .prdtCount {
+          width: 105px;
+          display: flex;
+
+          .count {
+            display: flex;
+            justify-content: center;
+          }
+          .countBox {
+            width: 35px;
+            height: 32-33px;
+            border: 1px solid lightgrey;
+            text-align: center;
+            margin-top: 8px;
+          }
+        }
+
+        .upGoodsCnt {
+          margin-top: 8px;
+          height: 20px;
+        }
+
+        .downGoodsCnt {
+          height: 20px;
+        }
+
+        .upGoodsCnt,
+        .downGoodsCnt,
+        .delGoodsCnt {
+          border: 1px solid lightgrey;
+          color: #cac8ca;
+          display: flex;
+          justify-content: space-between;
+        }
+
+        .itemChoicePrice {
+          width: 80px;
+        }
+        .itemDelete {
+          width: 40px;
+        }
+      }
+    }
+
+    .hairline {
+      margin-top: 160px;
+      margin-bottom: 30px;
+    }
+    .totalPricedd {
+      width: 100%;
+      text-align: right;
+
+      .totalPrice {
+        color: var(--color-green);
+        font-size: 36px;
+      }
+    }
+  }
+}
+
+.btnChoiceBox {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 33px;
+  margin-left: 100px;
+
+  .btnAddwish {
+    width: 52px;
+    height: 52px;
+    background-color: #ffffff;
+    border: 1px solid #bbbbbb;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 23px;
+
+    &:hover {
+      background-color: var(--color-green);
+      border: none;
+      i {
+        font-weight: bold;
+        color: white;
+        font-weight: 10000;
+      }
+    }
+  }
+
+  .btnAddcartNone {
+    width: 152px;
+    height: 52px;
+    background-color: #ffffff;
+    border: 1px solid #bbbbbb;
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 10px;
+    color: #b5b5b5;
+  }
+
+  .btnAddcart {
+    width: 152px;
+    height: 52px;
+    background-color: #ffffff;
+    border: 1px solid #bbbbbb;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+
+  .btnAddorder {
+    width: 230px;
+    height: 52px;
+    background-color: black;
+    border: 1px solid black;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--color-green);
+      color: white;
+      border: none;
+    }
+  }
+
+  .soldOut {
+    width: 230px;
+    height: 52px;
+    border: none;
+    color: white;
+    background-color: #b5b5b5;
+    font-weight: bold;
+    font-size: 14px;
+  }
+}
+
+.detailExplainBox {
+  img {
+    display: flex;
+    justify-content: center;
+    align-items: centers;
+    margin: 0 auto;
+  }
+}
+
+.detail {
+  align-items: center;
+  margin: 0 auto;
+  width: 1200px;
+
+  .itemGoodsTab {
+    border-bottom: 1px solid #bbbbbb;
+    padding: 40px 0 0 0;
+
+    ul {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      padding: 80px 0 0 0;
+      list-style: none;
+      font-size: 12px;
+      display: flex;
+      justify-content: center;
+
+      li {
+        color: #bbbbbb;
+        cursor: pointer;
+        padding: 15px;
+        border: 1px solid #bbbbbb;
+        border-bottom: 0px;
+        border-right: 0px;
+        width: 175px;
+        text-align: center;
+
+        a {
+          color: black;
+          text-decoration: none;
+          display: block;
+          width: 100%;
+          :visitied {
+            color: black;
+            text-decoration: none;
+          }
+        }
+      }
+
+      .lastChild {
+        border-right: 1px solid #bbbbbb;
+      }
+    }
+  }
+
+  .mustInfo {
+    margin: 0 auto;
+  }
+
+  table {
+    font-size: 12px;
+    font-family: NanumGothic;
+    text-align: left;
+    border: 1px solid #e8e9ea;
+    align-items: center;
+    margin: 0 auto;
+
+    th {
+      width: 180px;
+      height: 51px;
+      background-color: #f9f9f9;
+      border: 1px solid #e8e9ea;
+      vertical-align: middle;
+      padding-left: 15px;
+      font-weight: bold;
+    }
+    td {
+      width: 718px;
+      height: 51px;
+      border: 1px solid #e8e9ea;
+      vertical-align: middle;
+      padding-left: 15px;
+    }
+  }
+
+  h3 {
+    width: 900px;
+    height: 81px;
+    font-family: NanumGothic;
+    padding: 45px 0px 10px 10px;
+    font-size: 18px;
+    align-items: center;
+  }
+
+  p {
+    font-family: NanumGothic;
+    font-size: 12px;
+    margin: 5px 10px;
+  }
+}
+
+.productReview {
+  .reviewBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: right;
+    margin-top: 0px;
+
+    h3 {
+      color: black;
+      font-family: NanumGothic;
+      font-size: 18px;
+
+      .reviewCount {
+        color: var(--color-green);
+      }
+    }
+  }
+
+  .reviewsTable {
+    border: none;
+    border-top: 1px solid grey;
+
+    tbody {
+      tr {
+        #firstReviewBox {
+          color: var(--color-green);
+        }
+
+        .reviewBox1 {
+          width: 156px;
+          height: 46px;
+          text-align: center;
+          border: none;
+          border-bottom: 1px solid lightgrey;
+
+          .star {
+            font-size: 20px;
+          }
+        }
+
+        .reviewBox2 {
+          width: 733px;
+          border: none;
+          border-bottom: 1px solid lightgrey;
+          cursor: pointer;
+        }
+      }
+
+      .height {
+        background-color: #f7f7f7;
+        height: 109px;
+      }
+
+      .hideDisplay {
+        display: none;
+      }
+    }
+  }
+
+  .page {
+    width: 1200px;
+
+    ul {
+      padding: 20px 0 0;
+      text-align: center;
+
+      .on {
+        span {
+          align-items: center;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  h3 {
+    width: 900px;
+    height: 81px;
+    font-family: NanumGothic;
+    padding: 45px 0px 10px 10px;
+    font-size: 18px;
+    align-items: center;
+  }
+}
+
+.btnReviewsWrite {
+  display: inline-block;
+  width: 142px;
+  height: 40px;
+  margin: auto 0 10px 0;
+  padding: 10px;
+  color: #ffffff;
+  font-weight: bold;
+  border: 1px solid #000;
+  background-color: #000;
+  text-align: center;
+  font-size: 12px;
+  text-decoration: none;
+  cursor: pointer;
+}
