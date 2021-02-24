@@ -25,13 +25,18 @@ class OrderHistory extends Component {
   }
 
   componentDidMount() {
-    fetch('/data/orderData.json', {
+    fetch('http://10.58.3.212:8000/order/order_list', {
       method: 'GET',
+      headers: {
+        Authorization:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyX3BrIjoyfQ.-hXNRSynjJnpQffSHiwEw_HUSghbUCErZh-es4w3E9C7FprAfw1JQR9HKCxxYvEbll8I1zbwNkxenD-4DOHdvw',
+      },
     })
       .then(res => res.json())
       .then(res => {
+        console.log(res);
         this.setState({
-          orderList: res,
+          orderList: res.data,
         });
       });
   }
@@ -146,25 +151,29 @@ class OrderHistory extends Component {
 
   ///리뷰를 등록했을때
   submitReview = () => {
-    // fetch('data/cartListData.json', {
-    //   method: 'POST',
-    //   body: JSON.stringify({
-    //     starRating: this.state.starRating,
-    //     title: this.state.title,
-    //     content: this.state.content,
-    //     productId: 1,
-    //     orderId: 100,
-    //   }),
-    // })
-    // .then(res => res.json())
-    // .then(res =>
-    //   res.message === 'SUCCESS'
-    //     ? alert('리뷰가 등록되었습니다'):
-    this.setState({
-      isReviewViewOn: true,
-      isReviewModalOn: false,
-    });
-    // );
+    fetch('http://10.58.3.212:8000/product/review', {
+      method: 'POST',
+      headers: {
+        Authorization:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyX3BrIjoyfQ.-hXNRSynjJnpQffSHiwEw_HUSghbUCErZh-es4w3E9C7FprAfw1JQR9HKCxxYvEbll8I1zbwNkxenD-4DOHdvw',
+      },
+      body: JSON.stringify({
+        starRating: this.state.starRating,
+        title: this.state.title,
+        content: this.state.content,
+        productId: 1,
+        orderId: 100,
+      }),
+    })
+      .then(res => res.json())
+      .then(res =>
+        res.message === 'SUCCESS'
+          ? alert('리뷰가 등록되었습니다')
+          : this.setState({
+              isReviewViewOn: true,
+              isReviewModalOn: false,
+            })
+      );
   };
 
   goToReview = () => {
