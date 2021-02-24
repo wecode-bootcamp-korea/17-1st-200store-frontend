@@ -58,15 +58,44 @@ class Cart extends Component {
   };
 
   sendCheckedList = () => {
-    this.setState(prevState => ({
-      checkList: prevState.cartList.filter(item => item.value),
-    }));
+    this.setState(
+      prevState => ({
+        checkList: prevState.cartList.filter(item => item.value),
+      }),
+      () => console.log(this.state.checkList)
+    );
+    // ),
+    fetch('http://10.58.2.5:8000/order/cart', {
+      method: 'POST',
+      body: JSON.stringify({
+        product: this.state.checkList,
+      }),
+    })
+      .then(res => res.json())
+      .then(res =>
+        res.message === 'SUCCESS'
+          ? alert('결제페이지로 이동합니다')
+          : alert('결제페이지로 이동을 실패하였습니다')
+      );
   };
 
   sendAllList = () => {
     this.setState({
       cartList: this.state.cartList,
     });
+
+    fetch('http://10.58.2.5:8000/order/payment', {
+      method: 'POST',
+      body: JSON.stringify({
+        product: this.state.cartList,
+      }),
+    })
+      .then(res => res.json())
+      .then(res =>
+        res.message === 'SUCCESS'
+          ? alert('결제페이지로 이동합니다')
+          : alert('결제페이지로 이동을 실패하였습니다')
+      );
   };
 
   handleAllChecked = e => {
@@ -95,6 +124,7 @@ class Cart extends Component {
     );
     const deliveryFee = sumPrice < 30000 ? 2500 : 0;
     const totalPrice = sumPrice + deliveryFee;
+    console.log('이건 선택된 상품만 보냅니다', this.state.checkList);
     return (
       <div className="Cart">
         <div className="cartTitleContainer">
@@ -141,7 +171,10 @@ class Cart extends Component {
             <button className="selectItemWish">선택 상품 찜</button>
           </div>
           <div className="rightButtonContainer">
-            <button className="selectItemOrder" onClick={sendCheckedList}>
+            <button
+              className="selectItemOrder"
+              onClick={() => sendCheckedList()}
+            >
               선택 상품 주문
             </button>
             <button className="allItemOrder" onClick={sendAllList}>

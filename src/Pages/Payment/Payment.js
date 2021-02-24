@@ -22,11 +22,11 @@ class Payment extends Component {
   }
 
   componentDidMount() {
-    fetch('data/cartListData.json')
+    fetch('http://10.58.2.5:8000/order/payment')
       .then(res => res.json())
       .then(res => {
         this.setState({
-          cartList: res,
+          cartList: res.result,
         });
       });
   }
@@ -90,6 +90,10 @@ class Payment extends Component {
   //         : alert('결제 실패')
   //     );
   // };
+  paymentComplete = () => {
+    alert('결제가 완료되었습니다!');
+    this.props.history.push('/');
+  };
 
   render() {
     const width = 595;
@@ -121,6 +125,14 @@ class Payment extends Component {
       handlePostSearch,
       paymentComplete,
     } = this;
+    const sumPrice = Math.floor(
+      this.state.cartList.reduce(
+        (acc, item) => acc + item.totalPrice * item.quantity,
+        0
+      )
+    );
+    const deliveryFee = sumPrice < 30000 ? 2500 : 0;
+    const totalPrice = sumPrice + deliveryFee;
     return (
       <div className="Payment">
         <header>
@@ -161,11 +173,15 @@ class Payment extends Component {
           handlePostSearch={handlePostSearch}
         />
         <h2>결제정보</h2>
-        <PaymentInfo />
+        <PaymentInfo
+          sumPrice={sumPrice}
+          deliveryFee={deliveryFee}
+          totalPrice={totalPrice}
+        />
         <section>
           <span>
             최종 결제 금액
-            <strong>100,000원</strong>
+            <strong>{totalPrice.toLocaleString()}원</strong>
           </span>
         </section>
         <div className="paymentFooter">

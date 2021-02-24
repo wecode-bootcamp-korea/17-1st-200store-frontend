@@ -11,7 +11,7 @@ class PaymentInfo extends Component {
             </th>
             <td>
               <p>
-                <strong>100,000</strong>원
+                <strong>{this.props.sumPrice.toLocaleString()}</strong>원
               </p>
             </td>
           </tr>
@@ -20,7 +20,7 @@ class PaymentInfo extends Component {
               <li>배송비</li>
             </th>
             <td>
-              <p>0원</p>
+              <p>{this.props.deliveryFee.toLocaleString()}</p>
             </td>
           </tr>
           <tr>
@@ -29,7 +29,7 @@ class PaymentInfo extends Component {
             </th>
             <td>
               <p>
-                <strong>100,000</strong>원
+                <strong>{this.props.totalPrice.toLocaleString()}</strong>원
               </p>
             </td>
           </tr>
