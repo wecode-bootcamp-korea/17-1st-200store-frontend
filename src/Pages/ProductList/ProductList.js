@@ -24,12 +24,12 @@ class ProductList extends Component {
   // }
 
   getData = () => {
-    fetch('http://10.58.2.240:8000/product')
+    fetch('/ProductList.json')
       .then(res => res.json())
       .then(res => {
         console.log(res);
         this.setState({
-          productList: res.data.products,
+          productList: res,
         });
       });
     console.log('확인');
@@ -42,6 +42,7 @@ class ProductList extends Component {
   menuHandle = e => {
     this.getData();
     this.handleColor(e);
+    this.dataList(e);
   };
 
   render() {

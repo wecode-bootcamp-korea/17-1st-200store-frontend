@@ -1,1 +1,2 @@
-export const SIGN_UP_API = 'http://10.58.1.143:8000/user/join_method';
+export const SIGN_UP_API = 'http://10.58.5.199:8000/user/login';
+export const ProductListApi = 'http://10.58.2.240:8000/product';
