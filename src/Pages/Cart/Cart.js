@@ -55,37 +55,69 @@ class Cart extends Component {
   handleDelete = () => {
     const cartDelete = this.state.cartList.filter(item => item.value);
     const cartMap = cartDelete.map(item => item.cartId);
-    console.log('cartDelete', cartDelete);
-    console.log('cartMap>>>', cartMap);
+    const deleteUrl = cartMap
+      .map(e => {
+        return ['cartId', e];
+      })
+      .map(e => e.join('='))
+      .join('&');
+
     // console.log('cartId>>>>>', this.state.cartList);
-    // fetch(`http://10.58.2.5:8000/order/cart?cartId=${cartDeleteId}`, {
-    //   method: 'DELETE',
-    //   headers: {
-    //     Authorization: localStorage.getItem('accessToken'),
-    //   },
-    // })
-    //   .then(response => response.json())
-    //   .then(res => {
-    //     console.log('backend message>>>>', res);
-    //     if (res.message === 'SUCCESS') {
-    //       alert('선택 상품을 삭제 완료 하였습니다.');
-    //     } else alert('선택 상품 삭제를 실패 하였습니다');
-    //   });
-    // this.setState(prevState => ({
-    //   cartList: prevState.cartList.filter(item => !item.value),
-    // }));
+    fetch(`http://10.58.2.5:8000/order/cart?${deleteUrl}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: localStorage.getItem('accessToken'),
+      },
+    })
+      .then(response => response.json())
+      .then(res => {
+        console.log('backend message>>>>', res);
+        if (res.message === 'SUCCESS') {
+          alert('선택 상품을 삭제 완료 하였습니다.');
+        } else alert('선택 상품 삭제를 실패 하였습니다');
+      });
+    this.setState(prevState => ({
+      cartList: prevState.cartList.filter(item => !item.value),
+    }));
   };
 
   sendCheckedList = () => {
+    fetch('http://10.58.2.5:8000/order/cart', {
+      method: 'POST',
+      headers: {
+        Authorization: localStorage.getItem('accessToken'),
+      },
+    })
+      .then(response => response.json())
+      .then(res => {
+        console.log('backend message>>>>', res);
+        if (res.message === 'SUCCESS') {
+          alert('결제 페이지로 이동 합니다.');
+        } else alert('실패');
+      });
+
     this.setState(prevState => ({
       checkList: prevState.cartList.filter(item => item.value),
     }));
   };
 
   sendAllList = () => {
-    this.setState({
-      cartList: this.state.cartList,
-    });
+    fetch('http://10.58.2.5:8000/order/payment', {
+      method: 'GET',
+      headers: {
+        Authorization: localStorage.getItem('accessToken'),
+      },
+    })
+      .then(response => response.json())
+      .then(res => {
+        console.log('backend message>>>>', res);
+        if (res.message === 'SUCCESS') {
+          alert('결제 페이지로 이동 합니다.');
+          this.setState({
+            cartList: res.result,
+          });
+        } else alert('실패');
+      });
   };
 
   handleAllChecked = e => {
