@@ -3,9 +3,12 @@ import './Product.scss';
 
 class Product extends Component {
   render() {
-    const salePrice = this.props.price * (this.props.sale / 100);
-    const original = this.props.price - salePrice;
-
+    const saleNumToInt = Math.ceil(this.props.sale);
+    const saleNumber = this.props.sale * 100;
+    const originalPrice = Math.ceil(this.props.price).toLocaleString();
+    const finalPrice = (
+      Math.round((this.props.price * (1 - this.props.sale)) / 100) * 100
+    ).toLocaleString();
     const {
       key,
       price,
@@ -53,7 +56,7 @@ class Product extends Component {
         {sale > 0 && (
           <div className="priceContainer">
             <p className="oldPrice"> {price.toLocaleString()}원 </p>
-            <p className="salePrice">{original}원</p>
+            <p className="salePrice">{originalPrice}원</p>
           </div>
         )}
       </div>
