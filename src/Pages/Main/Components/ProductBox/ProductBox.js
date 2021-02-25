@@ -3,6 +3,9 @@ import { withRouter } from 'react-router-dom';
 import './ProductBox.scss';
 
 class ProductBox extends Component {
+  goToDetail = id => {
+    this.props.history.push(`/productdetail/${id}`);
+  };
   render() {
     const saleNumToInt = Math.ceil(this.props.sale);
     const saleNumber = this.props.sale * 100;
@@ -12,7 +15,10 @@ class ProductBox extends Component {
     ).toLocaleString();
     const { name, imgSrc, isBest, isNew, isSale, sale } = this.props;
     return (
-      <div className="ProductBox">
+      <div
+        onClick={() => this.goToDetail(this.props.id)}
+        className="ProductBox"
+      >
         <div
           className="productImage"
           style={{

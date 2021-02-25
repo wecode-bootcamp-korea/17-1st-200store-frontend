@@ -13,13 +13,13 @@ class Main extends Component {
 
   //백엔드랑 통신할때는 allList: res.data
   componentDidMount() {
-    fetch('/data/mainData.json', {
+    fetch('http://10.58.2.240:8000/main', {
       method: 'GET',
     })
       .then(res => res.json())
       .then(res => {
         this.setState({
-          allList: res,
+          allList: res.data,
         });
       });
   }

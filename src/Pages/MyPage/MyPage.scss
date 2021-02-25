@@ -1,0 +1,11 @@
+@import '../../Styles/common.scss';
+
+.MyPage {
+  display: flex;
+  margin-top: 40px;
+  letter-spacing: 0.03em;
+
+  article {
+    margin-left: 50px;
+  }
+}
