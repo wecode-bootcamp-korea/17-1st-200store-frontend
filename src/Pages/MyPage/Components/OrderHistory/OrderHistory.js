@@ -194,7 +194,7 @@ class OrderHistory extends Component {
         res.message === 'SUCCESS'
           ? this.setState({
               isReviewModalOn: false,
-              orderList: res,
+              orderList: res.data,
             })
           : alert('리뷰 등록이 실패하였습니다')
       );
