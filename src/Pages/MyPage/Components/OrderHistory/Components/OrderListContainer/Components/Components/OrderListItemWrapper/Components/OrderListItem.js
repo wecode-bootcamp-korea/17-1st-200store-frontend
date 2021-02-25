@@ -51,7 +51,7 @@ class OrderListItem extends Component {
             <button
               value={orderId}
               id={orderItem.id}
-              className="statusBtn"
+              className="confirmStatusBtn"
               onClick={pressConfirm}
             >
               구매확정
@@ -61,7 +61,7 @@ class OrderListItem extends Component {
             <>
               <p className="confirmPayment">구매확정</p>
               <button
-                className="statusBtn"
+                className="confirmStatusBtn"
                 value={orderId}
                 onClick={writeReview}
                 id={orderItem.id}
@@ -71,7 +71,7 @@ class OrderListItem extends Component {
             </>
           )}
           {orderItem.isReview && (
-            <button onClick={goToReview} className="statusBtn">
+            <button onClick={goToReview} className="confirmStatusBtn">
               리뷰보기
             </button>
           )}
@@ -93,7 +93,7 @@ export default OrderListItem;
 
 const OrderStatus = [
   '입금대기',
-  '결재완료',
+  '결제완료',
   '상품준비중',
   '배송중',
   '배송완료',
