@@ -9,12 +9,9 @@
       }
     ]
   }
-=======
-<<<<<<< HEAD
+
   "parser": "babel-eslint"
->>>>>>> master
-}
-=======
+
   "rules": {
     "prettier/prettier": [
       "error",
