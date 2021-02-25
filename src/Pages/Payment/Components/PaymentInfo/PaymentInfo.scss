@@ -1,0 +1,42 @@
+table {
+  tr {
+    border-bottom: 1px solid lightgrey;
+    height: 60px;
+
+    th {
+      background-color: #f7f7f7;
+      vertical-align: middle;
+      width: 200px;
+      text-align: left;
+      padding-left: 20px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .notRequired {
+      list-style-type: none;
+
+      li {
+        padding-left: 18px;
+      }
+    }
+
+    td {
+      vertical-align: middle;
+      width: 1000px;
+      padding-left: 20px;
+
+      p {
+        color: gray;
+        font-size: 12px;
+
+        strong {
+          margin: 0px 2px;
+          color: black;
+          font-size: 20px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
