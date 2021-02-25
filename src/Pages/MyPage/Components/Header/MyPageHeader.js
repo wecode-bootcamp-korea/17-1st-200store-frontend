@@ -12,7 +12,7 @@ export default class MyPageHeader extends React.Component {
           <span className="marginRight">장</span>
           <span className="marginRight">|</span>
           <span className="marginRight">적립금</span>
-          <span className="infoInt">{USER.point}</span>
+          <span className="infoInt">{USER.point.toLocaleString()}</span>
           <span className="marginRight">원</span>
         </div>
         <div className="userGradeBox">
