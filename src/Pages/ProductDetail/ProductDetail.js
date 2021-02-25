@@ -28,7 +28,6 @@ class ProductDetail extends React.Component {
     fetch(`http://10.58.2.240:8000/product/${this.props.match.params.id}`)
       .then(res => res.json())
       .then(res => {
-        console.log(res);
         this.setState({
           productDetail: res.data.product,
           productImage: res.data.product.imageUrls,
@@ -70,7 +69,6 @@ class ProductDetail extends React.Component {
     })
       .then(response => response.json())
       .then(result => {
-        console.log(result);
         result.message === 'SUCCESS'
           ? this.props.history.push('/mypage')
           : this.props.history.push('/login');
@@ -132,8 +130,6 @@ class ProductDetail extends React.Component {
   };
 
   render() {
-    console.log(this.props);
-    console.log('product img url', this.state.productImage);
     return (
       <div className="productDetail">
         <div className="contents">
