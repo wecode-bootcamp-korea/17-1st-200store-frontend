@@ -20,12 +20,10 @@ class ProductList extends Component {
     fetch(`http://10.58.2.240:8000/product?sorting=${sorting}`)
       .then(res => res.json())
       .then(res => {
-        console.log(res);
         this.setState({
           productList: res.data.products,
         });
       });
-    console.log(sorting, 'dd');
   };
 
   getProductList = () => {

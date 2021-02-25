@@ -23,8 +23,6 @@ class Product extends Component {
       sale,
       stock,
     } = this.props;
-    console.log('origin price', originalPrice);
-    console.log('sale', sale);
 
     return (
       <div className="Best">
