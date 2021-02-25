@@ -22,6 +22,7 @@ class Reviews extends React.Component {
       <table className="reviewsTable">
         <tbody className="review_tbody">
           {this.props.reviewList.map(review => {
+            const date = review.createAt.substring(0, 10);
             return (
               <>
                 <tr className="reviewTr" id={review.id}>
@@ -39,7 +40,7 @@ class Reviews extends React.Component {
                     <span>{review.userId}</span>
                   </td>
                   <td className="reviewBox1">
-                    <span>{review.createAt}</span>
+                    <span>{date}</span>
                   </td>
                 </tr>
                 <tr
