@@ -133,6 +133,7 @@ class ProductDetail extends React.Component {
 
   render() {
     console.log(this.props);
+    console.log('product img url', this.state.productImage);
     return (
       <div className="productDetail">
         <div className="contents">
@@ -148,61 +149,63 @@ class ProductDetail extends React.Component {
           />
           <div className="detail">
             <Itemgoodstab />
-            {this.state.productImage.map(image => {
-              return (
-                <div className="detailCont" id="detailInfo">
-                  <h3 className="mustInfo">상품상세정보</h3>
-                  <div className="detailExplainBox " id={image.id}>
-                    <div className="detailPhotoBox" />
-                    <img src={image} alt="사진" />
-                    <div className="detailInfo">
-                      <h3 className="mustInfo">상품필수정보</h3>
-                      <ProductdetailTable />
+            {/* {this.state.productImage.map(image => {
+              return ( */}
+            <div className="detailCont" id="detailInfo">
+              <h3 className="mustInfo">상품상세정보</h3>
+              <div className="detailExplainBox ">
+                {this.state.productImage.map(image => {
+                  return (
+                    <div className="detailPhotoBox" id={image.id}>
+                      <img src={image} alt="사진" />
                     </div>
+                  );
+                })}
+                <div className="detailInfo">
+                  <h3 className="mustInfo">상품필수정보</h3>
+                  <ProductdetailTable />
+                </div>
 
-                    <Itemgoodstab />
-                    <h3 className="info" id="delivery">
-                      배송안내
+                <Itemgoodstab />
+                <h3 className="info" id="delivery">
+                  배송안내
+                </h3>
+                <div className="adminMsg">
+                  <p>배송사:cj대한통운</p>
+                  <p>배송비: 2,500원(3만원 이상 구매 시 무료배송)</p>
+                  <p>도서, 산간 일부지역은 배송비가 추가될 수 있습니다.</p>
+                  <p>
+                    배송기간: 오후 2시 이전 결제완료시 당일 출고 (영업일 기준)
+                  </p>
+                  <p>
+                    단, 상품의 재고 상황, 배송량, 배송 지역에 따라 배송일이
+                    추가로 소요될 수 있는 점 양해 부탁드립니다.
+                  </p>
+                </div>
+                <Itemgoodstab />
+                <AdminMsg />
+                <Itemgoodstab />
+                <div className="productReview">
+                  <div className="reviewBox">
+                    <h3 id="review" className="review">
+                      상품후기&nbsp;
+                      <span className="reviewCount">
+                        {this.state.productReview.length}
+                      </span>
                     </h3>
-                    <div className="adminMsg">
-                      <p>배송사:cj대한통운</p>
-                      <p>배송비: 2,500원(3만원 이상 구매 시 무료배송)</p>
-                      <p>도서, 산간 일부지역은 배송비가 추가될 수 있습니다.</p>
-                      <p>
-                        배송기간: 오후 2시 이전 결제완료시 당일 출고 (영업일
-                        기준)
-                      </p>
-                      <p>
-                        단, 상품의 재고 상황, 배송량, 배송 지역에 따라 배송일이
-                        추가로 소요될 수 있는 점 양해 부탁드립니다.
-                      </p>
-                    </div>
-                    <Itemgoodstab />
-                    <AdminMsg />
-                    <Itemgoodstab />
-                    <div className="productReview">
-                      <div className="reviewBox">
-                        <h3 id="review" className="review">
-                          상품후기&nbsp;
-                          <span className="reviewCount">
-                            {this.state.productReview.length}
-                          </span>
-                        </h3>
-                      </div>
+                  </div>
 
-                      <Reviews reviewList={this.state.productReview} />
-                      <div className="page">
-                        <ul>
-                          <li className="on">
-                            <span>1</span>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
+                  <Reviews reviewList={this.state.productReview} />
+                  <div className="page">
+                    <ul>
+                      <li className="on">
+                        <span>1</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            </div>
           </div>
         </div>
       </div>
