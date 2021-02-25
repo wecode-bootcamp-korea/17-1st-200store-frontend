@@ -1,0 +1,60 @@
+@import '../../../../Styles/common.scss';
+@import url('https://use.fontawesome.com/releases/v5.15.2/css/all.css');
+
+.CurrentOrder {
+  display: flex;
+  justify-content: space-between;
+  width: 1000px;
+  height: 200px;
+  border: 1px solid black;
+  font-family: ‘Noto Sans KR’, sans-serif;
+
+  section {
+    background-color: white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0 20px;
+    width: 700px;
+
+    article {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+
+      h2 {
+        font-size: bold;
+        margin-bottom: 20px;
+      }
+
+      h3 {
+        background-color: lightgray;
+        width: 50px;
+        height: 50px;
+        padding-top: 15px;
+        border-radius: 25px;
+        font-size: bold;
+        color: white;
+      }
+    }
+  }
+  aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 200px;
+    height: 200px;
+
+    .cancel {
+      background-color: white;
+      display: flex;
+      justify-content: space-between;
+      width: 125px;
+      margin: 10px auto;
+      border-bottom: 1px dotted black;
+    }
+  }
+}

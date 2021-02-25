@@ -1,5 +1,4 @@
 import React from 'react';
-
 import MyPageHeader from './Components/Header/MyPageHeader';
 import MyPageAside from './Components/Aside/MyPageAside';
 import MyPageMain from './MyPageMain';

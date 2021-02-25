@@ -51,32 +51,32 @@ class Cart extends Component {
     }));
   };
 
-  handleDelete = () => {
-    const cartDelete = this.state.cartList.filter(item => item.value);
-    const cartMap = cartDelete.map(item => item.cartId);
-    const deleteUrl = cartMap
-      .map(e => {
-        return ['cartId', e];
-      })
-      .map(e => e.join('='))
-      .join('&');
+  // handleDelete = () => {
+  //   const cartDelete = this.state.cartList.filter(item => item.value);
+  //   const cartMap = cartDelete.map(item => item.cartId);
+  //   const deleteUrl = cartMap
+  //     .map(e => {
+  //       return ['cartId', e];
+  //     })
+  //     .map(e => e.join('='))
+  //     .join('&');
 
-    fetch(`http://10.58.2.5:8000/order/cart?${deleteUrl}`, {
-      method: 'DELETE',
-      headers: {
-        Authorization: localStorage.getItem('accessToken'),
-      },
-    })
-      .then(response => response.json())
-      .then(res => {
-        if (res.message === 'SUCCESS') {
-          alert('선택 상품을 삭제 완료 하였습니다.');
-        } else alert('선택 상품 삭제를 실패 하였습니다');
-      });
-    this.setState(prevState => ({
-      cartList: prevState.cartList.filter(item => !item.value),
-    }));
-  };
+  //   fetch(`http://10.58.2.5:8000/order/cart?${deleteUrl}`, {
+  //     method: 'DELETE',
+  //     headers: {
+  //       Authorization: localStorage.getItem('accessToken'),
+  //     },
+  //   })
+  //     .then(response => response.json())
+  //     .then(res => {
+  //       if (res.message === 'SUCCESS') {
+  //         alert('선택 상품을 삭제 완료 하였습니다.');
+  //       } else alert('선택 상품 삭제를 실패 하였습니다');
+  //     });
+  //   this.setState(prevState => ({
+  //     cartList: prevState.cartList.filter(item => !item.value),
+  //   }));
+  // };
 
   sendCheckedList = () => {
     fetch('http://10.58.2.5:8000/order/cart', {
@@ -84,6 +84,9 @@ class Cart extends Component {
       headers: {
         Authorization: localStorage.getItem('accessToken'),
       },
+      body: JSON.stringify({
+        product: this.state.cartList.filter(item => item.value),
+      }),
     })
       .then(response => response.json())
       .then(res => {
@@ -91,10 +94,6 @@ class Cart extends Component {
           alert('결제 페이지로 이동 합니다.');
         } else alert('실패');
       });
-
-    this.setState(prevState => ({
-      checkList: prevState.cartList.filter(item => item.value),
-    }));
   };
 
   sendAllList = () => {
@@ -186,7 +185,10 @@ class Cart extends Component {
             <button className="selectItemWish">선택 상품 찜</button>
           </div>
           <div className="rightButtonContainer">
-            <button className="selectItemOrder" onClick={sendCheckedList}>
+            <button
+              className="selectItemOrder"
+              onClick={() => sendCheckedList()}
+            >
               선택 상품 주문
             </button>
             <button className="allItemOrder" onClick={sendAllList}>
