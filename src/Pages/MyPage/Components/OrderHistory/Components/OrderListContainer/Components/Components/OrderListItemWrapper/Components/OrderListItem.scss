@@ -1,0 +1,28 @@
+.OrderListItem {
+  height: 50px;
+  font-weight: normal;
+  .itemDetail {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 13px;
+    border-top: 1px solid rgba(211, 211, 211, 0.495);
+    border-bottom: 1px solid rgba(211, 211, 211, 0.495);
+
+    .statusBtn {
+      margin: 2px auto;
+      width: 80px;
+      border: 1px solid ivory;
+      border-radius: 8px;
+      height: 20px;
+      background-color: var(--color-green);
+      color: ivory;
+      font-size: 13px;
+    }
+
+    .confirmPayment {
+      margin: 2px auto;
+      font-weight: bold;
+    }
+  }
+}

@@ -8,7 +8,11 @@
     "@testing-library/user-event": "^12.1.10",
     "node-sass": "^4.14.1",
     "react": "^17.0.1",
+<<<<<<< HEAD
     "react-daum-postcode": "^2.0.3",
+=======
+    "react-datepicker": "^3.5.0",
+>>>>>>> master
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.2",

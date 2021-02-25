@@ -29,7 +29,7 @@ class Login extends Component {
     const { pw, id } = this.state;
     if (e.key === 'Enter') {
       if (id.length >= 5 && pw.length >= 8) {
-        fetch(LoginApi, {
+        fetch('http://10.58.5.199:8000/user/login', {
           method: 'POST',
           body: JSON.stringify({
             account: this.state.id,

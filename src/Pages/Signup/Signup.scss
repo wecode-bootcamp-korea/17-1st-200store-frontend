@@ -1,6 +1,9 @@
+@import '../../Styles/common.scss';
+
 .topContents {
   display: flex;
   flex-direction: column;
+  font-family: 'Noto Sans KR', sans-serif;
 
   .memberInfo {
     width: 1200px;
