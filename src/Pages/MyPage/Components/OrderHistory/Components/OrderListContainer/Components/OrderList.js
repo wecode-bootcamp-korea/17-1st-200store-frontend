@@ -14,6 +14,7 @@ class OrderList extends Component {
       handleReviewInput,
       submitReview,
       orderArticle,
+      pressConfirm,
     } = this.props;
     const serialNum = this.props.orderArticle.serialNumber;
     const orderStatusId = this.props.orderArticle.orderStatus;
@@ -43,6 +44,7 @@ class OrderList extends Component {
               handleReviewInput={handleReviewInput}
               submitReview={submitReview}
               orderId={orderId}
+              pressConfirm={pressConfirm}
             />
           );
         })}

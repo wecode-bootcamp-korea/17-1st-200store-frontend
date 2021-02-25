@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import OrderListContainer from './Components/OrderListContainer/OrderListContainer';
 import Calendar from './Components/Calendar/Calendar';
+import OrderHistoryApi from '../../../../config';
 import './OrderHistory.scss';
 import './react-datepicker.css';
 
@@ -22,19 +23,37 @@ class OrderHistory extends Component {
     };
   }
 
+  // componentDidMount() {
+  //   fetch(OrderHistoryApi, {
+  //     method: 'GET',
+  //     headers: {
+  //       Authorization:
+  //         'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyX3BrIjoyfQ.-hXNRSynjJnpQffSHiwEw_HUSghbUCErZh-es4w3E9C7FprAfw1JQR9HKCxxYvEbll8I1zbwNkxenD-4DOHdvw',
+  //     },
+  //   })
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       console.log(res);
+  //       this.setState({
+  //         orderList: res.data,
+  //       });
+  //     });
+  // }
+
   componentDidMount() {
-    fetch('http://10.58.6.132:8000/order/order_list', {
-      method: 'GET',
-      headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyX3BrIjoyfQ.-hXNRSynjJnpQffSHiwEw_HUSghbUCErZh-es4w3E9C7FprAfw1JQR9HKCxxYvEbll8I1zbwNkxenD-4DOHdvw',
-      },
-    })
+    fetch('/data/orderData.json')
+      //   method: 'GET',
+      // headers: {
+      //   Authorization:
+      //     'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyX3BrIjoyfQ.-hXNRSynjJnpQffSHiwEw_HUSghbUCErZh-es4w3E9C7FprAfw1JQR9HKCxxYvEbll8I1zbwNkxenD-4DOHdvw',
+      // },
+      // }
+
       .then(res => res.json())
       .then(res => {
         console.log(res);
         this.setState({
-          orderList: res.data,
+          orderList: res,
         });
       });
   }
@@ -68,21 +87,12 @@ class OrderHistory extends Component {
           endDate: new Date(),
         });
         break;
-      default:
-        break;
-    }
-    switch (e.target.value) {
       case '7일':
         this.setState({
           startDate: new Date(todayDate.getTime() - 7 * 24 * 60 * 60 * 1000),
           endDate: new Date(),
         });
         break;
-      default:
-        break;
-    }
-
-    switch (e.target.value) {
       case '15일':
         let fifteendays = new Date(
           todayDate.getTime() - 15 * 24 * 60 * 60 * 1000
@@ -92,11 +102,6 @@ class OrderHistory extends Component {
           endDate: new Date(),
         });
         break;
-      default:
-        break;
-    }
-
-    switch (e.target.value) {
       case '1개월':
         let oneMonth = new Date(
           new Date().getFullYear(),
@@ -108,11 +113,6 @@ class OrderHistory extends Component {
           endDate: new Date(),
         });
         break;
-      default:
-        break;
-    }
-
-    switch (e.target.value) {
       case '3개월':
         let threeMonth = new Date(
           new Date().getFullYear(),
@@ -124,11 +124,6 @@ class OrderHistory extends Component {
           endDate: new Date(),
         });
         break;
-      default:
-        break;
-    }
-
-    switch (e.target.value) {
       case '1년':
         let oneYear = new Date(
           new Date().getFullYear() - 1,
@@ -141,7 +136,6 @@ class OrderHistory extends Component {
         });
         break;
       default:
-        break;
     }
   };
 
@@ -174,48 +168,82 @@ class OrderHistory extends Component {
   };
 
   ///리뷰를 등록했을때 백앤드와 통신
-  submitReview = () => {
-    fetch('http://10.58.6.132:8000/product/review', {
-      method: 'POST',
-      headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyX3BrIjoyfQ.-hXNRSynjJnpQffSHiwEw_HUSghbUCErZh-es4w3E9C7FprAfw1JQR9HKCxxYvEbll8I1zbwNkxenD-4DOHdvw',
-      },
-      body: JSON.stringify({
-        starRating: this.state.starRating,
-        title: this.state.title,
-        content: this.state.content,
-        productId: this.state.id,
-        orderId: this.state.orderId,
-      }),
-    })
-      .then(res => res.json())
-      .then(res =>
-        res.message === 'SUCCESS'
-          ? this.setState({
-              isReviewModalOn: false,
-              orderList: res.data,
-            })
-          : alert('리뷰 등록이 실패하였습니다')
-      );
-
-    console.log('starRating>>>', this.state.starRating);
-    console.log('title>>>', this.state.title);
-    console.log('content>>>', this.state.content);
-    console.log('id>>>', this.state.id);
-    console.log('orderId>>>', this.state.orderId);
-  };
-
-  // ///리뷰를 등록했을때 백앤드와 통신 안할때!
   // submitReview = () => {
-  //   this.setState({
-  //     isReviewModalOn: false,
-  //   });
-  //   alert('리뷰가 등록되었습니다');
+  //   fetch('http://10.58.6.132:8000/product/review', {
+  //     method: 'POST',
+  //     headers: {
+  //       Authorization:
+  //         'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyX3BrIjoyfQ.-hXNRSynjJnpQffSHiwEw_HUSghbUCErZh-es4w3E9C7FprAfw1JQR9HKCxxYvEbll8I1zbwNkxenD-4DOHdvw',
+  //     },
+  //     body: JSON.stringify({
+  //       starRating: this.state.starRating,
+  //       title: this.state.title,
+  //       content: this.state.content,
+  //       productId: this.state.id,
+  //       orderId: this.state.orderId,
+  //     }),
+  //   })
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       console.log(res);
+  //       res.message === 'SUCCESS'
+  //         ? this.setState(
+  //             {
+  //               isReviewModalOn: false,
+  //               orderList: res.data,
+  //             },
+  //             () => alert('등록 성공')
+  //           )
+  //         : alert('리뷰 등록이 실패하였습니다');
+  //     });
   // };
+
+  ///리뷰를 등록했을때 백앤드와 통신 안할때!
+  submitReview = () => {
+    this.setState({
+      isReviewModalOn: false,
+    });
+    alert('리뷰가 등록되었습니다');
+  };
 
   goToReview = () => {
     alert('리뷰로 갑니다');
+  };
+  pressConfirm = e => {
+    this.setState({
+      id: e.target.id,
+      orderId: e.target.value,
+    });
+
+    this.confirmPayment();
+  };
+  confirmPayment = () => {
+    alert('구매가 확정되었습니다');
+    console.log('구매확정 productID', this.state.id);
+    console.log('구매확정 orderId', this.state.orderId);
+    // fetch('http://10.58.6.132:8000/product/review', {
+    //   method: 'PATCH',
+    //   headers: {
+    //     Authorization:
+    //       'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyX3BrIjoyfQ.-hXNRSynjJnpQffSHiwEw_HUSghbUCErZh-es4w3E9C7FprAfw1JQR9HKCxxYvEbll8I1zbwNkxenD-4DOHdvw',
+    //   },
+    //   body: JSON.stringify({
+    //     productId: this.state.id,
+    //     orderId: this.state.orderId,
+    //   }),
+    // })
+    //   .then(res => res.json())
+    //   .then(res => {
+    //     console.log(res);
+    //     res.message === 'SUCCESS'
+    //       ? this.setState(
+    //           {
+    //             orderList: res.data,
+    //           },
+    //           () => alert('구매 확정이 되었습니다.')
+    //         )
+    //       : alert('구매 확정이 실패하였습니다');
+    //   });
   };
 
   render() {
@@ -229,6 +257,7 @@ class OrderHistory extends Component {
       getStarValue,
       handleReviewInput,
       submitReview,
+      pressConfirm,
     } = this;
 
     const {
@@ -258,6 +287,7 @@ class OrderHistory extends Component {
           getStarValue={getStarValue}
           handleReviewInput={handleReviewInput}
           submitReview={submitReview}
+          pressConfirm={pressConfirm}
         />
       </div>
     );

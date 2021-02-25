@@ -31,7 +31,7 @@
       },
       {
         "id": 13,
-        "isReview": false,
+        "isReview": true,
         "name": "보온 기능은 별로인 보온병",
         "productStatus": 4,
         "quantity": 1,

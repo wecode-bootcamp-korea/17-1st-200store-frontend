@@ -1,1 +1,1 @@
-export const LoginApi = 'http://10.58.5.199:8000/user/login';
+export const OrderHistoryApi = 'http://10.58.6.132:8000/order';

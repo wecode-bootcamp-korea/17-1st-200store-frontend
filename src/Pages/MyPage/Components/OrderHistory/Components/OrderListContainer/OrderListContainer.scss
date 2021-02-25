@@ -16,34 +16,12 @@
       background-color: #f7f7f7;
       border-bottom: 1px solid rgba(211, 211, 211, 0.495);
 
-      .dateAndNumber,
-      .nameAndOption,
-      .price,
-      .qty,
-      .orderStatus,
-      .confirmAndReview {
+      .headOption {
         display: table-cell;
         vertical-align: middle;
         text-align: center;
         font-size: 13px;
         border-bottom: 1px solid rgba(211, 211, 211, 0.495);
-      }
-
-      .dateAndNumber {
-        width: 150px;
-      }
-
-      .nameAndOption {
-        width: 350px;
-      }
-      .price {
-        width: 75px;
-      }
-      .qty {
-        width: 75px;
-      }
-      .orderStatus {
-        width: 100px;
       }
 
       .confirmAndReview {

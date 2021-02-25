@@ -12,7 +12,7 @@ class Calendar extends Component {
       handleEndChange,
     } = this.props;
     return (
-      <section>
+      <section className="Calendar">
         <span>조회기간</span>
         <div className="buttonContainer">
           <button className="optionBtn" onClick={handleBtnClicked} value="오늘">
