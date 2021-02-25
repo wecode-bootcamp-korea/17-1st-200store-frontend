@@ -165,7 +165,6 @@ class Cart extends Component {
             onIncrement={handleIncrement}
             onDecrement={handleDecrement}
             onChecked={handleChange}
-            allChecked={this.state.allChecked}
           />
         )}
         <p className="continueShop">
