@@ -21,7 +21,6 @@ class ItemPhotoInfoSec extends React.Component {
       100 *
       count
     ).toLocaleString();
-    console.log('props로 넘어옴', this.props.detail);
     return (
       <>
         {/* {this.props.productDetail.map(detail => { */}

@@ -51,32 +51,32 @@ class Cart extends Component {
     }));
   };
 
-  // handleDelete = () => {
-  //   const cartDelete = this.state.cartList.filter(item => item.value);
-  //   const cartMap = cartDelete.map(item => item.cartId);
-  //   const deleteUrl = cartMap
-  //     .map(e => {
-  //       return ['cartId', e];
-  //     })
-  //     .map(e => e.join('='))
-  //     .join('&');
+  handleDelete = () => {
+    //   const cartDelete = this.state.cartList.filter(item => item.value);
+    //   const cartMap = cartDelete.map(item => item.cartId);
+    //   const deleteUrl = cartMap
+    //     .map(e => {
+    //       return ['cartId', e];
+    //     })
+    //     .map(e => e.join('='))
+    //     .join('&');
 
-  //   fetch(`http://10.58.2.5:8000/order/cart?${deleteUrl}`, {
-  //     method: 'DELETE',
-  //     headers: {
-  //       Authorization: localStorage.getItem('accessToken'),
-  //     },
-  //   })
-  //     .then(response => response.json())
-  //     .then(res => {
-  //       if (res.message === 'SUCCESS') {
-  //         alert('선택 상품을 삭제 완료 하였습니다.');
-  //       } else alert('선택 상품 삭제를 실패 하였습니다');
-  //     });
-  //   this.setState(prevState => ({
-  //     cartList: prevState.cartList.filter(item => !item.value),
-  //   }));
-  // };
+    //   fetch(`http://10.58.2.5:8000/order/cart?${deleteUrl}`, {
+    //     method: 'DELETE',
+    //     headers: {
+    //       Authorization: localStorage.getItem('accessToken'),
+    //     },
+    //   })
+    //     .then(response => response.json())
+    //     .then(res => {
+    //       if (res.message === 'SUCCESS') {
+    //         alert('선택 상품을 삭제 완료 하였습니다.');
+    //       } else alert('선택 상품 삭제를 실패 하였습니다');
+    //     });
+    this.setState(prevState => ({
+      cartList: prevState.cartList.filter(item => !item.value),
+    }));
+  };
 
   sendCheckedList = () => {
     fetch('http://10.58.2.5:8000/order/cart', {

@@ -1,3 +1,4 @@
+@import '../../Styles/common.scss';
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
 @import url('https://use.fontawesome.com/releases/v5.15.2/css/all.css');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
@@ -120,36 +121,44 @@
           .count {
             display: flex;
             justify-content: center;
+
+            .countBtn {
+              width: 20px;
+              .upGoodsCnt {
+                margin-top: 8px;
+                text-align: center;
+                height: 20px;
+                width: 20px;
+              }
+
+              .downGoodsCnt {
+                height: 20px;
+                width: 20px;
+              }
+            }
           }
           .countBox {
-            width: 35px;
-            height: 32-33px;
+            margin-top: 12px;
+            width: 25px;
+            height: 25px;
             border: 1px solid lightgrey;
             text-align: center;
-            margin-top: 8px;
           }
-        }
-
-        .upGoodsCnt {
-          margin-top: 8px;
-          height: 20px;
-        }
-
-        .downGoodsCnt {
-          height: 20px;
         }
 
         .upGoodsCnt,
         .downGoodsCnt,
         .delGoodsCnt {
-          border: 1px solid lightgrey;
-          color: #cac8ca;
           display: flex;
           justify-content: space-between;
+          border: 1px solid lightgrey;
+          width: 20px;
+          height: 20px;
+          color: #cac8ca;
         }
 
         .itemChoicePrice {
-          width: 80px;
+          width: 110px;
         }
         .itemDelete {
           width: 40px;
