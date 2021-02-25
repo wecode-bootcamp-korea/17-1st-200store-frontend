@@ -21,6 +21,7 @@ class OrderList extends Component {
       .split('')
       .slice(0, 10)
       .join('');
+    const orderId = this.props.orderArticle.orderId;
     return (
       <tbody className="orderItemContainer">
         <tr className="orderDate">
@@ -41,6 +42,7 @@ class OrderList extends Component {
               getStarValue={getStarValue}
               handleReviewInput={handleReviewInput}
               submitReview={submitReview}
+              orderId={orderId}
             />
           );
         })}

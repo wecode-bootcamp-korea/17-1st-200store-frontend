@@ -26,6 +26,7 @@ class ProductContainer extends Component {
             return (
               <ProductBox
                 key={item.id}
+                id={item.id}
                 name={item.name}
                 imgSrc={item.imageUrl}
                 price={item.price}

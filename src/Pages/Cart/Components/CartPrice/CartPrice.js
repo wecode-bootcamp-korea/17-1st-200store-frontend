@@ -8,7 +8,7 @@ class CartPrice extends Component {
       selectedItems,
       sumPrice,
       deliveryFee,
-      totalPrice,
+      price,
     } = this.props;
     return (
       <section className="CartPrice">
@@ -20,7 +20,7 @@ class CartPrice extends Component {
             <strong>{sumPrice.toLocaleString()}</strong>원
           </p>
         </div>
-        <i class="fas fa-plus-circle" />
+        <i className="fas fa-plus-circle" />
         <div className="deliveryFee">
           <p>배송비</p>
           <p>
@@ -30,14 +30,11 @@ class CartPrice extends Component {
             원
           </p>
         </div>
-        <i class="fas fa-equals" />
-        <div className="totalPricetoPayment">
+        <i className="fas fa-equals" />
+        <div className="totalPrice">
           <p>합계</p>
           <p>
-            <strong className="totalColor">
-              {totalPrice.toLocaleString()}
-            </strong>
-            원
+            <strong className="totalColor">{price.toLocaleString()}</strong>원
           </p>
         </div>
       </section>

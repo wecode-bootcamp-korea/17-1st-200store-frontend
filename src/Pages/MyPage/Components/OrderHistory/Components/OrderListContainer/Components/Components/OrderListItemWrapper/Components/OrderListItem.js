@@ -30,6 +30,7 @@ class OrderListItem extends Component {
       getStarValue,
       handleReviewInput,
       submitReview,
+      orderId,
     } = this.props;
     const { confirmPaymentBtn } = this.state;
     const Oid = orderStatusId - 2;
@@ -64,7 +65,7 @@ class OrderListItem extends Component {
               <p className="confirmPayment">구매확정</p>
               <button
                 className="writeReviewBtn"
-                value={serialNum}
+                value={orderId}
                 onClick={writeReview}
                 id={orderItem.id}
               >

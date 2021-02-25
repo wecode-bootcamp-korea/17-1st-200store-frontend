@@ -18,16 +18,23 @@ class OrderHistory extends Component {
       btnDisabled: false,
       submittedReviewArr: [],
       id: 0,
-      serialNumber: 0,
+      orderId: 0,
     };
   }
 
   componentDidMount() {
-    fetch('/data/orderData.json')
+    fetch('http://10.58.6.132:8000/order/order_list', {
+      method: 'GET',
+      headers: {
+        Authorization:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyX3BrIjoyfQ.-hXNRSynjJnpQffSHiwEw_HUSghbUCErZh-es4w3E9C7FprAfw1JQR9HKCxxYvEbll8I1zbwNkxenD-4DOHdvw',
+      },
+    })
       .then(res => res.json())
       .then(res => {
+        console.log(res);
         this.setState({
-          orderList: res,
+          orderList: res.data,
         });
       });
   }
@@ -150,7 +157,7 @@ class OrderHistory extends Component {
     this.setState({
       isReviewModalOn: !this.state.isReviewModalOn,
       id: e.target.id,
-      serialNumber: e.target.value,
+      orderId: e.target.value,
     });
   };
 
@@ -167,38 +174,45 @@ class OrderHistory extends Component {
   };
 
   ///리뷰를 등록했을때 백앤드와 통신
-  // submitReview = () => {
-  //   fetch('http://10.58.3.212:8000/product/review', {
-  //     method: 'POST',
-  //     headers: {
-  //       Authorization: localStorage.getItem('access_token'),
-  //     },
-  //     body: JSON.stringify({
-  //       starRating: this.state.starRating,
-  //       title: this.state.title,
-  //       content: this.state.content,
-  //       id: this.state.id,
-  //       serialNumber: this.state.serialNumber,
-  //     }),
-  //   })
-  //     .then(res => res.json())
-  //     .then(res =>
-  //       res.message === 'SUCCESS'
-  //         ? alert('리뷰가 등록되었습니다'),
-  //         this.setState({
-  //             isReviewModalOn: false,
-  //             orderList: res,
-  //           }) : alert('리뷰 등록이 실패하였습니다')
-  //     );
-  // };
-
-  ///리뷰를 등록했을때 백앤드와 통신 안할때!
   submitReview = () => {
-    this.setState({
-      isReviewModalOn: false,
-    });
-    alert('리뷰가 등록되었습니다');
+    fetch('http://10.58.6.132:8000/product/review', {
+      method: 'POST',
+      headers: {
+        Authorization:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyX3BrIjoyfQ.-hXNRSynjJnpQffSHiwEw_HUSghbUCErZh-es4w3E9C7FprAfw1JQR9HKCxxYvEbll8I1zbwNkxenD-4DOHdvw',
+      },
+      body: JSON.stringify({
+        starRating: this.state.starRating,
+        title: this.state.title,
+        content: this.state.content,
+        productId: this.state.id,
+        orderId: this.state.orderId,
+      }),
+    })
+      .then(res => res.json())
+      .then(res =>
+        res.message === 'SUCCESS'
+          ? this.setState({
+              isReviewModalOn: false,
+              orderList: res,
+            })
+          : alert('리뷰 등록이 실패하였습니다')
+      );
+
+    console.log('starRating>>>', this.state.starRating);
+    console.log('title>>>', this.state.title);
+    console.log('content>>>', this.state.content);
+    console.log('id>>>', this.state.id);
+    console.log('orderId>>>', this.state.orderId);
   };
+
+  // ///리뷰를 등록했을때 백앤드와 통신 안할때!
+  // submitReview = () => {
+  //   this.setState({
+  //     isReviewModalOn: false,
+  //   });
+  //   alert('리뷰가 등록되었습니다');
+  // };
 
   goToReview = () => {
     alert('리뷰로 갑니다');
