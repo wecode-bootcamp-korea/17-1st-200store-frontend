@@ -1,4 +1,4 @@
-table {
+.deliveryInfo {
   tr {
     border-bottom: 1px solid lightgrey;
     height: 60px;
@@ -11,6 +11,15 @@ table {
       font-size: 13px;
       font-weight: bold;
     }
+    td {
+      vertical-align: middle;
+
+      input {
+        margin-left: 20px;
+        border: 1px solid lightgray;
+        width: 250px;
+      }
+    }
 
     .notRequired {
       list-style-type: none;
@@ -20,16 +29,19 @@ table {
       }
     }
 
-    td {
+    .tdInDeliveryInfo {
       vertical-align: middle;
       width: 1000px;
-      padding-left: 20px;
 
-      input {
+      .deliveryInfoInput {
         border: 1px solid lightgrey;
         padding: 5px;
         height: 20px;
         width: 220px;
+
+        .inputDeliveryInfo {
+          border: 1px solid lightgrey;
+        }
 
         &:focus {
           outline: none;
@@ -79,10 +91,12 @@ table {
     .addressLongInput {
       margin-right: 5px;
       width: 400px;
+      border: 1px solid lightgrey;
     }
 
     .addressShortInput {
       width: 150px;
+      border: 1px solid lightgrey;
     }
   }
 }

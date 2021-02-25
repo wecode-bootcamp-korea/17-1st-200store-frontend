@@ -137,9 +137,9 @@ class Payment extends Component {
     const totalPrice = sumPrice + deliveryFee;
     return (
       <div className="Payment">
-        <header>
-          <h1>주문서작성/결제</h1>
-          <ul>
+        <header className="paymentHeader">
+          <h1 className="orderForm">주문서작성/결제</h1>
+          <ul className="currentStatus">
             <li>01 장바구니</li>
             <i className="fas fa-chevron-right" />
             <li className="currentStep">02 주문서작성/결제</li>
@@ -147,7 +147,7 @@ class Payment extends Component {
             <li>03 주문완료</li>
           </ul>
         </header>
-        <h2>주문자 정보</h2>
+        <h2 className="personInformation">주문자 정보</h2>
         <BuyerInfo
           handleAllInput={handleAllInput}
           buyerName={buyerName}
@@ -155,7 +155,7 @@ class Payment extends Component {
           buyerEmail={buyerEmail}
           handleEmailInput={handleEmailInput}
         />
-        <h2>배송정보</h2>
+        <h2 className="personInformation">배송정보</h2>
         {isDaumPost && (
           <DaumPostCode
             onComplete={handleAddress}
@@ -174,14 +174,14 @@ class Payment extends Component {
           zoneCode={zoneCode}
           handlePostSearch={handlePostSearch}
         />
-        <h2>결제정보</h2>
+        <h2 className="personInformation">결제정보</h2>
         <PaymentInfo
           sumPrice={sumPrice}
           deliveryFee={deliveryFee}
           totalPrice={totalPrice}
         />
-        <section>
-          <span>
+        <section className="paymentSection">
+          <span className="finalPaidAmount">
             최종 결제 금액
             <strong>{totalPrice.toLocaleString()}원</strong>
           </span>
@@ -196,7 +196,7 @@ class Payment extends Component {
             취소할 수 있습니다.
           </span>
           <div className="confirmContainer">
-            <input type="checkbox" />
+            <input type="checkbox" className="checkBoxConfirm" />
             <b>(필수)</b>
             구매하실 상품의 결제정보를 확인하였으며, 구매진행에 동의합니다.
           </div>

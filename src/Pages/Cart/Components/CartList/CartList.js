@@ -13,11 +13,12 @@ class CartList extends Component {
     } = this.props;
     return (
       <form className="CartList">
-        <table>
+        <table className="cartListTable">
           <thead>
             <tr className="headRow">
               <th className="checkBoxAll">
                 <input
+                  className="checkBoxInputInCartList"
                   type="checkbox"
                   onClick={handleAllChecked}
                   checked={cartList.every(item => item.value === true)}

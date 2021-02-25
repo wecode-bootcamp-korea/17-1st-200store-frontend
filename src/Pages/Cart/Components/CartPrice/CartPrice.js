@@ -31,8 +31,8 @@ class CartPrice extends Component {
           </p>
         </div>
         <i className="fas fa-equals" />
-        <div className="totalPrice">
-          <p>합계</p>
+        <div className="totalPriceInCart">
+          <p className="totalPriceText">합계</p>
           <p>
             <strong className="totalColor">{price.toLocaleString()}</strong>원
           </p>
