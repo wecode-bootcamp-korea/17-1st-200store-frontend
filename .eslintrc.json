@@ -1,4 +1,16 @@
 {
   "extends": ["react-app", "plugin:prettier/recommended"],
+<<<<<<< HEAD
   "parser": "babel-eslint"
 }
+=======
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
+  }
+}
+>>>>>>> 8288e69d8ea22f7b578a9c4926ca2bdfe839cb1f
