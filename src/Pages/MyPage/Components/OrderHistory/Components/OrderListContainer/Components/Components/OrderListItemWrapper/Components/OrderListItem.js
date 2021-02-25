@@ -10,12 +10,12 @@ class OrderListItem extends Component {
     };
   }
 
-  confirmPayment = () => {
-    this.setState({
-      confirmPaymentBtn: !this.state.confirmPaymentBtn,
-    });
-    alert('구매가 확정되었습니다!');
-  };
+  // confirmPayment = () => {
+  //   this.setState({
+  //     confirmPaymentBtn: !this.state.confirmPaymentBtn,
+  //   });
+  //   alert('구매가 확정되었습니다!');
+  // };
 
   render() {
     const {
@@ -32,7 +32,7 @@ class OrderListItem extends Component {
       pressConfirm,
     } = this.props;
 
-    const Oid = orderStatusId - 2;
+    const Oid = orderStatusId - 3;
     const Pid = orderItem.productStatus - 1;
 
     // const OrderStatus = [

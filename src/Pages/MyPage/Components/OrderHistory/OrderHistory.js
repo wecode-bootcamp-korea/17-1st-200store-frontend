@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import OrderListContainer from './Components/OrderListContainer/OrderListContainer';
 import Calendar from './Components/Calendar/Calendar';
-import OrderHistoryApi from '../../../../config';
+import { ORDERAPI, REVIEWAPI, CONFIRMAPI } from '../../../../config';
 import './OrderHistory.scss';
 import './react-datepicker.css';
 
@@ -23,40 +23,35 @@ class OrderHistory extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   fetch(OrderHistoryApi, {
-  //     method: 'GET',
-  //     headers: {
-  //       Authorization:
-  //         'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyX3BrIjoyfQ.-hXNRSynjJnpQffSHiwEw_HUSghbUCErZh-es4w3E9C7FprAfw1JQR9HKCxxYvEbll8I1zbwNkxenD-4DOHdvw',
-  //     },
-  //   })
-  //     .then(res => res.json())
-  //     .then(res => {
-  //       console.log(res);
-  //       this.setState({
-  //         orderList: res.data,
-  //       });
-  //     });
-  // }
-
   componentDidMount() {
-    fetch('/data/orderData.json')
-      //   method: 'GET',
-      // headers: {
-      //   Authorization:
-      //     'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyX3BrIjoyfQ.-hXNRSynjJnpQffSHiwEw_HUSghbUCErZh-es4w3E9C7FprAfw1JQR9HKCxxYvEbll8I1zbwNkxenD-4DOHdvw',
-      // },
-      // }
-
+    fetch(ORDERAPI, {
+      method: 'GET',
+      headers: {
+        Authorization:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyUGsiOjJ9._hvvp0nHhQu8uGp3ZgnAJhCqsNVf6rt2fT16hF8RfgVwTopGmKlmsCxh4uA_U_2GdFsza05DJFEx1ObD4LJGcw',
+      },
+    })
       .then(res => res.json())
       .then(res => {
-        console.log(res);
         this.setState({
-          orderList: res,
+          orderList: res.data,
         });
       });
   }
+
+  // 백앤드와 통신 안할때
+  // componentDidMount() {
+  //   fetch('/data/orderData.json')
+  //     //   method: 'GET',
+  //     // }
+
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       this.setState({
+  //         orderList: res,
+  //       });
+  //     });
+  // }
 
   handleStartChange = date => {
     this.setState({
@@ -168,82 +163,81 @@ class OrderHistory extends Component {
   };
 
   ///리뷰를 등록했을때 백앤드와 통신
-  // submitReview = () => {
-  //   fetch('http://10.58.6.132:8000/product/review', {
-  //     method: 'POST',
-  //     headers: {
-  //       Authorization:
-  //         'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyX3BrIjoyfQ.-hXNRSynjJnpQffSHiwEw_HUSghbUCErZh-es4w3E9C7FprAfw1JQR9HKCxxYvEbll8I1zbwNkxenD-4DOHdvw',
-  //     },
-  //     body: JSON.stringify({
-  //       starRating: this.state.starRating,
-  //       title: this.state.title,
-  //       content: this.state.content,
-  //       productId: this.state.id,
-  //       orderId: this.state.orderId,
-  //     }),
-  //   })
-  //     .then(res => res.json())
-  //     .then(res => {
-  //       console.log(res);
-  //       res.message === 'SUCCESS'
-  //         ? this.setState(
-  //             {
-  //               isReviewModalOn: false,
-  //               orderList: res.data,
-  //             },
-  //             () => alert('등록 성공')
-  //           )
-  //         : alert('리뷰 등록이 실패하였습니다');
-  //     });
-  // };
+  submitReview = () => {
+    fetch(REVIEWAPI, {
+      method: 'POST',
+      headers: {
+        Authorization:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyUGsiOjJ9._hvvp0nHhQu8uGp3ZgnAJhCqsNVf6rt2fT16hF8RfgVwTopGmKlmsCxh4uA_U_2GdFsza05DJFEx1ObD4LJGcw',
+      },
+      body: JSON.stringify({
+        starRating: this.state.starRating,
+        title: this.state.title,
+        content: this.state.content,
+        productId: this.state.id,
+        orderId: this.state.orderId,
+      }),
+    })
+      .then(res => res.json())
+      .then(res => {
+        res.message === 'SUCCESS'
+          ? this.setState(
+              {
+                isReviewModalOn: false,
+                orderList: res.data,
+              },
+              () => alert('등록 성공')
+            )
+          : alert('리뷰 등록이 실패하였습니다');
+      });
+  };
 
   ///리뷰를 등록했을때 백앤드와 통신 안할때!
-  submitReview = () => {
-    this.setState({
-      isReviewModalOn: false,
-    });
-    alert('리뷰가 등록되었습니다');
-  };
+  // submitReview = () => {
+  //   this.setState({
+  //     isReviewModalOn: false,
+  //   });
+  //   alert('리뷰가 등록되었습니다');
+  // };
 
   goToReview = () => {
     alert('리뷰로 갑니다');
   };
   pressConfirm = e => {
-    this.setState({
-      id: e.target.id,
-      orderId: e.target.value,
-    });
-
-    this.confirmPayment();
+    this.setState(
+      {
+        id: e.target.id,
+        orderId: e.target.value,
+      },
+      () => {
+        this.confirmPayment();
+      }
+    );
   };
+
   confirmPayment = () => {
-    alert('구매가 확정되었습니다');
-    console.log('구매확정 productID', this.state.id);
-    console.log('구매확정 orderId', this.state.orderId);
-    // fetch('http://10.58.6.132:8000/product/review', {
-    //   method: 'PATCH',
-    //   headers: {
-    //     Authorization:
-    //       'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyX3BrIjoyfQ.-hXNRSynjJnpQffSHiwEw_HUSghbUCErZh-es4w3E9C7FprAfw1JQR9HKCxxYvEbll8I1zbwNkxenD-4DOHdvw',
-    //   },
-    //   body: JSON.stringify({
-    //     productId: this.state.id,
-    //     orderId: this.state.orderId,
-    //   }),
-    // })
-    //   .then(res => res.json())
-    //   .then(res => {
-    //     console.log(res);
-    //     res.message === 'SUCCESS'
-    //       ? this.setState(
-    //           {
-    //             orderList: res.data,
-    //           },
-    //           () => alert('구매 확정이 되었습니다.')
-    //         )
-    //       : alert('구매 확정이 실패하였습니다');
-    //   });
+    fetch(CONFIRMAPI, {
+      method: 'PATCH',
+      headers: {
+        Authorization:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyUGsiOjJ9._hvvp0nHhQu8uGp3ZgnAJhCqsNVf6rt2fT16hF8RfgVwTopGmKlmsCxh4uA_U_2GdFsza05DJFEx1ObD4LJGcw',
+      },
+      body: JSON.stringify({
+        productId: this.state.id,
+        orderId: this.state.orderId,
+      }),
+    })
+      .then(res => res.json())
+      .then(res => {
+        res.message === 'SUCCESS'
+          ? this.setState(
+              {
+                orderList: res.data,
+              },
+              () => alert('구매 확정이 되었습니다.')
+            )
+          : alert('구매 확정이 실패하였습니다');
+      });
   };
 
   render() {
