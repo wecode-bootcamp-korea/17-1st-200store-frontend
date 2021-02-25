@@ -1,0 +1,134 @@
+@import '../../../Styles/common.scss';
+
+.Best,
+.New,
+.Sale {
+  width: 280px;
+  height: 500px;
+  font-family: 'Noto Sans KR', sans-serif;
+
+  &:hover {
+    cursor: pointer;
+  }
+  .soldOutText {
+    font-size: 50px;
+    position: absolute;
+    top: 150px;
+    left: 18px;
+    opacity: 1;
+  }
+  .soldOut {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    margin-bottom: 10px;
+    background-color: black;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+  }
+  .bestImage {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    margin-bottom: 10px;
+    background-size: cover;
+    background-position: center;
+
+    .labelContainer {
+      display: flex;
+
+      .isBest,
+      .isNew,
+      .isSale {
+        display: block;
+        padding: 3px;
+        margin: 10px 0px 0px 10px;
+        width: 50px;
+        height: 20px;
+        text-align: center;
+        color: white;
+        border-radius: 5px;
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+      .isBest {
+        background-color: black;
+      }
+
+      .isNew {
+        background-color: var(--color-green);
+      }
+
+      .isSale {
+        background-color: red;
+      }
+    }
+
+    .hoverContainer {
+      visibility: hidden;
+      position: relative;
+      display: flex;
+      top: 280px;
+      left: 110px;
+      opacity: 0.8;
+
+      .hoverHeart,
+      .hoverCart {
+        width: 25px;
+        height: 25px;
+        margin: 2px;
+        padding-top: 3px;
+        background-color: white;
+        text-align: center;
+
+        i {
+          color: grey;
+          font-size: 15px;
+        }
+      }
+
+      .hoverHeart:hover {
+        i {
+          color: red;
+          font-weight: bold;
+        }
+      }
+
+      .hoverCart:hover {
+        i {
+          color: black;
+        }
+      }
+    }
+
+    &:hover {
+      .hoverContainer {
+        visibility: visible;
+      }
+    }
+  }
+
+  p {
+    margin: 10px 0;
+  }
+  .sale {
+    padding-top: 10px;
+    font-size: 25px;
+    font-weight: bold;
+    color: var(--color-red);
+  }
+
+  .price,
+  .oldPrice,
+  .salePrice {
+    font-weight: bold;
+  }
+
+  .oldPrice {
+    text-decoration: line-through;
+    font-size: 10px;
+    color: grey;
+  }
+}

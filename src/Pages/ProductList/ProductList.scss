@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+@import '../../Styles/common.scss';
+
+.ProductList {
+  width: 1200px;
+  margin: 0 auto;
+  margin-top: 80px;
+  text-align: left;
+  .pickListnum {
+    width: 1200px;
+    height: 35px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 5px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+    --color-black: #000000;
+    align-items: center;
+    cursor: pointer;
+    span {
+      font-weight: bolder;
+      font-size: 18px;
+    }
+
+    .pickListBox {
+      display: flex;
+    }
+    .pickListBox p {
+      padding-right: 25px;
+      font-family: 'Noto Sans KR', Zsans-serif;
+      --color-black: #000000;
+      font-size: 16px;
+    }
+  }
+
+  .selected {
+    color: rgb(58, 228, 205);
+  }
+  .unselected {
+    color: rgb(0, 0, 0);
+  }
+
+  section {
+    width: 1200px;
+    .productContainer {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 10px;
+      font-family: 'Noto Sans KR', sans-serif;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+    }
+  }
+}
