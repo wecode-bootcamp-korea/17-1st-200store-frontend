@@ -62,6 +62,9 @@ class ProductList extends Component {
 
     if (this.state.category !== resultUrl) {
       this.getProductList();
+      this.setState({
+        category: resultUrl,
+      });
     }
   }
 

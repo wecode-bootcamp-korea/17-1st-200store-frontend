@@ -14,7 +14,7 @@ class Cart extends Component {
 
   //backend와 통신할때는 cartList: res.result
   componentDidMount() {
-    fetch('data/cartListData.json')
+    fetch('/data/cartListData.json')
       .then(res => res.json())
       .then(res => {
         this.setState({
@@ -52,21 +52,67 @@ class Cart extends Component {
   };
 
   handleDelete = () => {
+    const cartDelete = this.state.cartList.filter(item => item.value);
+    const cartMap = cartDelete.map(item => item.cartId);
+    const deleteUrl = cartMap
+      .map(e => {
+        return ['cartId', e];
+      })
+      .map(e => e.join('='))
+      .join('&');
+
+    fetch(`http://10.58.2.5:8000/order/cart?${deleteUrl}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: localStorage.getItem('accessToken'),
+      },
+    })
+      .then(response => response.json())
+      .then(res => {
+        if (res.message === 'SUCCESS') {
+          alert('선택 상품을 삭제 완료 하였습니다.');
+        } else alert('선택 상품 삭제를 실패 하였습니다');
+      });
     this.setState(prevState => ({
       cartList: prevState.cartList.filter(item => !item.value),
     }));
   };
 
   sendCheckedList = () => {
+    fetch('http://10.58.2.5:8000/order/cart', {
+      method: 'POST',
+      headers: {
+        Authorization: localStorage.getItem('accessToken'),
+      },
+    })
+      .then(response => response.json())
+      .then(res => {
+        if (res.message === 'SUCCESS') {
+          alert('결제 페이지로 이동 합니다.');
+        } else alert('실패');
+      });
+
     this.setState(prevState => ({
       checkList: prevState.cartList.filter(item => item.value),
     }));
   };
 
   sendAllList = () => {
-    this.setState({
-      cartList: this.state.cartList,
-    });
+    fetch('http://10.58.2.5:8000/order/payment', {
+      method: 'GET',
+      headers: {
+        Authorization: localStorage.getItem('accessToken'),
+      },
+    })
+      .then(response => response.json())
+      .then(res => {
+        if (res.message === 'SUCCESS') {
+          alert('결제 페이지로 이동 합니다.');
+          this.setState({
+            cartList: res.result,
+          });
+        } else alert('실패');
+      });
   };
 
   handleAllChecked = e => {
@@ -89,12 +135,12 @@ class Cart extends Component {
     const selectedItems = cartList.filter(item => item.value);
     const sumPrice = Math.floor(
       selectedItems.reduce(
-        (acc, item) => acc + item.totalPrice * item.quantity,
+        (acc, item) => acc + item.eachPrice * item.quantity,
         0
       )
     );
     const deliveryFee = sumPrice < 30000 ? 2500 : 0;
-    const totalPrice = sumPrice + deliveryFee;
+    const price = sumPrice + deliveryFee;
     return (
       <div className="Cart">
         <div className="cartTitleContainer">
@@ -131,7 +177,7 @@ class Cart extends Component {
           selectedItems={selectedItems}
           sumPrice={sumPrice}
           deliveryFee={deliveryFee}
-          totalPrice={totalPrice}
+          price={price}
         />
         <div className="buttonContainer">
           <div className="leftButtonContainer">

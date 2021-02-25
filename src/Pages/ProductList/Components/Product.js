@@ -11,7 +11,7 @@ class Product extends Component {
     ).toLocaleString();
     const {
       key,
-      price,
+      // price,
       name,
       imgSrc,
       isBest,
@@ -50,13 +50,15 @@ class Product extends Component {
           {stock === 0 && <span className="soldOutText">SOLD OUT</span>}
         </div>
 
-        {sale > 0 && <span className="sale"> {sale}%</span>}
+        {sale > 0 && <span className="sale"> {saleNumber}%</span>}
         <p>{name}</p>
-        {sale === 0 && <p className="price">{price.toLocaleString()}원</p>}
+        {sale === 0 && (
+          <p className="price">{originalPrice.toLocaleString()}원</p>
+        )}
         {sale > 0 && (
           <div className="priceContainer">
-            <p className="oldPrice"> {price.toLocaleString()}원 </p>
-            <p className="salePrice">{originalPrice}원</p>
+            <p className="oldPrice"> {originalPrice.toLocaleString()}원 </p>
+            <p className="salePrice">{finalPrice}원</p>
           </div>
         )}
       </div>

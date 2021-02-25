@@ -1,0 +1,42 @@
+@import '../../../../Styles/common.scss';
+
+.MyPageHeader {
+  margin-bottom: 50px;
+
+  .greetings {
+    font-size: 35px;
+    font-family: price;
+  }
+
+  .couponPointBox {
+    font-size: 17px;
+    font-weight: 600;
+    color: gray;
+    padding: 25px 0;
+
+    .marginRight {
+      margin-right: 15px;
+    }
+
+    .infoInt {
+      color: black;
+      margin-right: 4px;
+      font-size: 20px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+  }
+
+  .userGradeBox {
+    font-size: 16px;
+    letter-spacing: 0.05em;
+
+    p {
+      margin-bottom: 7px;
+    }
+
+    span {
+      margin-right: 0.3em;
+    }
+  }
+}
