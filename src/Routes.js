@@ -26,15 +26,6 @@ class Routes extends React.Component {
           <Route exact path="/cart" component={Cart} />
           <Route exact path="/payment" component={Payment} />
           <Route exact path="/mypage" component={MyPage} />
-
-          {/* <Route exact path="/mypage/orderList" component={} />
-          <Route exact path="/mypage/productLike" component={} />
-          <Route exact path="/mypage/coupon" component={} />
-          <Route exact path="/mypage/point" component={} />
-          <Route exact path="/mypage/privateInquiry" component={} />
-          <Route exact path="/mypage/chagneInfo" component={} />
-          <Route exact path="/mypage/address" component={} />
-          <Route exact path="/mypage/productInquiry" component={} /> */}
         </Switch>
         <Footer />
       </Router>

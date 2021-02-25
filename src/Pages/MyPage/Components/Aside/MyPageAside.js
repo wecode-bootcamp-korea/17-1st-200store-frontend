@@ -1,8 +1,11 @@
 import React from 'react';
-import MyPageMain from '../../MyPageMain';
 import './MyPageAside.scss';
 
 export default class MyPageHeader extends React.Component {
+  state = {
+    currentId: this.props.subCategory,
+  };
+
   render() {
     return (
       <aside className="MyPageAside">
@@ -19,7 +22,7 @@ export default class MyPageHeader extends React.Component {
                         className="subCategory"
                         key={idx2}
                         onClick={() =>
-                          this.clickHandler((idx1 + 1) * 10 + idx2 + 1)
+                          this.props.clickHandler((idx1 + 1) * 10 + idx2 + 1)
                         }
                       >
                         {subCategory}
@@ -35,10 +38,6 @@ export default class MyPageHeader extends React.Component {
     );
   }
 }
-
-const MAPPING_OBJ = {
-  10: <MyPageMain />,
-};
 
 const CATEGORY_ARR = [
   {
