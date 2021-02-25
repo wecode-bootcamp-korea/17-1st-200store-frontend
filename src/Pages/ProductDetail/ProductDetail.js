@@ -149,8 +149,6 @@ class ProductDetail extends React.Component {
           />
           <div className="detail">
             <Itemgoodstab />
-            {/* {this.state.productImage.map(image => {
-              return ( */}
             <div className="detailCont" id="detailInfo">
               <h3 className="mustInfo">상품상세정보</h3>
               <div className="detailExplainBox ">
