@@ -8,16 +8,29 @@ class Nav extends Component {
     super();
     this.state = {
       navScrolled: false,
-      menuList: [],
+      navList: [],
+      productList: [],
     };
   }
 
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
     this.setState({
-      menuList: NAVDATA,
+      navList: NAVDATA,
     });
   }
+
+  menuChange = id => {
+    this.props.history.push(`/product?category=${id}`);
+    // fetch(`http://10.58.2.240:8000/product?category=${id}`)
+    //   .then(res => res.json())
+    //   .then(res => {
+    //     // console.log(res.data.products);
+    //     this.setState({
+    //       productList: res.data.products,
+    //     });
+    //   });
+  };
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
@@ -41,7 +54,7 @@ class Nav extends Component {
   };
 
   render() {
-    const { navScrolled, menuList } = this.state;
+    const { navScrolled, navList } = this.state;
     return (
       <nav>
         {!navScrolled && (
@@ -92,8 +105,12 @@ class Nav extends Component {
           </div>
         )}
         <ul className="menuContainer">
-          {menuList.map((menu, idx) => {
-            return <li key={idx}>{menu.title}</li>;
+          {navList.map((menu, idx) => {
+            return (
+              <li key={idx} onClick={() => this.menuChange(menu.title)}>
+                {menu.title}
+              </li>
+            );
           })}
         </ul>
       </nav>
