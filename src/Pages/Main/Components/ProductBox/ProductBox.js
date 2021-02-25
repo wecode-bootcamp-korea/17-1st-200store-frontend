@@ -5,9 +5,6 @@ import './ProductBox.scss';
 class ProductBox extends Component {
   goToDetail = id => {
     this.props.history.push(`/productdetail/${id}`);
-    // this.props.history.push(`/productdetail/`);
-    console.log(id);
-    console.log(this.props.history);
   };
   render() {
     const saleNumToInt = Math.ceil(this.props.sale);
