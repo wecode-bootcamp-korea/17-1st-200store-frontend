@@ -10,13 +10,6 @@ class OrderListItem extends Component {
     };
   }
 
-  // confirmPayment = () => {
-  //   this.setState({
-  //     confirmPaymentBtn: !this.state.confirmPaymentBtn,
-  //   });
-  //   alert('구매가 확정되었습니다!');
-  // };
-
   render() {
     const {
       serialNum,
@@ -34,15 +27,6 @@ class OrderListItem extends Component {
 
     const Oid = orderStatusId - 3;
     const Pid = orderItem.productStatus - 1;
-
-    // const OrderStatus = [
-    //   '입금대기',
-    //   '결재완료',
-    //   '상품준비중',
-    //   '배송중',
-    //   '배송완료',
-    // ];
-    // const ProductStatus = ['대기', '취소', '환불', '구매확정'];
 
     return (
       <tr className="OrderListItem">
@@ -63,7 +47,6 @@ class OrderListItem extends Component {
               {ProductStatus[Pid]}
             </button>
           )}
-          {/* {Pid + 1 !== 4 && <p>{ProductStatus[Pid]}</p>} */}
           {Pid + 1 !== 4 && !orderItem.isReview && (
             <button
               value={orderId}
