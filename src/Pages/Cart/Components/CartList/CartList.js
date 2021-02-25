@@ -30,7 +30,6 @@ class CartList extends Component {
           </thead>
           <tbody className="cartItemContainer">
             {cartList.map(item => {
-              console.log({ item });
               return (
                 <CartItem
                   cartItem={item}
@@ -39,7 +38,7 @@ class CartList extends Component {
                   imgSrc={item.urlImage}
                   name={item.product}
                   quantity={item.quantity}
-                  price={item.totalPrice}
+                  price={item.eachPrice}
                   onIncrement={onIncrement}
                   onDecrement={onDecrement}
                   onChecked={onChecked}
