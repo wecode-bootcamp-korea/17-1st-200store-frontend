@@ -146,6 +146,7 @@ class ProductList extends Component {
               return (
                 <Product
                   key={item.id}
+                  id={item.id}
                   price={item.price}
                   name={item.name}
                   imgSrc={item.imageUrl}

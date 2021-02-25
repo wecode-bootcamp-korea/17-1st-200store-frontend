@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import './Product.scss';
 
 class Product extends Component {
+  goToDetail = id => {
+    this.props.history.push(`/productdetail/${id}`);
+  };
   render() {
     const saleNumToInt = Math.ceil(this.props.sale);
     const saleNumber = this.props.sale * 100;
@@ -20,10 +24,12 @@ class Product extends Component {
       sale,
       stock,
     } = this.props;
+    console.log(this.props.id);
 
     return (
       <div className="Best">
         <div
+          onClick={() => this.goToDetail(this.props.id)}
           className={stock === 0 ? 'soldOut' : 'bestImage'}
           style={{
             backgroundImage: `url(${imgSrc})`,
@@ -66,4 +72,4 @@ class Product extends Component {
   }
 }
 
-export default Product;
+export default withRouter(Product);
