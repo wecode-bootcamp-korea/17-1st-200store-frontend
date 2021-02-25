@@ -15,7 +15,6 @@ class Product extends Component {
     ).toLocaleString();
     const {
       key,
-      // price,
       name,
       imgSrc,
       isBest,
