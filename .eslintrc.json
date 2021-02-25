@@ -1,8 +1,5 @@
 {
   "extends": ["react-app", "plugin:prettier/recommended"],
-<<<<<<< HEAD
-  "parser": "babel-eslint"
-=======
   "rules": {
     "prettier/prettier": [
       "error",
@@ -11,5 +8,4 @@
       }
     ]
   }
->>>>>>> master
 }
