@@ -2,7 +2,7 @@
 @import url('https://use.fontawesome.com/releases/v5.15.2/css/all.css');
 
 .CartList {
-  table {
+  .cartListTable {
     width: 100%;
     margin: 0 auto;
     border-top: 1px solid black;
@@ -15,31 +15,36 @@
       background-color: #f7f7f7;
       border-bottom: 1px solid rgba(211, 211, 211, 0.495);
 
-      th {
+      .checkBoxAll {
         display: table-cell;
         vertical-align: middle;
         text-align: center;
 
-        input {
+        .checkBoxInputInCartList {
           width: 15px;
           padding: 3px;
         }
       }
 
       .checkBoxAll {
+        vertical-align: middle;
         width: 20px;
         padding: 3px;
       }
       .productInfo {
+        vertical-align: middle;
         width: 500px;
       }
       .productQty {
+        vertical-align: middle;
         width: 100px;
       }
       .productPrice {
+        vertical-align: middle;
         width: 100px;
       }
       .deliveryFee {
+        vertical-align: middle;
         width: 100px;
       }
     }

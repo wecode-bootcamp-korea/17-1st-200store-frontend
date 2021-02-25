@@ -13,13 +13,13 @@
 
   .productPrice,
   .deliveryFee,
-  .totalPricetoPayment {
+  .totalPriceInCart {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     margin: 0 20px;
 
-    p {
+    .totalPriceText {
       margin: 3px;
       font-size: 18px;
     }
@@ -37,5 +37,9 @@
 
   i {
     font-size: 20px;
+  }
+
+  .productPrice {
+    width: 200px;
   }
 }

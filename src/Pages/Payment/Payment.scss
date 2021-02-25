@@ -6,19 +6,19 @@
   margin: 0 auto;
   font-family: 'Noto Sans KR', sans-serif;
 
-  header {
+  .paymentHeader {
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid lightgrey;
     margin: 50px 0 50px;
     height: 70px;
 
-    h1 {
+    .orderForm {
       font-size: 30px;
       font-weight: bold;
     }
 
-    ul {
+    .currentStatus {
       display: flex;
       margin-top: 16px;
 
@@ -37,7 +37,7 @@
     }
   }
 
-  h2 {
+  .personInformation {
     margin-top: 50px;
     padding: 10px 0px;
     border-bottom: 1px solid black;
@@ -45,7 +45,7 @@
     font-weight: bold;
   }
 
-  section {
+  .paymentSection {
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -54,7 +54,7 @@
     height: 100px;
     border: 2px solid lightgray;
 
-    span {
+    .finalPaidAmount {
       margin: 0 40px;
       font-weight: bold;
       font-size: 15px;
@@ -85,8 +85,10 @@
       margin: 10px;
       font-size: 13px;
 
-      input {
+      .checkBoxConfirm {
         margin: 5px;
+        width: 20px;
+        height: 20px;
       }
 
       b {

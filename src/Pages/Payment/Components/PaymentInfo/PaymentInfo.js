@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import './PaymentInfo.scss';
 
 class PaymentInfo extends Component {
   render() {
     return (
       <table className="PaymentInfo">
         <tbody>
-          <tr>
-            <th>
+          <tr className="trInPaymentInfo">
+            <th className="thInPaymentInfo">
               <li>상품 합계 금액</li>
             </th>
             <td>
@@ -20,7 +21,7 @@ class PaymentInfo extends Component {
               <li>배송비</li>
             </th>
             <td>
-              <p>{this.props.deliveryFee.toLocaleString()}</p>
+              <p>{this.props.deliveryFee.toLocaleString()}원</p>
             </td>
           </tr>
           <tr>

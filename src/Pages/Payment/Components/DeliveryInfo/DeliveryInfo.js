@@ -18,8 +18,9 @@ class DeliveryInfo extends Component {
             <th>
               <li>받으실분</li>
             </th>
-            <td>
+            <td className="tdInDeliveryInfo">
               <input
+                className="deliveryInfoInput"
                 name="receiverName"
                 onChange={handleAllInput}
                 value={receiverName}
@@ -30,8 +31,9 @@ class DeliveryInfo extends Component {
             <th rowSpan="2">
               <li>받으실 곳</li>
             </th>
-            <td>
+            <td className="tdInDeliveryInfo">
               <input
+                className="inputDeliveryInfo"
                 name="receiverPostCode"
                 onChange={handleAllInput}
                 value={zoneCode}
@@ -40,7 +42,7 @@ class DeliveryInfo extends Component {
             </td>
           </tr>
           <tr>
-            <td>
+            <td className="tdInDeliveryInfo">
               <input
                 className="addressLongInput"
                 name="receiverAddress"
@@ -54,7 +56,7 @@ class DeliveryInfo extends Component {
             <th className="notRequired">
               <li>전화번호</li>
             </th>
-            <td>
+            <td className="tdInDeliveryInfo">
               <input />
             </td>
           </tr>
