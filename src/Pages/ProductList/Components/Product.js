@@ -24,7 +24,8 @@ class Product extends Component {
       sale,
       stock,
     } = this.props;
-    console.log(this.props.id);
+    console.log('origin price', originalPrice);
+    console.log('sale', sale);
 
     return (
       <div className="Best">
@@ -58,7 +59,7 @@ class Product extends Component {
 
         {sale > 0 && <span className="sale"> {saleNumber}%</span>}
         <p>{name}</p>
-        {sale === 0 && (
+        {sale == 0.0 && (
           <p className="price">{originalPrice.toLocaleString()}원</p>
         )}
         {sale > 0 && (
