@@ -13,6 +13,7 @@ class ProductBox extends Component {
     const finalPrice = (
       Math.round((this.props.price * (1 - this.props.sale)) / 100) * 100
     ).toLocaleString();
+
     const { name, imgSrc, isBest, isNew, isSale, sale } = this.props;
     return (
       <div
