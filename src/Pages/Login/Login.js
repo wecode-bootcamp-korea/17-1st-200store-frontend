@@ -20,13 +20,15 @@ class Login extends Component {
     });
   };
 
-  // handleClick = e => {
-  //   const { id, pw } = this.state;
-  //   id.length >= 5 && pw.length >= 8 ? this.goToMain() : alert('로그인실패');
-  // };
+  handleClick = e => {
+    const { id, pw } = this.state;
+    id.length >= 5 && pw.length >= 8
+      ? this.logincheck()
+      : alert('로그인에 실패했습니다!');
+  };
 
   handleKeyPress = e => {
-    const { pw, id } = this.state;
+    const { id, pw } = this.state;
     if (e.key === 'Enter') {
       if (id.length >= 5 && pw.length >= 8) {
         fetch('http://10.58.5.199:8000/user/login', {
