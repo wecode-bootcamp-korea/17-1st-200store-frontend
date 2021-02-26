@@ -4,28 +4,33 @@ class CurrentOrder extends Component {
   render() {
     return (
       <div className="CurrentOrder">
-        <section>
-          <article>
+        <section className="currentOrderBox">
+          <article className="orderStatusCircle">
             <h2>입금대기</h2>
             <h3>0</h3>
           </article>
-          <article>
+          <i className="fas fa-chevron-right arrow" />
+          <article className="orderStatusCircle">
             <h2>결제완료</h2>
             <h3>0</h3>
           </article>
-          <article>
+          <i className="fas fa-chevron-right arrow" />
+          <article className="orderStatusCircle">
             <h2>상품준비중</h2>
             <h3>0</h3>
           </article>
-          <article>
+          <i className="fas fa-chevron-right arrow" />
+          <article className="orderStatusCircle">
             <h2>배송중</h2>
             <h3>0</h3>
           </article>
-          <article>
+          <i className="fas fa-chevron-right arrow" />
+          <article className="orderStatusCircle">
             <h2>배송완료</h2>
             <h3>0</h3>
           </article>
-          <article>
+          <i className="fas fa-chevron-right arrow" />
+          <article className="orderStatusCircle">
             <h2>구매확정</h2>
             <h3>0</h3>
           </article>

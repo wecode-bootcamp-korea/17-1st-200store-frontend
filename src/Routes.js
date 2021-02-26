@@ -11,7 +11,6 @@ import Payment from './Pages/Payment/Payment';
 import MyPage from './Pages/MyPage/MyPage';
 import Nav from './Components/Nav/Nav';
 import Footer from './Components/Footer/Footer';
-import OrderHistory from './Pages/MyPage/Components/OrderHistory/OrderHistory';
 
 class Routes extends React.Component {
   render() {
@@ -28,7 +27,6 @@ class Routes extends React.Component {
           <Route exact path="/cart" component={Cart} />
           <Route exact path="/payment" component={Payment} />
           <Route exact path="/mypage" component={MyPage} />
-          <Route exact path="/mypage/orderhistory" component={OrderHistory} />
         </Switch>
         <Footer />
       </Router>

@@ -61,7 +61,7 @@ class ProductDetail extends React.Component {
     fetch('http://10.58.0.63:8000/product/product_like', {
       method: 'POST',
       headers: {
-        Authorization: localStorage.getItem('access_token'),
+        Authorization: localStorage.getItem('accessToken'),
       },
       body: JSON.stringify({
         productId: this.state.productDetail[0].id,
@@ -79,7 +79,7 @@ class ProductDetail extends React.Component {
     fetch('http://10.58.5.199:8000/order/cart', {
       method: 'POST',
       headers: {
-        Authorization: localStorage.getItem('access_token'),
+        Authorization: localStorage.getItem('accessToken'),
       },
       body: JSON.stringify({
         productId: this.state.productDetail[0].id,
@@ -106,7 +106,7 @@ class ProductDetail extends React.Component {
     fetch('http://10.58.2.5:8000/order/buyitnow', {
       method: 'POST',
       headers: {
-        Authorization: localStorage.getItem('access_token'),
+        Authorization: localStorage.getItem('accessToken'),
       },
       body: JSON.stringify({
         productId: this.state.productDetail[0].id,

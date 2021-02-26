@@ -21,16 +21,21 @@ class Payment extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   fetch('http://10.58.2.5:8000/order/payment')
-  //     .then(res => res.json())
-  //     .then(res => {
-  //       console.log(res.result);
-  //       this.setState({
-  //         cartList: res.result.product_info,
-  //       });
-  //     });
-  // }
+  componentDidMount() {
+    fetch('http://10.58.2.5:8000/order/payment', {
+      method: 'GET',
+      headers: {
+        Authorization: localStorage.getItem('accessToken'),
+      },
+    })
+      .then(res => res.json())
+      .then(res => {
+        console.log(res.result);
+        this.setState({
+          cartList: res.result.product_info,
+        });
+      });
+  }
 
   handleAllInput = e => {
     this.setState({
@@ -71,31 +76,36 @@ class Payment extends Component {
   };
 
   // 백앤드와 통신시 사용할 fetch 함수
-  // paymentComplete = () => {
-  //   fetch('API', {
-  //     method: 'POST',
-  //     body: JSON.stringify({
-  //       buyerName: this.state.buyerName,
-  //       buyerPhone: this.state.buyerPhone,
-  //       buyerEmail: this.state.buyerEmail,
-  //       receiverName: this.state.receiverName,
-  //       receiverAddress: this.state.fullAddress,
-  //       receiverPostCode: this.state.receiverPostCode,
-  //       receiverPhone: this.state.receiverPhone,
-  //     }),
-  //   })
-  //     .then(response => response.json())
-  //     .then(result =>
-  //       result.message === 'SUCCESS'
-  //         ? alert('결제가 완료 되었습니다~!')
-  //         : alert('결제 실패')
-  //     );
-  // };
-
   paymentComplete = () => {
-    alert('결제가 완료되었습니다!');
+    fetch('API', {
+      method: 'POST',
+      headers: {
+        Authorization: localStorage.getItem('accessToken'),
+      },
+      body: JSON.stringify({
+        buyerName: this.state.buyerName,
+        buyerPhone: this.state.buyerPhone,
+        buyerEmail: this.state.buyerEmail,
+        receiverName: this.state.receiverName,
+        receiverAddress: this.state.fullAddress,
+        receiverPostCode: this.state.receiverPostCode,
+        receiverPhone: this.state.receiverPhone,
+      }),
+    })
+      .then(response => response.json())
+      .then(result =>
+        result.message === 'SUCCESS'
+          ? alert('결제가 완료 되었습니다~!')
+          : alert('결제 실패')
+      );
     this.props.history.push('/');
   };
+
+  //// 백앤드와 통신 안할시 사용
+  // paymentComplete = () => {
+  //   alert('결제가 완료되었습니다!');
+  //   this.props.history.push('/');
+  // };
 
   render() {
     const width = 595;
