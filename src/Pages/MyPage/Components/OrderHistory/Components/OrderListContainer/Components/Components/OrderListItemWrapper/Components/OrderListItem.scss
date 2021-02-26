@@ -9,19 +9,30 @@
     border-top: 1px solid rgba(211, 211, 211, 0.495);
     border-bottom: 1px solid rgba(211, 211, 211, 0.495);
 
-    .statusBtn {
+    .statusBtn,
+    .confirmStatusBtn {
       margin: 2px auto;
-      width: 80px;
+      width: 60px;
       border: 1px solid ivory;
-      border-radius: 8px;
+      border-radius: 5px;
       height: 20px;
-      background-color: var(--color-green);
+      background-color: red;
       color: ivory;
       font-size: 13px;
+
+      &:hover {
+        opacity: 0.5;
+        cursor: pointer;
+      }
+    }
+
+    .confirmStatusBtn {
+      background-color: var(--color-green);
     }
 
     .confirmPayment {
       margin: 2px auto;
+      color: var(--color-green);
       font-weight: bold;
     }
   }
