@@ -2,8 +2,7 @@ const SLIDERDATA = [
   {
     id: 1,
     name: 'slider1',
-    src:
-      'https://images.unsplash.com/photo-1499892477393-f675706cbe6e?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80',
+    src: process.env.PUBLIC_URL + '/images/main/200store.jpg',
   },
   {
     id: 2,

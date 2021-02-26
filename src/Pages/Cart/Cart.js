@@ -24,7 +24,7 @@ class Cart extends Component {
       .then(res => res.json())
       .then(res => {
         this.setState({
-          cartList: res,
+          cartList: res.result,
         });
       });
   }
@@ -67,7 +67,7 @@ class Cart extends Component {
       .map(e => e.join('='))
       .join('&');
 
-    fetch(`http://10.58.2.5:8000/order/cart?${deleteUrl}`, {
+    fetch(`http://10.58.2.240:8000/order/cart?${deleteUrl}`, {
       method: 'DELETE',
       headers: {
         Authorization: localStorage.getItem('accessToken'),
@@ -85,7 +85,7 @@ class Cart extends Component {
   };
 
   sendCheckedList = () => {
-    fetch('http://10.58.2.5:8000/order/cart', {
+    fetch('http://10.58.2.240:8000/order/cart', {
       method: 'POST',
       headers: {
         Authorization: localStorage.getItem('accessToken'),
@@ -103,7 +103,7 @@ class Cart extends Component {
   };
 
   sendAllList = () => {
-    fetch('http://10.58.2.5:8000/order/payment', {
+    fetch('http://10.58.2.240:8000/order/payment', {
       method: 'GET',
       headers: {
         Authorization: localStorage.getItem('accessToken'),

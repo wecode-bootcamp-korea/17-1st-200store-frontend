@@ -55,14 +55,14 @@ class Signup extends React.Component {
   };
 
   goToMain = () => {
-    fetch('SIGN_UP_API', {
+    fetch('http://10.58.2.240:8000/user/signup', {
       method: 'POST',
       body: JSON.stringify({
-        user_id: this.state.id,
-        user_password: this.state.pw,
-        user_name: this.state.name,
+        account: this.state.id,
+        password: this.state.pw,
+        name: this.state.name,
         email: this.state.email,
-        cell_phone: this.state.phone,
+        cellPhone: this.state.phone,
         address: this.state.add1,
       }),
     })

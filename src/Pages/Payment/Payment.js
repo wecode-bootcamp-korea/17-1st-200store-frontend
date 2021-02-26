@@ -22,7 +22,7 @@ class Payment extends Component {
   }
 
   componentDidMount() {
-    fetch('http://10.58.2.5:8000/order/payment', {
+    fetch('http://10.58.2.240:8000/order/payment', {
       method: 'GET',
       headers: {
         Authorization: localStorage.getItem('accessToken'),
@@ -77,7 +77,7 @@ class Payment extends Component {
 
   // 백앤드와 통신시 사용할 fetch 함수
   paymentComplete = () => {
-    fetch('API', {
+    fetch('http://10.58.2.240:8000', {
       method: 'POST',
       headers: {
         Authorization: localStorage.getItem('accessToken'),
