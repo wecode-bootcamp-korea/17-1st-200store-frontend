@@ -23,34 +23,34 @@ class OrderHistory extends Component {
     };
   }
   // 백앤드와 통신할때
-  // componentDidMount() {
-  //   fetch(ORDERAPI, {
-  //     method: 'GET',
-  //     headers: {
-  //       Authorization: localStorage.getItem('accessToken'),
-  //     },
-  //   })
-  //     .then(res => res.json())
-  //     .then(res => {
-  //       this.setState({
-  //         orderList: res.data,
-  //       });
-  //     });
-  // }
-
-  // 백앤드와 통신 안할때
   componentDidMount() {
-    fetch('/data/orderData.json')
-      //   method: 'GET',
-      // }
-
+    fetch(ORDERAPI, {
+      method: 'GET',
+      headers: {
+        Authorization: localStorage.getItem('accessToken'),
+      },
+    })
       .then(res => res.json())
       .then(res => {
         this.setState({
-          orderList: res,
+          orderList: res.data,
         });
       });
   }
+
+  // 백앤드와 통신 안할때
+  // componentDidMount() {
+  //   fetch('/data/orderData.json')
+  //     //   method: 'GET',
+  //     // }
+
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       this.setState({
+  //         orderList: res,
+  //       });
+  //     });
+  // }
 
   handleStartChange = date => {
     this.setState({

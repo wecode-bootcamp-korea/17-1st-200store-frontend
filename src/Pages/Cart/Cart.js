@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import CartList from './Components/CartList/CartList';
 import CartPrice from './Components/CartPrice/CartPrice';
-import { CARTAPI } from '../../config';
+import { CARTAPI, SENDCheckedAPI } from '../../config';
 import './Cart.scss';
 
 class Cart extends Component {
@@ -23,8 +24,9 @@ class Cart extends Component {
     })
       .then(res => res.json())
       .then(res => {
+        console.log(res);
         this.setState({
-          cartList: res,
+          cartList: res.result,
         });
       });
   }
@@ -67,7 +69,7 @@ class Cart extends Component {
       .map(e => e.join('='))
       .join('&');
 
-    fetch(`http://10.58.2.5:8000/order/cart?${deleteUrl}`, {
+    fetch(`http://10.58.2.240:8000/order/cart?${deleteUrl}`, {
       method: 'DELETE',
       headers: {
         Authorization: localStorage.getItem('accessToken'),
@@ -79,13 +81,13 @@ class Cart extends Component {
           alert('선택 상품을 삭제 완료 하였습니다.');
         } else alert('선택 상품 삭제를 실패 하였습니다');
       });
-    // this.setState(prevState => ({
-    //   cartList: prevState.cartList.filter(item => !item.value),
-    // }));
+    this.setState(prevState => ({
+      cartList: prevState.cartList.filter(item => !item.value),
+    }));
   };
 
   sendCheckedList = () => {
-    fetch('http://10.58.2.5:8000/order/cart', {
+    fetch(SENDCheckedAPI, {
       method: 'POST',
       headers: {
         Authorization: localStorage.getItem('accessToken'),
@@ -103,7 +105,7 @@ class Cart extends Component {
   };
 
   sendAllList = () => {
-    fetch('http://10.58.2.5:8000/order/payment', {
+    fetch('http://10.58.2.240:8000/order/payment', {
       method: 'GET',
       headers: {
         Authorization: localStorage.getItem('accessToken'),
@@ -113,10 +115,14 @@ class Cart extends Component {
       .then(res => {
         if (res.message === 'SUCCESS') {
           alert('결제 페이지로 이동 합니다.');
+          this.props.history.push('/payment');
           this.setState({
             cartList: res.result,
           });
-        } else alert('실패');
+        } else {
+          alert('실패');
+          this.props.history.push('/');
+        }
       });
   };
 
@@ -137,7 +143,7 @@ class Cart extends Component {
       sendCheckedList,
       sendAllList,
     } = this;
-    const selectedItems = cartList.filter(item => item.value);
+    const selectedItems = this.state.cartList.filter(item => item.value);
     const sumPrice = Math.floor(
       selectedItems.reduce(
         (acc, item) => acc + item.eachPrice * item.quantity,
@@ -208,4 +214,4 @@ class Cart extends Component {
   }
 }
 
-export default Cart;
+export default withRouter(Cart);

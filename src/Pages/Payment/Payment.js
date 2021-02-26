@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import DaumPostCode from 'react-daum-postcode';
 import BuyerInfo from './Components/BuyerInfo/BuyerInfo';
 import DeliveryInfo from './Components/DeliveryInfo/DeliveryInfo';
@@ -22,7 +23,7 @@ class Payment extends Component {
   }
 
   componentDidMount() {
-    fetch('http://10.58.2.5:8000/order/payment', {
+    fetch('http://10.58.2.240:8000/order/payment', {
       method: 'GET',
       headers: {
         Authorization: localStorage.getItem('accessToken'),
@@ -30,7 +31,6 @@ class Payment extends Component {
     })
       .then(res => res.json())
       .then(res => {
-        console.log(res.result);
         this.setState({
           cartList: res.result.product_info,
         });
@@ -77,7 +77,7 @@ class Payment extends Component {
 
   // 백앤드와 통신시 사용할 fetch 함수
   paymentComplete = () => {
-    fetch('API', {
+    fetch('http://10.58.2.240:8000', {
       method: 'POST',
       headers: {
         Authorization: localStorage.getItem('accessToken'),
@@ -217,4 +217,4 @@ class Payment extends Component {
   }
 }
 
-export default Payment;
+export default withRouter(Payment);
