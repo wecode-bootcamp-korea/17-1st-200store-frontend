@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import DaumPostCode from 'react-daum-postcode';
 import BuyerInfo from './Components/BuyerInfo/BuyerInfo';
 import DeliveryInfo from './Components/DeliveryInfo/DeliveryInfo';
@@ -30,7 +31,6 @@ class Payment extends Component {
     })
       .then(res => res.json())
       .then(res => {
-        console.log(res.result);
         this.setState({
           cartList: res.result.product_info,
         });
@@ -217,4 +217,4 @@ class Payment extends Component {
   }
 }
 
-export default Payment;
+export default withRouter(Payment);
