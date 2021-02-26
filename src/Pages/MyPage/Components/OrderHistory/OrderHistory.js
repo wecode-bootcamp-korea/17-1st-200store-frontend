@@ -22,13 +22,12 @@ class OrderHistory extends Component {
       orderId: 0,
     };
   }
-
+  // 백앤드와 통신할때
   componentDidMount() {
     fetch(ORDERAPI, {
       method: 'GET',
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyUGsiOjJ9._hvvp0nHhQu8uGp3ZgnAJhCqsNVf6rt2fT16hF8RfgVwTopGmKlmsCxh4uA_U_2GdFsza05DJFEx1ObD4LJGcw',
+        Authorization: localStorage.getItem('accessToken'),
       },
     })
       .then(res => res.json())
@@ -167,8 +166,7 @@ class OrderHistory extends Component {
     fetch(REVIEWAPI, {
       method: 'POST',
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyUGsiOjJ9._hvvp0nHhQu8uGp3ZgnAJhCqsNVf6rt2fT16hF8RfgVwTopGmKlmsCxh4uA_U_2GdFsza05DJFEx1ObD4LJGcw',
+        Authorization: localStorage.getItem('access_token'),
       },
       body: JSON.stringify({
         starRating: this.state.starRating,
@@ -186,7 +184,7 @@ class OrderHistory extends Component {
                 isReviewModalOn: false,
                 orderList: res.data,
               },
-              () => alert('등록 성공')
+              () => alert('리뷰가 등록되었습니다')
             )
           : alert('리뷰 등록이 실패하였습니다');
       });
@@ -203,6 +201,7 @@ class OrderHistory extends Component {
   goToReview = () => {
     alert('리뷰로 갑니다');
   };
+
   pressConfirm = e => {
     this.setState(
       {
@@ -219,8 +218,7 @@ class OrderHistory extends Component {
     fetch(CONFIRMAPI, {
       method: 'PATCH',
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyUGsiOjJ9._hvvp0nHhQu8uGp3ZgnAJhCqsNVf6rt2fT16hF8RfgVwTopGmKlmsCxh4uA_U_2GdFsza05DJFEx1ObD4LJGcw',
+        Authorization: localStorage.getItem('accessToken'),
       },
       body: JSON.stringify({
         productId: this.state.id,

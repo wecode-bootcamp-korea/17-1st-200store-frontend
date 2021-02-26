@@ -20,16 +20,26 @@ class Login extends Component {
     });
   };
 
-  // handleClick = e => {
-  //   const { id, pw } = this.state;
-  //   id.length >= 5 && pw.length >= 8 ? this.goToMain() : alert('로그인실패');
-  // };
+  handleClick = e => {
+    const { id, pw } = this.state;
+    if (id.length >= 5 && pw.length >= 8) {
+      fetch('http://10.58.5.199:8000/user/login', {
+        method: 'POST',
+        body: JSON.stringify({
+          account: this.state.id,
+          password: this.state.pw,
+        }),
+      })
+        .then(res => res.json())
+        .then(res => this.loginCheck(res));
+    }
+  };
 
   handleKeyPress = e => {
     const { pw, id } = this.state;
     if (e.key === 'Enter') {
       if (id.length >= 5 && pw.length >= 8) {
-        fetch('http://10.58.5.199:8000/user/login', {
+        fetch('http://10.58.2.240:8000/user/login', {
           method: 'POST',
           body: JSON.stringify({
             account: this.state.id,

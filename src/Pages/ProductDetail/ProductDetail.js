@@ -28,6 +28,7 @@ class ProductDetail extends React.Component {
     fetch(`http://10.58.2.240:8000/product/${this.props.match.params.id}`)
       .then(res => res.json())
       .then(res => {
+        console.log(res);
         this.setState({
           productDetail: res.data.product,
           productImage: res.data.product.imageUrls,
@@ -61,7 +62,7 @@ class ProductDetail extends React.Component {
     fetch('http://10.58.0.63:8000/product/product_like', {
       method: 'POST',
       headers: {
-        Authorization: localStorage.getItem('access_token'),
+        Authorization: localStorage.getItem('accessToken'),
       },
       body: JSON.stringify({
         productId: this.state.productDetail[0].id,
@@ -76,18 +77,18 @@ class ProductDetail extends React.Component {
   };
 
   goToCart = () => {
-    fetch('http://10.58.5.199:8000/order/cart', {
+    fetch('http://10.58.2.240:8000/order/cart', {
       method: 'POST',
       headers: {
-        Authorization: localStorage.getItem('access_token'),
+        Authorization: localStorage.getItem('accessToken'),
       },
       body: JSON.stringify({
-        productId: this.state.productDetail[0].id,
+        productId: this.state.productDetail.id,
         totalPrice:
           this.state.count *
           Math.round(
-            (this.state.productDetail[0].price *
-              (1 - this.state.productDetail[0].sale)) /
+            (this.state.productDetail.price *
+              (1 - this.state.productDetail.sale)) /
               100
           ) *
           100,
@@ -106,15 +107,15 @@ class ProductDetail extends React.Component {
     fetch('http://10.58.2.5:8000/order/buyitnow', {
       method: 'POST',
       headers: {
-        Authorization: localStorage.getItem('access_token'),
+        Authorization: localStorage.getItem('accessToken'),
       },
       body: JSON.stringify({
-        productId: this.state.productDetail[0].id,
+        productId: this.state.productDetail.id,
         totalPrice:
           this.state.count *
           Math.round(
-            (this.state.productDetail[0].price *
-              (1 - this.state.productDetail[0].sale)) /
+            (this.state.productDetail.price *
+              (1 - this.state.productDetail.sale)) /
               100
           ) *
           100,

@@ -154,6 +154,8 @@
           width: 20px;
           height: 20px;
           color: #cac8ca;
+          text-align: center;
+          padding: 2px 5px;
         }
 
         .itemChoicePrice {
@@ -169,11 +171,16 @@
       margin-top: 160px;
       margin-bottom: 30px;
     }
-    .totalPricedd {
-      .totalPrice {
-        color: var(--color-green);
-        font-size: 36px;
-        margin-right: 60px;
+
+    .totalAmount {
+      position: relative;
+      .totalPricedd {
+        .totalPrice2 {
+          color: var(--color-green);
+          font-size: 36px;
+          position: absolute;
+          right: 0px;
+        }
       }
     }
   }
