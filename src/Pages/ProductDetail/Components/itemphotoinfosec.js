@@ -109,7 +109,7 @@ class ItemPhotoInfoSec extends React.Component {
               <dl className="totalAmount">
                 <dt>총 합계금액</dt>
                 <dd className="totalPricedd">
-                  <strong className="totalPrice">
+                  <strong className="totalPrice2">
                     {finalPrice}
                     <b>원</b>
                   </strong>
