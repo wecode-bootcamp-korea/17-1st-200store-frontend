@@ -33,7 +33,7 @@ class ProductList extends Component {
 
     fetch(`http://10.58.2.240:8000/product?category=${resultUrl}`)
       .then(res => res.json())
-      .then(resn => {
+      .then(res => {
         this.setState({
           productList: res.data.products,
         });
