@@ -49,7 +49,7 @@
 
 - 메인페이지 
 
-![](https://images.velog.io/images/hi-yjs/post/e417f244-c140-48d3-af67-e74bd01dc52c/finalmain.gif)
+![](https://media.vlpt.us/images/hi-yjs/post/2af5ac71-5d0e-4763-b398-dff28f099857/Screen%20Shot%202021-02-21%20at%206.25.34%20PM.png)
 --------------
 
 - 장바구니 
