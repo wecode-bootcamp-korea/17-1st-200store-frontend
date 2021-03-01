@@ -44,7 +44,7 @@
 
 - Navigation Bar 
 
-![](https://images.velog.io/images/hi-yjs/post/27f8a1d0-8311-41de-8af1-c075847abee0/finalNav.gif)
+![](https://media.vlpt.us/images/hi-yjs/post/5a57473c-3588-4366-9a81-d0eaab16a720/Screen%20Shot%202021-03-02%20at%2012.31.11%20AM.png)
 --------------
 
 - 메인페이지 
@@ -54,15 +54,18 @@
 
 - 장바구니 
 
-![](https://images.velog.io/images/hi-yjs/post/928431f3-202b-4896-b988-12f96dad079d/finalcart.gif)
+![Screen Shot 2021-03-02 at 12 32 27 AM](https://user-images.githubusercontent.com/71842399/109519668-c91f2a00-7aee-11eb-91a3-c8230e26241e.png)
+
 --------------
 
 - 결제페이지 
 
-![](https://images.velog.io/images/hi-yjs/post/12fe29f8-f004-49fb-944f-367c5e1ee41e/finalpayment.gif)
+![Screen Shot 2021-03-02 at 12 33 05 AM](https://user-images.githubusercontent.com/71842399/109519747-e05e1780-7aee-11eb-8f3b-396bfbfe532c.png)
+
 --------------
 
 - 마이페이지
 
-![](https://images.velog.io/images/hi-yjs/post/02485260-47ad-4f53-97ff-92d1bd9b45f3/finalmypage.gif)
+![Screen Shot 2021-03-02 at 12 33 40 AM](https://user-images.githubusercontent.com/71842399/109519832-f4a21480-7aee-11eb-816c-2f15ac63d1fc.png)
+
 --------------
