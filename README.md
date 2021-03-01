@@ -43,7 +43,7 @@
 
 > **- Navigation Bar 🌈 **
 
-![](https://media.vlpt.us/images/hi-yjs/post/5a57473c-3588-4366-9a81-d0eaab16a720/Screen%20Shot%202021-03-02%20at%2012.31.11%20AM.png)
+![Screen Shot 2021-03-02 at 12 38 41 AM](https://user-images.githubusercontent.com/71842399/109520526-ae998080-7aef-11eb-9774-4414420581c8.png)
 
 --------------
 
