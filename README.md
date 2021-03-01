@@ -1,19 +1,19 @@
 ![](https://media.vlpt.us/images/sayxyoung/post/6b83cd36-6867-451e-87c5-2d02129570e9/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-02-28%20%EC%98%A4%ED%9B%84%2011.18.55.png)
 ## 200문방구
-#### 프로젝트 기간
+### 프로젝트 기간
 2021.02.15 ~ 2021.02.26
 
-#### Frontend
+### Frontend
 - 김연주
 - 서유진
 - 이미경
 
-#### Backend
+### Backend
 - 송빈호
 - 장성준
 - 정희영 (PM)
 
-#### Frontend 기술 스택
+### Frontend 기술 스택
 - React
 - React Router
 - SASS
@@ -22,7 +22,7 @@
 - React-datepicker
 - React-daum-postcode
 
-#### 구현한 페이지
+### 구현한 페이지
 - 회원가입 페이지  이미경
 - 로그인 페이지
 - Navigation Bar (+동적 라우팅 기능)
@@ -37,7 +37,7 @@
 - 마이페이지 - 주문목록
 - 마이페이지 - 리뷰 모달창 
 
-#### 결과물 
+### 결과물 
 > [**- 전체 시연영상 바로가기 **](https://www.youtube.com/watch?v=OLsMR11oai8&feature=youtu.be&ab_channel=YOUNG)
 --------------
 
