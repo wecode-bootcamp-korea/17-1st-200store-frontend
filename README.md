@@ -38,28 +38,30 @@
 - 마이페이지 - 리뷰 모달창 
 
 #### 결과물 
-> [**- 시연영상 바로가기 **](https://www.youtube.com/watch?v=OLsMR11oai8&feature=youtu.be&ab_channel=YOUNG)
+> [**- 전체 시연영상 바로가기 **](https://www.youtube.com/watch?v=OLsMR11oai8&feature=youtu.be&ab_channel=YOUNG)
+--------------
 
 - Navigation Bar 
 
 ![](https://images.velog.io/images/hi-yjs/post/27f8a1d0-8311-41de-8af1-c075847abee0/finalNav.gif)
+--------------
 
 - 메인페이지 
 
-
 ![](https://images.velog.io/images/hi-yjs/post/e417f244-c140-48d3-af67-e74bd01dc52c/finalmain.gif)
+--------------
 
-- 장바구니
-
+- 장바구니 
 
 ![](https://images.velog.io/images/hi-yjs/post/928431f3-202b-4896-b988-12f96dad079d/finalcart.gif)
+--------------
 
 - 결제페이지 
 
-
 ![](https://images.velog.io/images/hi-yjs/post/12fe29f8-f004-49fb-944f-367c5e1ee41e/finalpayment.gif)
+--------------
 
 - 마이페이지
 
-
 ![](https://images.velog.io/images/hi-yjs/post/02485260-47ad-4f53-97ff-92d1bd9b45f3/finalmypage.gif)
+--------------
