@@ -41,7 +41,7 @@
 > [**- 전체 시연영상 바로가기 **](https://www.youtube.com/watch?v=OLsMR11oai8&feature=youtu.be&ab_channel=YOUNG)
 --------------
 
-> **- Navigation Bar 🌈 **
+> **- Navigation Bar 🌈**
 
 ![Screen Shot 2021-03-02 at 12 38 41 AM](https://user-images.githubusercontent.com/71842399/109520526-ae998080-7aef-11eb-9774-4414420581c8.png)
 
