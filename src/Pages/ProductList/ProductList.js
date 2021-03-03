@@ -16,65 +16,65 @@ class ProductList extends Component {
     };
   }
 
-  getData = sorting => {
-    fetch(`http://10.58.2.240:8000/product?sorting=${sorting}`)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          productList: res.data.products,
-        });
-      });
-  };
-
-  getProductList = () => {
-    let addressUrl = this.props.history.location['search'];
-    let urlIndex = addressUrl.indexOf('=') + 1;
-    let resultUrl = addressUrl.slice(urlIndex);
-
-    fetch(`http://10.58.2.240:8000/product?category=${resultUrl}`)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          productList: res.data.products,
-        });
-      });
-  };
-
-  // 없어도 실행
-  componentDidMount() {
-    let addressUrl = this.props.history.location['search'];
-    let urlIndex = addressUrl.indexOf('=') + 1;
-    let resultUrl = addressUrl.slice(urlIndex);
-
-    this.setState({
-      category: resultUrl,
-    });
-
-    this.getProductList();
-  }
-
-  componentDidUpdate() {
-    let addressUrl = this.props.history.location['search'];
-    let urlIndex = addressUrl.indexOf('=') + 1;
-    let resultUrl = addressUrl.slice(urlIndex);
-
-    if (this.state.category !== resultUrl) {
-      this.getProductList();
-      this.setState({
-        category: resultUrl,
-      });
-    }
-  }
-
-  // getData = () => {
-  //   fetch('/ProductList.json')
+  // getData = sorting => {
+  //   fetch(`http://10.58.2.240:8000/product?sorting=${sorting}`)
   //     .then(res => res.json())
   //     .then(res => {
   //       this.setState({
-  //         productList: res,
+  //         productList: res.data.products,
   //       });
   //     });
   // };
+
+  // getProductList = () => {
+  //   let addressUrl = this.props.history.location['search'];
+  //   let urlIndex = addressUrl.indexOf('=') + 1;
+  //   let resultUrl = addressUrl.slice(urlIndex);
+
+  //   fetch(`http://10.58.2.240:8000/product?category=${resultUrl}`)
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       this.setState({
+  //         productList: res.data.products,
+  //       });
+  //     });
+  // };
+
+  // 없어도 실행
+  // componentDidMount() {
+  //   let addressUrl = this.props.history.location['search'];
+  //   let urlIndex = addressUrl.indexOf('=') + 1;
+  //   let resultUrl = addressUrl.slice(urlIndex);
+
+  //   this.setState({
+  //     category: resultUrl,
+  //   });
+
+  //   this.getProductList();
+  // }
+
+  // componentDidUpdate() {
+  //   let addressUrl = this.props.history.location['search'];
+  //   let urlIndex = addressUrl.indexOf('=') + 1;
+  //   let resultUrl = addressUrl.slice(urlIndex);
+
+  //   if (this.state.category !== resultUrl) {
+  //     this.getProductList();
+  //     this.setState({
+  //       category: resultUrl,
+  //     });
+  //   }
+  // }
+
+  getData = () => {
+    fetch('/ProductList.json')
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          productList: res,
+        });
+      });
+  };
 
   handleColor = e => {
     this.setState({ selectedItem: e.target.innerText });
@@ -88,6 +88,7 @@ class ProductList extends Component {
 
   render() {
     const { productList, selectedItem } = this.state;
+
     return (
       <div className="ProductList">
         <div className="pickListnum">
