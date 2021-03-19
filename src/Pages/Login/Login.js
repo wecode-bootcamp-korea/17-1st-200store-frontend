@@ -26,8 +26,8 @@ class Login extends Component {
       fetch('http://10.58.5.199:8000/user/login', {
         method: 'POST',
         body: JSON.stringify({
-          account: this.state.id,
-          password: this.state.pw,
+          account: id,
+          password: pw,
         }),
       })
         .then(res => res.json())
@@ -42,8 +42,8 @@ class Login extends Component {
         fetch('http://10.58.2.240:8000/user/login', {
           method: 'POST',
           body: JSON.stringify({
-            account: this.state.id,
-            password: this.state.pw,
+            account: id,
+            password: pw,
           }),
         })
           .then(res => res.json())
@@ -62,43 +62,42 @@ class Login extends Component {
   };
 
   render() {
+    const { handleClick, handleInput, handleKeyPress } = this;
     return (
       <div className="loginContainer">
-        <div className="contentBox">
-          <div className="memberCont">
-            <div className="loginBox">
-              <h3 className="join">회원 로그인</h3>
-              <div className="loginInputSec" onKeyUp={this.handleKeyPress}>
-                <input
-                  className="loginId"
-                  placeholder="아이디"
-                  type="text"
-                  name="id"
-                  onChange={this.handleInput}
-                />
-                <input
-                  className="loginPw"
-                  placeholder="비밀번호"
-                  type="password"
-                  name="pw"
-                  onChange={this.handleInput}
-                  onKeyPress={this.handleKeyPress}
-                />
-              </div>
-              <div className="idChk">
-                <input type="checkBox" className="saveid" />
-                <lavel for="saveId">아이디저장</lavel>
-              </div>
-              <button type="submit" onClick={this.handleClick}>
-                로그인
-              </button>
+        <div className="memberCont">
+          <div className="loginBox">
+            <h3 className="join">회원 로그인</h3>
+            <div className="loginInputSec" onKeyUp={handleKeyPress}>
+              <input
+                className="loginId"
+                placeholder="아이디"
+                type="text"
+                name="id"
+                onChange={handleInput}
+              />
+              <input
+                className="loginPw"
+                placeholder="비밀번호"
+                type="password"
+                name="pw"
+                onChange={handleInput}
+                onKeyPress={handleKeyPress}
+              />
             </div>
-            <div className="snslogin"> 페이스북으로 로그인</div>
-            <div className="btnLoginBox">
-              <button className="btnJoin">회원가입</button>
-              <button className="btnId">아이디 찾기</button>
-              <button className="btnPw">비밀번호 찾기</button>
+            <div className="idChk">
+              <input type="checkBox" className="saveid" />
+              <lavel for="saveId">아이디저장</lavel>
             </div>
+            <button type="submit" onClick={handleClick}>
+              로그인
+            </button>
+          </div>
+          <div className="snslogin"> 페이스북으로 로그인</div>
+          <div className="btnLoginBox">
+            <button className="btnJoin">회원가입</button>
+            <button className="btnId">아이디 찾기</button>
+            <button className="btnPw">비밀번호 찾기</button>
           </div>
         </div>
       </div>

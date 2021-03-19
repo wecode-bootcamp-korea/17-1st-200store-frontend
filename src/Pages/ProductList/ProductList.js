@@ -7,7 +7,6 @@ import './ProductList.scss';
 class ProductList extends Component {
   constructor() {
     super();
-
     this.state = {
       productList: [],
       selectedItem: '',
@@ -26,55 +25,56 @@ class ProductList extends Component {
   //     });
   // };
 
-  // getProductList = () => {
-  //   let addressUrl = this.props.history.location['search'];
-  //   let urlIndex = addressUrl.indexOf('=') + 1;
-  //   let resultUrl = addressUrl.slice(urlIndex);
+  getProductList = () => {
+    let addressUrl = this.props.history.location['search'];
+    let urlIndex = addressUrl.indexOf('=') + 1;
+    let resultUrl = addressUrl.slice(urlIndex);
 
-  //   fetch(`http://10.58.2.240:8000/product?category=${resultUrl}`)
-  //     .then(res => res.json())
-  //     .then(res => {
-  //       this.setState({
-  //         productList: res.data.products,
-  //       });
-  //     });
-  // };
-
-  // 없어도 실행
-  // componentDidMount() {
-  //   let addressUrl = this.props.history.location['search'];
-  //   let urlIndex = addressUrl.indexOf('=') + 1;
-  //   let resultUrl = addressUrl.slice(urlIndex);
-
-  //   this.setState({
-  //     category: resultUrl,
-  //   });
-
-  //   this.getProductList();
-  // }
-
-  // componentDidUpdate() {
-  //   let addressUrl = this.props.history.location['search'];
-  //   let urlIndex = addressUrl.indexOf('=') + 1;
-  //   let resultUrl = addressUrl.slice(urlIndex);
-
-  //   if (this.state.category !== resultUrl) {
-  //     this.getProductList();
-  //     this.setState({
-  //       category: resultUrl,
-  //     });
-  //   }
-  // }
-
-  getData = () => {
-    fetch('/ProductList.json')
+    fetch(`http://10.58.2.240:8000/product?category=${resultUrl}`)
       .then(res => res.json())
       .then(res => {
         this.setState({
-          productList: res,
+          productList: res.data.products,
         });
       });
   };
+
+  // 먼저 실행
+  componentDidMount() {
+    let addressUrl = this.props.history.location['search'];
+    let urlIndex = addressUrl.indexOf('=') + 1;
+    let resultUrl = addressUrl.slice(urlIndex);
+
+    this.getProductList();
+
+    this.setState({
+      category: resultUrl,
+    });
+  }
+
+  componentDidUpdate() {
+    let addressUrl = this.props.history.location['search'];
+    let urlIndex = addressUrl.indexOf('=') + 1;
+    let resultUrl = addressUrl.slice(urlIndex);
+
+    //if문이 사실이라면 컨디업 실행
+    if (this.state.category !== resultUrl) {
+      this.getProductList();
+      this.setState({
+        category: resultUrl,
+      });
+    }
+  }
+
+  // getData = () => {
+  //   fetch('/ProductList.json')
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       this.setState({
+  //         productList: res,
+  //       });
+  //     });
+  // };
 
   handleColor = e => {
     this.setState({ selectedItem: e.target.innerText });
