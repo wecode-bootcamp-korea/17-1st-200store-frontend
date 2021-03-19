@@ -7,7 +7,6 @@ import './ProductList.scss';
 class ProductList extends Component {
   constructor() {
     super();
-
     this.state = {
       productList: [],
       selectedItem: '',
@@ -16,15 +15,15 @@ class ProductList extends Component {
     };
   }
 
-  getData = sorting => {
-    fetch(`http://10.58.2.240:8000/product?sorting=${sorting}`)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          productList: res.data.products,
-        });
-      });
-  };
+  // getData = sorting => {
+  //   fetch(`http://10.58.2.240:8000/product?sorting=${sorting}`)
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       this.setState({
+  //         productList: res.data.products,
+  //       });
+  //     });
+  // };
 
   getProductList = () => {
     let addressUrl = this.props.history.location['search'];
@@ -40,17 +39,17 @@ class ProductList extends Component {
       });
   };
 
-  // 없어도 실행
+  // 먼저 실행
   componentDidMount() {
     let addressUrl = this.props.history.location['search'];
     let urlIndex = addressUrl.indexOf('=') + 1;
     let resultUrl = addressUrl.slice(urlIndex);
 
+    this.getProductList();
+
     this.setState({
       category: resultUrl,
     });
-
-    this.getProductList();
   }
 
   componentDidUpdate() {
@@ -58,6 +57,7 @@ class ProductList extends Component {
     let urlIndex = addressUrl.indexOf('=') + 1;
     let resultUrl = addressUrl.slice(urlIndex);
 
+    //if문이 사실이라면 컨디업 실행
     if (this.state.category !== resultUrl) {
       this.getProductList();
       this.setState({
@@ -88,6 +88,7 @@ class ProductList extends Component {
 
   render() {
     const { productList, selectedItem } = this.state;
+
     return (
       <div className="ProductList">
         <div className="pickListnum">

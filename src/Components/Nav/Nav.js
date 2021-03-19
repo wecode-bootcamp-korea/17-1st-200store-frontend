@@ -22,14 +22,6 @@ class Nav extends Component {
 
   menuChange = id => {
     this.props.history.push(`/product?category=${id}`);
-    // fetch(`http://10.58.2.240:8000/product?category=${id}`)
-    //   .then(res => res.json())
-    //   .then(res => {
-    //     // console.log(res.data.products);
-    //     this.setState({
-    //       productList: res.data.products,
-    //     });
-    //   });
   };
 
   componentWillUnmount() {
