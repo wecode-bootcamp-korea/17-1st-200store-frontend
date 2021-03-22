@@ -12,7 +12,6 @@ class ProductList extends Component {
       selectedItem: '',
       sorting: 'total_sales',
       category: '',
-      currentId: 1,
     };
   }
 
@@ -67,29 +66,24 @@ class ProductList extends Component {
     }
   }
 
-  getData = () => {
-    fetch('/ProductList.json')
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          productList: res,
-        });
-      });
-  };
-
-  handleColor = id => {
-    this.setState({ selectedItem: id });
-  };
-
-  // menuHandle = e => {
-  //   this.getData(e.target.id);
-  //   // this.getData();
-  //   this.handleColor(e);
+  // getData = () => {
+  //   fetch('/ProductList.json')
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       this.setState({
+  //         productList: res,
+  //       });
+  //     });
   // };
 
-  menuClick = id => {
-    this.setState({ currentId: id });
-    this.handleColor();
+  handleColor = e => {
+    this.setState({ selectedItem: e.target.innerText });
+  };
+
+  menuHandle = e => {
+    this.getData(e.target.id);
+    // this.getData();
+    this.handleColor(e);
   };
 
   render() {
@@ -99,20 +93,50 @@ class ProductList extends Component {
       <div className="ProductList">
         <div className="pickListnum">
           <p>
-            총 <span>{productList.length}</span>개
+            총 <span>{this.state.productList.length}</span>개
           </p>
           <div className="pickListBox">
-            {CATEGORYMENU.map((category, idx) => {
-              return (
-                <p
-                  key={idx}
-                  onClick={() => this.menuClick(idx + 1)}
-                  className={category}
-                >
-                  {category}
-                </p>
-              );
-            })}
+            <p
+              className={selectedItem === '추천순' ? 'selected' : 'unselected'}
+              name="total_sales"
+              onClick={e => this.menuHandle(e)}
+            >
+              추천순
+            </p>
+            <p
+              className={selectedItem === '인기순' ? 'selected' : 'unselected'}
+              onClick={e => this.menuHandle(e)}
+              id="total_sales"
+            >
+              인기순
+            </p>
+            <p
+              className={selectedItem === '최신순' ? 'selected' : 'unselected'}
+              onClick={e => this.menuHandle(e)}
+              id="-create_at"
+            >
+              최신순
+            </p>
+            <p
+              className={
+                selectedItem === '낮은가격순' ? 'selected' : 'unselected'
+              }
+              onClick={e => this.menuHandle(e)}
+              id="price"
+            >
+              낮은가격순
+            </p>
+            <p
+              className={
+                this.state.selectedItem === '높은가격순'
+                  ? 'selected'
+                  : 'unselected'
+              }
+              onClick={e => this.menuHandle(e)}
+              id="-price"
+            >
+              높은가격순
+            </p>
           </div>
         </div>
         <section>
@@ -139,7 +163,5 @@ class ProductList extends Component {
     );
   }
 }
-
-const CATEGORYMENU = ['인기', '최고', '최신', '낮은', '높은'];
 
 export default ProductList;
