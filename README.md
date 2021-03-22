@@ -55,7 +55,6 @@
 
 > **- 상품리스트페이지 🌈**
 
-![캡처](https://user-images.githubusercontent.com/68775082/111102657-f9a3a100-858f-11eb-82be-3ac2256ccaa8.PNG)
 
 
 --------------
