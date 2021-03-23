@@ -9,22 +9,22 @@ class ProductList extends Component {
     super();
     this.state = {
       productList: [],
-      selectedItem: '',
       sorting: 'total_sales',
       category: '',
       currentId: 1,
+      selectedItem: '',
     };
   }
 
-  // getData = sorting => {
-  //   fetch(`http://10.58.2.240:8000/product?sorting=${sorting}`)
-  //     .then(res => res.json())
-  //     .then(res => {
-  //       this.setState({
-  //         productList: res.data.products,
-  //       });
-  //     });
-  // };
+  getData = sorting => {
+    fetch(`http://10.58.2.240:8000/product?sorting=${sorting}`)
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          productList: res.data.products,
+        });
+      });
+  };
 
   getProductList = () => {
     let addressUrl = this.props.history.location['search'];
@@ -67,6 +67,7 @@ class ProductList extends Component {
     }
   }
 
+  //목데이터
   getData = () => {
     fetch('/ProductList.json')
       .then(res => res.json())
@@ -77,24 +78,18 @@ class ProductList extends Component {
       });
   };
 
-  handleColor = id => {
-    this.setState({ selectedItem: id });
+  handleColor = idx => {
+    this.setState({ selectedItem: idx });
   };
 
-  // menuHandle = e => {
-  //   this.getData(e.target.id);
-  //   // this.getData();
-  //   this.handleColor(e);
-  // };
-
-  menuClick = id => {
-    this.setState({ currentId: id });
-    this.handleColor();
+  menuClick = e => {
+    this.setState({ currentId: e });
+    this.handleColor(e);
+    this.getData(e);
   };
 
   render() {
     const { productList, selectedItem } = this.state;
-
     return (
       <div className="ProductList">
         <div className="pickListnum">
@@ -107,7 +102,9 @@ class ProductList extends Component {
                 <p
                   key={idx}
                   onClick={() => this.menuClick(idx + 1)}
-                  className={category}
+                  className={
+                    idx + 1 === selectedItem ? 'selected' : 'unseleted'
+                  }
                 >
                   {category}
                 </p>
@@ -140,6 +137,6 @@ class ProductList extends Component {
   }
 }
 
-const CATEGORYMENU = ['인기', '최고', '최신', '낮은', '높은'];
+const CATEGORYMENU = ['추천순', '인기순', '최신순', '낮은가격순', '높은가격순'];
 
 export default ProductList;
