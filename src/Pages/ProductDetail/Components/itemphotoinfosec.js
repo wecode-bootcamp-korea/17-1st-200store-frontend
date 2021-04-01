@@ -23,12 +23,11 @@ class ItemPhotoInfoSec extends React.Component {
     ).toLocaleString();
     return (
       <>
-        {/* {this.props.productDetail.map(detail => { */}
         <div className="itemPhotoInfoSec" id={detail.id}>
           <div className="itemPhotoViewBox">
             <div className="itemPhotoBig">
               <img
-                src={detail.thumbnailUrl}
+                src={detail.imageUrl}
                 alt="ㅋㅋ안 보이는 양말 세트"
                 className="middle"
               />

@@ -16,15 +16,25 @@ class ProductList extends Component {
     };
   }
 
-  getData = sorting => {
-    fetch(`http://10.58.2.240:8000/product?sorting=${sorting}`)
+  getData = () => {
+    fetch('/ProductList.json')
       .then(res => res.json())
       .then(res => {
         this.setState({
-          productList: res.data.products,
+          productList: res,
         });
       });
   };
+
+  // getData = sorting => {
+  //   fetch(`http://10.58.2.240:8000/product?sorting=${sorting}`)
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       this.setState({
+  //         productList: res.data.products,
+  //       });
+  //     });
+  // };
 
   getProductList = () => {
     let addressUrl = this.props.history.location['search'];
@@ -66,17 +76,6 @@ class ProductList extends Component {
       });
     }
   }
-
-  //목데이터
-  getData = () => {
-    fetch('/ProductList.json')
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          productList: res,
-        });
-      });
-  };
 
   handleColor = idx => {
     this.setState({ selectedItem: idx });

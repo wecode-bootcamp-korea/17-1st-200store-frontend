@@ -22,17 +22,32 @@ class ProductDetail extends React.Component {
     this.setState({ isModalView: !this.state.isModalView });
   };
 
+  // componentDidMount() {
+  //   // fetch('http://10.58.2.240:8000/product/7', { method: 'GET' })
+  //   // fetch('/data/productdetaildata.json')
+  //   fetch(`http://10.58.2.240:8000/product/${this.props.match.params.id}`)
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       console.log(res, '나여기');
+  //       this.setState({
+  //         productDetail: res.data.product,
+  //         productImage: res.data.product.imageUrls,
+  //         productReview: res.data.product.reviews,
+  //       });
+  //     });
+  //   window.scrollTo(0, 0);
+  // }
+
   componentDidMount() {
     // fetch('http://10.58.2.240:8000/product/7', { method: 'GET' })
-    // fetch('/data/productdetaildata.json')
-    fetch(`http://10.58.2.240:8000/product/${this.props.match.params.id}`)
+    fetch('/data/productdetaildata.json')
+      // fetch(`http://10.58.2.240:8000/product/${this.props.match.params.id}`)
       .then(res => res.json())
       .then(res => {
-        console.log(res);
         this.setState({
           productDetail: res.data.product,
-          productImage: res.data.product.imageUrls,
-          productReview: res.data.product.reviews,
+          productImage: res.data.images,
+          productReview: res.data.review,
         });
       });
     window.scrollTo(0, 0);
@@ -131,6 +146,7 @@ class ProductDetail extends React.Component {
   };
 
   render() {
+    // console.log(productReview[0].content, '나여기');
     return (
       <div className="productDetail">
         <div className="contents">
@@ -152,7 +168,7 @@ class ProductDetail extends React.Component {
                 {this.state.productImage.map(image => {
                   return (
                     <div className="detailPhotoBox" id={image.id}>
-                      <img src={image} alt="사진" />
+                      <img src={image.imageUrl} alt="사진" />
                     </div>
                   );
                 })}

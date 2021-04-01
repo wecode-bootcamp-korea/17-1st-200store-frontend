@@ -15,8 +15,24 @@ class Cart extends Component {
   }
 
   //backend와 통신할때는 cartList: res.result
+  // componentDidMount() {
+  //   fetch(CARTAPI, {
+  //     method: 'GET',
+  //     headers: {
+  //       Authorization: localStorage.getItem('accessToken'),
+  //     },
+  //   })
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       console.log(res);
+  //       this.setState({
+  //         cartList: res.result,
+  //       });
+  //     });
+  // }
+
   componentDidMount() {
-    fetch(CARTAPI, {
+    fetch('data/cartListData.json', {
       method: 'GET',
       headers: {
         Authorization: localStorage.getItem('accessToken'),
@@ -26,7 +42,7 @@ class Cart extends Component {
       .then(res => {
         console.log(res);
         this.setState({
-          cartList: res.result,
+          cartList: res,
         });
       });
   }

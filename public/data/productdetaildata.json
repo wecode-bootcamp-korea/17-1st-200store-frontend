@@ -1,19 +1,18 @@
 {
   "data": {
-    "product": [
-      {
-        "id": 1,
-        "name": "ㅋㅋ잘써지는 볼펜",
-        "price": 8900,
-        "sale": 0.05,
-        "imageUrl": "https://images.unsplash.com/photo-1588947618741-2250fc97321a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=645&q=80",
-        "stock": 1
-      }
-    ],
+    "product": {
+      "id": 1,
+      "name": "ㅋㅋ잘써지는 볼펜",
+      "price": 8900,
+      "sale": 0.05,
+      "imageUrl": "https://images.unsplash.com/photo-1588947618741-2250fc97321a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=645&q=80",
+      "stock": 1
+    },
+
     "images": [
       {
         "id": 1,
-        "imageUrl": "https://store.baemin.com/data/editor/goods/200724/002403c7fbbcfdb9dd0728c98239be01_154446.png"
+        "imageUrl": "https://images.unsplash.com/photo-1588947618741-2250fc97321a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=645&q=80"
       }
     ],
     "review": [
